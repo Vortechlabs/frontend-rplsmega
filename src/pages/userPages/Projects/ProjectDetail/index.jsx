@@ -497,7 +497,7 @@ function ProjectDetail() {
                                                                 {comment.content}
 
                                                                 {/* Tombol Hapus */}
-                                                                {user && user[0].id === comment.userId && (
+                                                                {user && user.id === comment.userId && (
                                                                     <button
                                                                         onClick={() => handleDeleteComment(comment.id)}
                                                                         className="absolute top-2 right-2 text-red-500 hover:text-red-700 text-xs"

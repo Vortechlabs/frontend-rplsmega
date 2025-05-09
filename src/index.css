@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 @theme {
   --color-OxfordBlue : #0A3180;
@@ -7,8 +8,9 @@
   --color-GoldenYellow-Dark: #ECBB03;
 }
 
-:root{
-  font-family: poppins;
+
+:root {
+  font-family: 'Poppins', sans-serif;
 }
 
 html, body {

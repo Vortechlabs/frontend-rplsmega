@@ -335,7 +335,9 @@ function Navbar() {
                     </div>
                     ) : (
                         <div className='flex gap-2'>
-                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <motion.div whileHover={{ scale: 1.05 }}
+                                className='rounded-lg'
+                                 whileTap={{ scale: 0.95 }}>
                                 <NavLink to='/auth/login'>
                                     <button className='
                                         border-OxfordBlue border-1 p-2 px-4 rounded-lg 
@@ -354,20 +356,10 @@ function Navbar() {
                                 </NavLink>
                             </motion.div>
                             
-                            <motion.div 
-                                whileHover={{ scale: 1.05 }} 
-                                whileTap={{ scale: 0.95 }}
-                                initial={{ scale: 1 }}
-                                animate={{ 
-                                    scale: [1, 1.02, 1],
-                                    boxShadow: ["0 4px 6px rgba(0, 0, 0, 0.1)", "0 6px 10px rgba(251, 191, 36, 0.3)", "0 4px 6px rgba(0, 0, 0, 0.1)"]
-                                }}
-                                transition={{ 
-                                    duration: 2,
-                                    repeat: Infinity,
-                                    repeatType: "reverse"
-                                }}
-                            >
+                            
+                            <motion.div whileHover={{ scale: 1.05 }}
+                                className='rounded-lg'
+                                 whileTap={{ scale: 0.95 }}>
                                 <NavLink to='/auth/register'>
                                     <button className='
                                         bg-GoldenYellow text-white p-2 px-4 rounded-lg 

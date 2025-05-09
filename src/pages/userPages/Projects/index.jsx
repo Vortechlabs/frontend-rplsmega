@@ -23,7 +23,7 @@ function Project() {
 
         <div className="fixed bottom-4 right-4">
           <Link to="/upload/project">
-            <button className="flex items-center cursor-pointer transition-transform justify-center px-6 py-3 bg-OxfordBlue rounded-full shadow-lg hover:bg-OxfordBlue-Dark hover:scale-105 duration-200">
+            <button className="flex border-2 border-white items-center cursor-pointer transition-transform justify-center px-6 py-3 bg-OxfordBlue-Dark rounded-full shadow-lg hover:bg-OxfordBlue hover:scale-105 duration-200">
               <span className="text-white font-semibold">+ Tambahkan Proyek</span>
             </button>
           </Link>

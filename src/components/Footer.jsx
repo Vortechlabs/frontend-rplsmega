@@ -112,7 +112,7 @@ const Footer = () => {
 
         <hr className="mt-16 mb-10 border-gray-200" />
 
-        <p className="text-sm text-center text-white">© Copyright 2025, All Rights Reserved by PPLG SMEGA.</p>
+        <p className="text-sm text-center text-white">© Copyright 2025, All Rights Reserved by RPL SMEGA.</p>
     </div>
 </section>
 

@@ -11,7 +11,9 @@ const UserCard = ({
   showClass = true
 }) => {
   return (
-    <div className="card flex items-center gap-5 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+    <div className="card block md:flex justify-between items-center gap-5 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+      
+      <div className='flex gap-4 mb-2'>
       <div className="relative flex shrink-0 w-20 h-20">
         <div className="rounded-[20px] overflow-hidden">
           <img 
@@ -59,17 +61,18 @@ const UserCard = ({
         </div>
         
       </div>
+      </div>
       
-      <div className="flex justify-end items-center gap-3">
+      <div className="block md:flex space-y-2 justify-end items-center gap-3">
         <button 
           onClick={() => onEdit(user.id)}
-          className="w-fit hover:scale-105 transition rounded-full border border-[#060A23] p-[14px_20px] font-semibold text-nowrap flex items-center gap-2"
+          className="w-full justify-center md:w-fit hover:scale-105 transition rounded-full border border-[#060A23] p-[14px_20px] font-semibold text-nowrap flex items-center gap-2"
         >
           <FaEdit /> Edit
         </button>
         <button 
           onClick={() => onDelete(user.id)}
-          className="w-fit hover:scale-105 transition rounded-full p-[14px_20px] bg-[#FF435A] font-semibold text-white text-nowrap flex items-center gap-2"
+          className="w-full justify-center md:w-fit hover:scale-105 transition rounded-full p-[14px_20px] bg-[#FF435A] font-semibold text-white text-nowrap flex items-center gap-2"
         >
           <FaTrash /> Hapus
         </button>
