@@ -8,6 +8,7 @@ import { FiEdit2, FiUpload, FiTrash2, FiPlus, FiChevronLeft, FiChevronRight, FiC
 import { FaYoutube, FaGithub, FaImage, FaCode } from 'react-icons/fa';
 import { MdCategory, MdGroup } from 'react-icons/md';
 import Loader from '../../../../components/Loader';
+import { motion } from 'framer-motion';
 
 function AdminEditProject() {
   const { slug } = useParams();
@@ -478,53 +479,73 @@ function AdminEditProject() {
             </select>
           </div>
 
-
-            {/* Technology */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+          {/* Technology Input Section */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <label className="block text-sm font-medium text-gray-700">
                 Teknologi <span className="text-red-500">*</span>
               </label>
-              <div className="relative">
-                <input
-                  type="text"
-                  value={techInput}
-                  onChange={handleTechInputChange}
-                  onKeyDown={handleTechKeyDown}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-OxfordBlue focus:border-OxfordBlue transition-all"
-                  placeholder="React, Node.js, MongoDB (tekan koma atau enter untuk menambahkan)"
-                />
-                <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                  <FaCode className="h-5 w-5 text-gray-400" />
-                </div>
+              <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                Pisahkan dengan koma/enter
+              </span>
+            </div>
+
+            <div className="relative group">
+              <input
+                type="text"
+                value={techInput}
+                onChange={handleTechInputChange}
+                onKeyDown={handleTechKeyDown}
+                className="w-full px-4 py-3 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-OxfordBlue focus:border-OxfordBlue transition-all group-hover:border-gray-400"
+                placeholder="Contoh: React, Node.js, MongoDB"
+                aria-describedby="techHelp"
+              />
+              <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                <FaCode className="h-5 w-5 text-gray-400 group-hover:text-gray-500 transition-colors" />
               </div>
-              
-              {/* Badge teknologi */}
-              <div className="flex flex-wrap gap-2 mt-2">
-                {technologies.map((tech, index) => (
-                  <span 
+            </div>
+
+            {/* Technology Badges */}
+            <div className={`flex flex-wrap gap-2 mt-2 ${technologies.length === 0 ? 'min-h-8' : ''}`}>
+              {technologies.length > 0 ? (
+                technologies.map((tech, index) => (
+                  <motion.span 
                     key={index}
-                    className="px-3 py-1 text-xs bg-OxfordBlue/10 text-OxfordBlue rounded-full 
-                              flex items-center gap-2"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.2 }}
+                    className="px-3 py-1 text-xs bg-OxfordBlue/10 text-OxfordBlue rounded-full flex items-center gap-2 hover:bg-OxfordBlue/20 transition-colors"
                   >
                     {tech}
                     <button 
                       type="button" 
                       onClick={() => removeTech(index)}
-                      className="hover:text-OxfordBlue-Dark"
+                      className="hover:text-OxfordBlue-Dark focus:outline-none"
+                      aria-label={`Hapus ${tech}`}
                     >
                       <FiX className="text-xs" />
                     </button>
-                  </span>
-                ))}
-              </div>
-              
-              {/* Input tersembunyi untuk menyimpan data teknologi sebagai string */}
-              <input
-                type="hidden"
-                name="technology"
-                value={formData.technology}
-              />
+                  </motion.span>
+                ))
+              ) : (
+                <p className="text-xs text-gray-400 italic">
+                  Teknologi yang ditambahkan akan muncul disini
+                </p>
+              )}
             </div>
+
+            {/* Help Text */}
+            <p id="techHelp" className="text-xs text-gray-500 mt-1 flex items-center">
+              Pisahkan setiap teknologi dengan koma atau tekan Enter. Klik ✕ untuk menghapus.
+            </p>
+
+            {/* Hidden Input */}
+            <input
+              type="hidden"
+              name="technology"
+              value={formData.technology}
+            />
+          </div>
           </div>
 
           <div className="bg-gray-50 p-4 rounded-lg">

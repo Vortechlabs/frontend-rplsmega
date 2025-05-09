@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
 import BlurText from '../../../components/BlurText/BlurText';
 import AnimatedContent from '../../../components/AnimatedContent/AnimatedContent';
 import AlertsContainer from '../../../components/AlertContainer';
+import HowItWorks from '../About/HowItWorks';
 
 const Home = () => {
   return (
@@ -128,7 +129,7 @@ const Home = () => {
             threshold={0.2}
           >
             <div className='text-center mb-12'>
-              <h1 className='font-bold text-3xl md:text-4xl text-OxfordBlue mb-4'>Explore Our Website Projects</h1>
+              <h1 className='font-bold text-3xl md:text-4xl text-OxfordBlue mb-4'>Jelajahi proyek pkl kami</h1>
               <div className='w-24 h-1 bg-GoldenYellow mx-auto'></div>
             </div>
           </AnimatedContent>
@@ -148,7 +149,7 @@ const Home = () => {
             >
               <Link to='/projects'>
                 <button className='bg-OxfordBlue hover:bg-OxfordBlue-Dark cursor-pointer text-white py-3 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2'>
-                  Load More Projects 
+                  Tampilkan lebih banyak proyek
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                   </svg>
@@ -206,17 +207,17 @@ const Home = () => {
                 threshold={0.2}
               >
                 <div className='w-full  space-y-6'>
-                  <h1 className='text-3xl md:text-4xl font-bold text-OxfordBlue'>Upload and Show Your PKL Project</h1>
-                  <p className='text-lg text-gray-600'>Join with <span className='font-bold text-GoldenYellow'>500+ Developers</span> and start getting feedback right now!</p>
+                  <h1 className='text-3xl md:text-4xl font-bold text-OxfordBlue'>Unggah dan tunjukan proyek pkl kamu</h1>
+                  <p className='text-lg text-gray-600'>Gabung dengan <span className='font-bold text-GoldenYellow'>500+ alumni</span> dan mulai mendapatkan masukan!</p>
                   <div className='flex flex-wrap gap-4'>
                     <Link to='/auth/register'>
                       <button className='bg-OxfordBlue cursor-pointer hover:bg-OxfordBlue-Dark text-white py-3 px-6 rounded-lg shadow transition-all duration-300 transform hover:scale-105'>
-                        Join Now
+                        Gabung sekarang
                       </button>
                     </Link>
                     <Link to='/upload/project'>
                       <button className='border-2 border-OxfordBlue cursor-pointer text-OxfordBlue hover:bg-OxfordBlue hover:text-white py-3 px-6 rounded-lg shadow transition-all duration-300 transform hover:scale-105 flex items-center gap-2'>
-                        <FaUpload/> Upload Project
+                        <FaUpload/> Unggah Proyek
                       </button>
                     </Link>
                   </div>
@@ -226,78 +227,11 @@ const Home = () => {
           </div>
         </section>
 
-        {/* How It Works Section */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-6 md:px-10">
-            <AnimatedContent
-              distance={100}
-              direction="vertical"
-              reverse={false}
-              config={{ tension: 50, friction: 25 }}
-              initialOpacity={0.0}
-              animateOpacity
-              scale={1.05}
-              threshold={0.2}
-            >
-              <div className="max-w-3xl mx-auto text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-OxfordBlue">How does it work?</h2>
-                <div className='w-24 h-1 bg-GoldenYellow mx-auto mt-4'></div>
-                <p className="mt-6 text-lg text-gray-600">By following these easy steps, you can share the results of your PKL project and inspire others. Let's get started now!</p>
-              </div>
-            </AnimatedContent>
-
-            <div className="relative mt-12 lg:mt-20">
-              <div className="absolute inset-x-0 hidden xl:px-44 top-2 md:block md:px-20 lg:px-28">
-                <svg className="w-full" viewBox="0 0 1000 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0 10 C 200 20, 300 0, 500 10 S 800 0, 1000 10" stroke="#0A3180" strokeWidth="2" strokeDasharray="10 5" strokeLinecap="round"/>
-                </svg>
-              </div>
-
-              <div className="relative grid grid-cols-1 text-center gap-y-16 md:grid-cols-3 gap-x-8">
-                {[
-                  {
-                    number: "1",
-                    title: "Create a free account",
-                    description: "Easily register yourself using your email or social media account. With an account, you can manage your projects, interact with other users, and get feedback from the community."
-                  },
-                  {
-                    number: "2",
-                    title: "Upload your project",
-                    description: "Add project details such as title, description, and project images or demos. Don't forget to include contributing team members so that everyone knows who is involved in this work."
-                  },
-                  {
-                    number: "3",
-                    title: "Release & Launch",
-                    description: "Once your project is uploaded, everyone can see it, rate it, and leave comments. Get feedback and improve your skills by sharing your experience with other communities."
-                  }
-                ].map((step, index) => (
-                  <AnimatedContent
-                    key={index}
-                    distance={50}
-                    direction="vertical"
-                    reverse={index % 2 === 0}
-                    config={{ tension: 50, friction: 25 }}
-                    initialOpacity={0.0}
-                    animateOpacity
-                    scale={1.05}
-                    threshold={0.2}
-                  >
-                    <div className="relative z-10">
-                      <div className="flex items-center justify-center w-16 h-16 mx-auto bg-OxfordBlue border-2 border-white rounded-full shadow-lg mb-6">
-                        <span className="text-xl font-semibold text-white">{step.number}</span>
-                      </div>
-                      <h3 className="text-xl font-semibold text-OxfordBlue mb-4">{step.title}</h3>
-                      <p className="text-gray-600">{step.description}</p>
-                    </div>
-                  </AnimatedContent>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Bagian Cara Kerja */}
+        <HowItWorks />
 
         {/* Partners Section */}
-        <section className='py-16 bg-gray-50'>
+        <section className='py-16  bg-gray-50'>
           <div className="container mx-auto px-6 md:px-10">
             <AnimatedContent
               distance={100}

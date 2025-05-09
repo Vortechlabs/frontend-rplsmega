@@ -123,7 +123,9 @@ function Navbar() {
                     whileHover={{ scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 300 }}
                 >
+                    <NavLink to="/">
                     <img src={logo} alt="logo" className='h-10'/>
+                    </NavLink>
                 </motion.div>
 
                 <div className='flex items-center gap-4'>

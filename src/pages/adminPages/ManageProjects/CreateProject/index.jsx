@@ -447,117 +447,121 @@ const TambahProject = () => {
                     </div>
 
                     <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                            <label className=" text-sm font-medium text-gray-700 mb-1 flex items-center">
-                                <MdCategory className="mr-2" /> Kategori  <span className='text-red-700'>*</span>
-                            </label>
-                            <div className="relative mt-1">
-                                <input
-                                    type="text"
-                                    placeholder="Jelajahi kategori..."
-                                    value={categorySearch}
-                                    onChange={(e) => {
-                                        setCategorySearch(e.target.value);
-                                        setShowCategoryDropdown(true);
-                                    }}
-                                    onFocus={() => setShowCategoryDropdown(true)}
-                                    onBlur={() => setTimeout(() => setShowCategoryDropdown(false), 200)}
-                                    className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                />
-                                
-                                {showCategoryDropdown && (
-                                <div className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
-                                    {filteredCategories.length > 0 ? (
-                                    filteredCategories.map((category) => (
-                                        <div
-                                        key={category.id}
-                                        className={`cursor-pointer hover:bg-gray-100 px-4 py-2 ${
-                                            formData.categoryId === category.id ? 'bg-gray-100' : ''
-                                        }`}
-                                        onClick={() => {
-                                            setFormData(prev => ({ ...prev, categoryId: category.id }));
-                                            setCategorySearch(category.name);
-                                            setShowCategoryDropdown(false);
-                                        }}
-                                        >
-                                        {category.name}
-                                        </div>
-                                    ))
-                                    ) : (
-                                    <div className="px-4 py-2 text-gray-500">Tidak ada kategori</div>
-                                    )}
-                                </div>
-                                )}
-                            </div>
-                        
-                            {formData.categoryId && (
-                                <div className="mt-2 flex items-center">
-                                <span className="text-sm text-gray-700">
-                                    Dipilih: {categories.find(c => c.id === formData.categoryId)?.name}
-                                </span>
-                                <button
-                                    type="button"
-                                    onClick={() => {
-                                    setFormData(prev => ({ ...prev, categoryId: '' }));
-                                    setCategorySearch('');
-                                    }}
-                                    className="ml-2 text-sm text-red-500 hover:text-red-700"
-                                >
-                                    ×
-                                </button>
-                                </div>
-                            )}
-                        </div>
-
-                    {/* Technology */}
-                    <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Teknologi <span className="text-red-500">*</span>
-                    </label>
-                    <div className="relative">
+                    {/* Bagian Kategori (tetap sama) */}
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                        <label className="text-sm font-medium text-gray-700 mb-1 flex items-center">
+                        <MdCategory className="mr-2" /> Kategori <span className='text-red-700'>*</span>
+                        </label>
+                        <div className="relative mt-1">
                         <input
-                        type="text"
-                        name="technology"
-                        value={techInput}
-                        onChange={handleTechInputChange}
-                        onKeyDown={handleTechKeyDown}
+                            type="text"
+                            placeholder="Jelajahi kategori..."
+                            value={categorySearch}
+                            onChange={(e) => {
+                            setCategorySearch(e.target.value);
+                            setShowCategoryDropdown(true);
+                            }}
+                            onFocus={() => setShowCategoryDropdown(true)}
+                            onBlur={() => setTimeout(() => setShowCategoryDropdown(false), 200)}
+                            className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                        />
+                        
+                        {showCategoryDropdown && (
+                            <div className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
+                            {filteredCategories.length > 0 ? (
+                                filteredCategories.map((category) => (
+                                <div
+                                    key={category.id}
+                                    className={`cursor-pointer hover:bg-gray-100 px-4 py-2 ${
+                                    formData.categoryId === category.id ? 'bg-gray-100' : ''
+                                    }`}
+                                    onClick={() => {
+                                    setFormData(prev => ({ ...prev, categoryId: category.id }));
+                                    setCategorySearch(category.name);
+                                    setShowCategoryDropdown(false);
+                                    }}
+                                >
+                                    {category.name}
+                                </div>
+                                ))
+                            ) : (
+                                <div className="px-4 py-2 text-gray-500">Tidak ada kategori</div>
+                            )}
+                            </div>
+                        )}
+                        </div>
+                    
+                        {formData.categoryId && (
+                        <div className="mt-2 flex items-center">
+                            <span className="text-sm text-gray-700">
+                            Dipilih: {categories.find(c => c.id === formData.categoryId)?.name}
+                            </span>
+                            <button
+                            type="button"
+                            onClick={() => {
+                                setFormData(prev => ({ ...prev, categoryId: '' }));
+                                setCategorySearch('');
+                            }}
+                            className="ml-2 text-sm text-red-500 hover:text-red-700"
+                            >
+                            ×
+                            </button>
+                        </div>
+                        )}
+                    </div>
 
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-OxfordBlue focus:border-OxfordBlue transition-all"
-                        placeholder="React, Node.js, MongoDB"
-                        required
+                    {/* Bagian Teknologi dengan himbauan */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Teknologi <span className="text-red-500">*</span>
+                        </label>
+                        <div className="relative">
+                        <input
+                            type="text"
+                            name="technology"
+                            value={techInput}
+                            onChange={handleTechInputChange}
+                            onKeyDown={handleTechKeyDown}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-OxfordBlue focus:border-OxfordBlue transition-all"
+                            placeholder="React, Node.js, MongoDB (pisahkan dengan koma atau enter)"
+                            required
                         />
                         <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                        <FaCode className="h-5 w-5 text-gray-400" />
+                            <FaCode className="h-5 w-5 text-gray-400" />
                         </div>
-                    </div>
-                    
-                    {/* Badge teknologi */}
-                    <div className="flex flex-wrap gap-2 mt-2">
+                        </div>
+                        
+                        {/* Himbauan penggunaan */}
+                        <p className="mt-1 text-xs text-gray-500">
+                            Pisahkan setiap teknologi dengan koma atau tekan Enter. Klik ✕ untuk menghapus.
+                        </p>
+                        
+                        {/* Badge teknologi */}
+                        <div className="flex flex-wrap gap-2 mt-2">
                         {technologies.map((tech, index) => (
-                        <span 
+                            <span 
                             key={index}
                             className="px-3 py-1 text-xs bg-OxfordBlue/10 text-OxfordBlue rounded-full 
                                     flex items-center gap-2"
-                        >
+                            >
                             {tech}
                             <button 
-                            type="button" 
-                            onClick={() => removeTech(index)}
-                            className="hover:text-OxfordBlue-Dark"
+                                type="button" 
+                                onClick={() => removeTech(index)}
+                                className="hover:text-OxfordBlue-Dark"
                             >
-                            <FaTimes className="text-xs" />
+                                <FaTimes className="text-xs" />
                             </button>
-                        </span>
+                            </span>
                         ))}
-                    </div>
-                    
-                    {/* Input tersembunyi untuk menyimpan data teknologi sebagai string */}
-                    <input
+                        </div>
+                        
+                        {/* Input tersembunyi untuk menyimpan data teknologi sebagai string */}
+                        <input
                         type="hidden"
                         name="technology"
                         value={formData.technology}
-                    />
-
+                        />
                     </div>
                     </div>
 

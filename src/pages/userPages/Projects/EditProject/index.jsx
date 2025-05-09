@@ -459,52 +459,70 @@ const UpdateProject = () => {
               )}
             </div>
 
-            {/* Technology */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+           {/* Technology Input */}
+          <div className="space-y-1">
+            <div className="flex items-center justify-between">
+              <label className="block text-sm font-medium text-gray-700">
                 Teknologi <span className="text-red-500">*</span>
               </label>
-              <div className="relative">
-                <input
-                  type="text"
-                  value={techInput}
-                  onChange={handleTechInputChange}
-                  onKeyDown={handleTechKeyDown}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-OxfordBlue focus:border-OxfordBlue transition-all"
-                  placeholder="React, Node.js, MongoDB (tekan koma atau enter untuk menambahkan)"
-                />
-                <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                  <FaCode className="h-5 w-5 text-gray-400" />
-                </div>
+              <span className="text-xs text-gray-500">
+                Tekan koma atau enter setelah setiap teknologi
+              </span>
+            </div>
+
+            <div className="relative">
+              <input
+                type="text"
+                value={techInput}
+                onChange={handleTechInputChange}
+                onKeyDown={handleTechKeyDown}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-OxfordBlue focus:border-OxfordBlue transition-all"
+                placeholder="Contoh: React, Node.js, MongoDB"
+                aria-describedby="techHelp"
+              />
+              <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                <FaCode className="h-5 w-5 text-gray-400" />
               </div>
-              
-              {/* Badge teknologi */}
-              <div className="flex flex-wrap gap-2 mt-2">
-                {technologies.map((tech, index) => (
+            </div>
+
+            {/* Technology badges with removal */}
+            <div className="flex flex-wrap gap-2 mt-2 min-h-8">
+              {technologies.length > 0 ? (
+                technologies.map((tech, index) => (
                   <span 
                     key={index}
-                    className="px-3 py-1 text-xs bg-OxfordBlue/10 text-OxfordBlue rounded-full 
-                              flex items-center gap-2"
+                    className="px-3 py-1 text-xs bg-OxfordBlue/10 text-OxfordBlue rounded-full flex items-center gap-2"
                   >
                     {tech}
                     <button 
                       type="button" 
                       onClick={() => removeTech(index)}
-                      className="hover:text-OxfordBlue-Dark"
+                      className="hover:text-OxfordBlue-Dark focus:outline-none"
+                      aria-label={`Hapus teknologi ${tech}`}
                     >
                       <FiX className="text-xs" />
                     </button>
                   </span>
-                ))}
-              </div>
-              
-              {/* Input tersembunyi untuk menyimpan data teknologi sebagai string */}
-              <input
-                type="hidden"
-                name="technology"
-                value={formData.technology}
-              />
+                ))
+              ) : (
+                <p className="text-xs text-gray-400 italic">
+                  Teknologi yang ditambahkan akan muncul di sini
+                </p>
+              )}
             </div>
+
+            {/* Help text */}
+            <p id="techHelp" className="text-xs text-gray-500 mt-1">
+              Pisahkan setiap teknologi dengan koma atau tekan Enter. Klik ✕ untuk menghapus.
+            </p>
+
+            {/* Hidden input for form submission */}
+            <input
+              type="hidden"
+              name="technology"
+              value={formData.technology}
+            />
+          </div>
           </div>
 
           {/* Description */}

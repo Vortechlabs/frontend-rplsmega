@@ -145,7 +145,7 @@ function ManageProject() {
             
             <Link 
               to='/admin/upload-projects'
-              className="flex e hover:scale-105 items-center justify-center bg-gradient-to-r from-GoldenYellow-Dark to-GoldenYellow/90 text-white px-4 py-3 rounded-lg hover:from-GoldenYellow/90 hover:to-GoldenYellow-Dark transition-all shadow-md"
+              className="flex hover:scale-105 items-center justify-center bg-gradient-to-r from-GoldenYellow-Dark to-GoldenYellow/90 text-white px-4 py-3 rounded-lg hover:from-GoldenYellow/90 hover:to-GoldenYellow-Dark transition-all shadow-md"
             >
               <FaPlus className="mr-2" />
               Tambah Proyek

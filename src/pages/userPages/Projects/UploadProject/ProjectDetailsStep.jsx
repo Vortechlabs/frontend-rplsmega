@@ -8,7 +8,8 @@ import {
   FaLink,
   FaVideo,
   FaGithub,
-  FaCode
+  FaCode,
+  FaInfoCircle
 } from 'react-icons/fa';
 
 const ProjectDetailsStep = ({ formData, setFormData, categories }) => {
@@ -181,9 +182,18 @@ const ProjectDetailsStep = ({ formData, setFormData, categories }) => {
 
         {/* Technology */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Teknologi <span className="text-red-500">*</span>
-          </label>
+          <div className="flex items-center mb-1">
+            <label className="block text-sm font-medium text-gray-700">
+              Teknologi <span className="text-red-500">*</span>
+            </label>
+            <div className="group relative ml-2">
+              <FaInfoCircle className="text-gray-400 hover:text-gray-500 cursor-pointer" />
+              <div className="absolute z-10 hidden group-hover:block w-64 p-2 mt-1 text-xs text-gray-600 bg-white border border-gray-200 rounded-md shadow-lg">
+                Pisahkan setiap teknologi dengan koma atau tekan Enter. Contoh: "React, Node.js, MongoDB"
+              </div>
+            </div>
+          </div>
+
           <div className="relative">
             <input
               type="text"
@@ -191,9 +201,8 @@ const ProjectDetailsStep = ({ formData, setFormData, categories }) => {
               value={techInput}
               onChange={handleTechInputChange}
               onKeyDown={handleTechKeyDown}
-
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-OxfordBlue focus:border-OxfordBlue transition-all"
-              placeholder="React, Node.js, MongoDB"
+              placeholder="React, Node.js, MongoDB (pisahkan dengan koma atau enter)"
               required
             />
             <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
@@ -201,7 +210,12 @@ const ProjectDetailsStep = ({ formData, setFormData, categories }) => {
             </div>
           </div>
           
-          {/* Badge teknologi */}
+          {/* Instruction text */}
+          <p className="mt-1 text-xs text-gray-500">
+              Pisahkan setiap teknologi dengan koma atau tekan Enter. Klik ✕ untuk menghapus.
+          </p>
+          
+          {/* Technology badges */}
           <div className="flex flex-wrap gap-2 mt-2">
             {technologies.map((tech, index) => (
               <span 
@@ -214,6 +228,7 @@ const ProjectDetailsStep = ({ formData, setFormData, categories }) => {
                   type="button" 
                   onClick={() => removeTech(index)}
                   className="hover:text-OxfordBlue-Dark"
+                  aria-label={`Hapus ${tech}`}
                 >
                   <FaTimes className="text-xs" />
                 </button>
@@ -221,13 +236,12 @@ const ProjectDetailsStep = ({ formData, setFormData, categories }) => {
             ))}
           </div>
           
-          {/* Input tersembunyi untuk menyimpan data teknologi sebagai string */}
+          {/* Hidden input for form submission */}
           <input
             type="hidden"
             name="technology"
             value={formData.technology}
           />
-
         </div>
       </div>
 
