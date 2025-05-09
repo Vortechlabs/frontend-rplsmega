@@ -187,7 +187,7 @@ function Navbar() {
                                     <motion.img
                                         src={
                                             user[0].profilePicture
-                                            ? `http://127.0.0.1:8000/storage/${user[0].profilePicture}`
+                                            ? `https://apirpl.smkn1purbalingga.sch.id/storage/${user[0].profilePicture}`
                                             : DefaultProfile
                                         }
                                         alt="Profile"

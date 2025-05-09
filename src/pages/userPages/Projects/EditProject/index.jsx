@@ -595,7 +595,7 @@ const UpdateProject = () => {
                     <div key={image.id} className="border rounded-lg p-3 relative group bg-white">
                       <div className="relative pb-[75%] overflow-hidden rounded-md">
                         <img
-                          src={`http://127.0.0.1:8000/storage/${image.projectImage}`}
+                          src={`https://apirpl.smkn1purbalingga.sch.id/storage/${image.projectImage}`}
                           alt={`Existing ${index}`}
                           className="absolute h-full w-full object-cover"
                         />

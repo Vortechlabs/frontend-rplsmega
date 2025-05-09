@@ -44,7 +44,7 @@ const AlertCard = ({ alert, onDelete }) => {
           {alert.image_path ? (
             <div className="rounded-xl overflow-hidden w-full h-full">
               <img
-                src={`http://127.0.0.1:8000/storage/${alert.image_path}`}
+                src={`https://apirpl.smkn1purbalingga.sch.id/storage/${alert.image_path}`}
                 className="w-full h-full object-cover"
                 alt={alert.title}
               />

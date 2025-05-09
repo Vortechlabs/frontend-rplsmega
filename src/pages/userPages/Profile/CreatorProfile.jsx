@@ -136,7 +136,7 @@ function CreatorProfile() {
                   <div className="absolute -inset-1 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   <img
                     src={user.profilePicture 
-                      ? `http://127.0.0.1:8000/storage/${user.profilePicture}`
+                      ? `https://apirpl.smkn1purbalingga.sch.id/storage/${user.profilePicture}`
                       : defaultProfilePic}
                     alt={`${user.name}'s profile`}
                     className="relative w-32 h-32 rounded-full object-cover border-4 border-white shadow-md"
@@ -190,7 +190,7 @@ function CreatorProfile() {
                         <div className="h-48 overflow-hidden bg-gray-100">
                           <img
                             className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                            src={`http://127.0.0.1:8000/storage/${project.project_image[0].projectImage}`}
+                            src={`https://apirpl.smkn1purbalingga.sch.id/storage/${project.project_image[0].projectImage}`}
                             alt={project.project_image[0].name_image}
                           />
                         </div>

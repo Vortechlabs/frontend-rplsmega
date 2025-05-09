@@ -268,7 +268,7 @@ function ShowcaseCard() {
                                         {mainImage ? (
                                             <img 
                                                 className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                                                src={`http://127.0.0.1:8000/storage/${mainImage}`} 
+                                                src={`https://apirpl.smkn1purbalingga.sch.id/storage/${mainImage}`} 
                                                 alt={project.title} 
                                                 loading="lazy"
                                             />

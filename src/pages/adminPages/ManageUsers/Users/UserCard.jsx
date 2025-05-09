@@ -15,7 +15,7 @@ const UserCard = ({
       <div className="relative flex shrink-0 w-20 h-20">
         <div className="rounded-[20px] overflow-hidden">
           <img 
-            src={user.profilePicture ? `http://127.0.0.1:8000/storage/${user.profilePicture}` : defaultProfilePicture}
+            src={user.profilePicture ? `https://apirpl.smkn1purbalingga.sch.id/storage/${user.profilePicture}` : defaultProfilePicture}
             className="w-20 h-20 object-cover" 
             alt="profile" 
           />

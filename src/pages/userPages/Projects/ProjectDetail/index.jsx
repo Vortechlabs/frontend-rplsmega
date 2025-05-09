@@ -101,7 +101,7 @@ function ProjectDetail() {
     };
 
     const handleCopyLink = () => {
-        const link = `http://localhost:5173/project/${slug}`;
+        const link = `https://rplsmega.netlify.app/project/${slug}`;
         navigator.clipboard.writeText(link);
         Swal.fire('Link disalin!', 'Link project telah disalin ke clipboard.', 'success');
     };
@@ -213,7 +213,7 @@ function ProjectDetail() {
     };
     
 
-    const projectLink = `http://localhost:5173/project/${slug}`;
+    const projectLink = `https://rplsmega.netlify.app/project/${slug}`;
 
     return (
         <>
@@ -283,7 +283,7 @@ function ProjectDetail() {
                             {project.project_image?.map((image, index) => (
                                 <div key={`image-${index}`} className="relative">
                                 <img 
-                                    src={`http://127.0.0.1:8000/storage/${image.projectImage}`} 
+                                    src={`https://apirpl.smkn1purbalingga.sch.id/storage/${image.projectImage}`} 
                                     alt={`Project Image ${index}`} 
                                     className="w-full min-h-[450px] object-cover"
                                     onError={(e) => {
@@ -336,12 +336,12 @@ function ProjectDetail() {
                     {/* Right Column - Project Details */}
                     <div className="space-y-6 ">
                         {/* Author Card */}
-                        <Link to={`http://localhost:5173/profile/creator/${project.user.username}`}>
+                        <Link to={`/profile/creator/${project.user.username}`}>
                         <div className="bg-white rounded-xl shadow-md p-6">
                             <div className="flex items-center">
                                 {project.user.profilePicture ? (
                                     <img 
-                                        src={`http://127.0.0.1:8000/storage/${project.user.profilePicture}`} 
+                                        src={`https://apirpl.smkn1purbalingga.sch.id/storage/${project.user.profilePicture}`} 
                                         alt="profile" 
                                         className="h-14 w-14 rounded-full object-cover mr-4"
                                         onError={(e) => {
@@ -479,7 +479,7 @@ function ProjectDetail() {
                                                         <div className="relative">
                                                             <img
                                                                 src={comment.user?.profilePicture
-                                                                    ? `http://127.0.0.1:8000/storage/${comment.user.profilePicture}`
+                                                                    ? `https://apirpl.smkn1purbalingga.sch.id/storage/${comment.user.profilePicture}`
                                                                     : defaultProfilePic}
                                                                 alt="profile"
                                                                 className="h-12 w-12 rounded-full object-cover ring-2 ring-offset-2 ring-OxfordBlue group-hover:ring-OxfordBlue-Dark transition duration-300"

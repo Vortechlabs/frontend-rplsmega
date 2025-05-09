@@ -11,7 +11,7 @@ const ProjectCard = ({ project, onDelete }) => {
         <div className="rounded-xl overflow-hidden w-full h-full">
           {project.project_image?.length > 0 ? (
             <img
-              src={`http://127.0.0.1:8000/storage/${project.project_image[0].projectImage}`}
+              src={`https://apirpl.smkn1purbalingga.sch.id/storage/${project.project_image[0].projectImage}`}
               className="w-full h-full object-cover"
               alt={project.title}
             />

@@ -41,7 +41,7 @@ function EditUser() {
         const response = await apiClient.get(`/users/${id}`);
         setUser(response.data);
         setOriginalUser(response.data);
-        setPreview(response.data.profilePicture ? `http://127.0.0.1:8000/storage/${response.data.profilePicture}` : null);
+        setPreview(response.data.profilePicture ? `https://apirpl.smkn1purbalingga.sch.id/storage/${response.data.profilePicture}` : null);
       } catch (error) {
         console.error("Error fetching user:", error);
         setError("Gagal memuat data pengguna. Silakan coba lagi.");
@@ -70,7 +70,7 @@ function EditUser() {
       reader.readAsDataURL(file);
     } else {
       setPreview(originalUser?.profilePicture ? 
-        `http://127.0.0.1:8000/storage/${originalUser.profilePicture}` : null);
+        `https://apirpl.smkn1purbalingga.sch.id/storage/${originalUser.profilePicture}` : null);
       setUser({ ...user, profilePicture: null });
     }
   };

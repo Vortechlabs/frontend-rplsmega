@@ -115,7 +115,7 @@ const Alert = ({ alert, onDismiss }) => {
                 className="mt-3 mb-3 overflow-hidden rounded-lg border border-gray-100"
               >
                 <img 
-                  src={`http://127.0.0.1:8000${alert.image_path}`} 
+                  src={`https://apirpl.smkn1purbalingga.sch.id/${alert.image_path}`} 
                   alt="Alert" 
                   className="w-full h-auto max-h-52 object-cover"
                 />
