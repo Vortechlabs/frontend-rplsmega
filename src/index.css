@@ -1,0 +1,143 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-OxfordBlue : #0A3180;
+  --color-GoldenYellow: #FDC800;
+  --color-OxfordBlue-Dark: #08296C;
+  --color-GoldenYellow-Dark: #ECBB03;
+}
+
+:root{
+  font-family: poppins;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+button{
+  cursor: pointer;
+}
+
+.slick-prev, .slick-next {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-radius: 50%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  color: #333;
+  border: none;
+  cursor: pointer;
+}
+
+.custom-arrow {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-radius: 50%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  font-size: 0; 
+}
+
+.custom-arrow:hover {
+  background: white !important;
+  transform: scale(1.1);
+}
+
+.custom-prev {
+  left: 15px !important;
+}
+
+.custom-next {
+  right: 15px !important;
+}
+
+.arrow-icon {
+  font-size: 24px;
+  font-weight: bold;
+  color: #0A3180;
+  display: block;
+  line-height: 1;
+}
+
+.slick-prev:hover, .slick-next:hover {
+  background: white !important;
+  color: #000;
+  transform: scale(1.1);
+}
+
+.slick-prev:before, .slick-next:before {
+  display: none;
+}
+
+.slick-prev {
+  left: 15px !important;
+}
+
+.slick-next {
+  right: 15px !important;
+}
+
+.slick-prev svg, .slick-next svg {
+  width: 24px;
+  height: 24px;
+}
+
+.slick-slider {
+  position: relative;
+}
+
+.slick-slide > div {
+  height: 100%;
+}
+
+.slick-slide iframe {
+  width: 100%;
+  height: 385px;
+  border: none;
+}
+
+.slick-slide img {
+  width: 100%;
+  height: 385px;
+  object-fit: cover;
+}
+
+.slick-dots {
+  bottom: 20px;
+}
+
+.slick-dots li button:before {
+  color: white;
+  opacity: 0.5;
+  font-size: 10px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: white;
+  opacity: 1;
+}
+
+.animate-shine {
+  animation: shine 2.5s infinite;
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  20% { left: 100%; }
+  100% { left: 100%; }
+}

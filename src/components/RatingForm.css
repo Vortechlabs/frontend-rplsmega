@@ -1,0 +1,200 @@
+/* ====================== */
+/* Rating System Styles */
+/* ====================== */
+
+/* Base Container */
+.rating-system {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Title */
+.rating-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+/* Rating Display (when user has rated) */
+.rating-display {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rating-stars {
+  display: flex;
+  gap: 3px;
+}
+
+.rating-star {
+  font-size: 1.4rem;
+  transition: all 0.2s ease;
+}
+
+.rating-star.filled {
+  color: #ffb400;
+  fill: #ffb400;
+}
+
+.rating-star.empty {
+  color: #e0e0e0;
+  fill: #e0e0e0;
+}
+
+.rating-value {
+  font-size: 0.95rem;
+  color: #555;
+  font-weight: 500;
+}
+
+/* Rating Form (when user hasn't rated) */
+.rating-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stars-input {
+  display: flex;
+  gap: 5px;
+}
+
+.star-input {
+  cursor: pointer;
+  font-size: 1.6rem;
+  color: #e0e0e0;
+  transition: all 0.2s ease;
+}
+
+.star-input:hover,
+.star-input.active {
+  color: #ffb400;
+  transform: scale(1.1);
+}
+
+/* Sebagai gantinya, gunakan ini */
+.star-input:hover,
+.star-input.hovered {
+  color: #ffb400;
+}
+
+.star-input {
+  color: #e0e0e0;
+}
+
+.submit-button {
+  align-self: flex-start;
+  background: #4a6bff;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.submit-button:hover {
+  background: #3a5bef;
+  transform: translateY(-1px);
+}
+
+.submit-button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Loading State */
+.rating-loading {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+
+  .rating-container{
+    padding: 1rem;
+  }
+  
+  .rating-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  /* Rating Display */
+  .rating-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .rating-stars {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .rating-star {
+    font-size: 1.4rem;
+    transition: all 0.2s ease;
+  }
+  
+  .rating-star.filled {
+    color: #ffb400;
+    fill: #ffb400;
+  }
+  
+  .rating-star.empty {
+    color: #e0e0e0;
+    fill: #e0e0e0;
+  }
+  
+  .rating-value {
+    font-size: 0.95rem;
+    color: #555;
+    font-weight: 500;
+  }
+  
+  /* Rating Input */
+  .rating-input {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .stars-input {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .star-input {
+    cursor: pointer;
+    font-size: 1.6rem;
+    color: #e0e0e0;
+    transition: all 0.2s ease;
+  }
+  
+  .star-input:hover,
+  .star-input.active {
+    color: #ffb400;
+    transform: scale(1.1);
+  }
+  
+  .star-input.active ~ .star-input {
+    color: #e0e0e0 !important;
+  }
+  
+  /* Loading Animation */
+  .rating-loading {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
