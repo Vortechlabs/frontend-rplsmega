@@ -545,8 +545,8 @@ function AdminBulkCreateUser() {
                     
                     <div className="bg-blue-50 p-4 rounded-md mt-4">
                       <h4 className="text-sm font-medium text-blue-800 mb-2">Contoh Format File:</h4>
-                      <div className="overflow-x-auto">
-                        <table className="min-w-full bg-white border border-gray-200">
+                      <div className="overflow-x-auto max-w-[80dvw]">
+                        <table className="min-w-full  bg-white border border-gray-200">
                           <thead>
                             <tr className="bg-gray-100">
                               <th className="px-4 py-2 border text-left text-xs font-medium text-gray-500 uppercase">NIS</th>
