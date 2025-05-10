@@ -11,7 +11,7 @@ function TermsConditions() {
         <div className="bg-white rounded-xl shadow-md p-8 md:p-10">
           <div className="text-center mb-10">
             <h1 className="text-3xl font-bold text-gray-800 mb-2">Syarat dan Ketentuan</h1>
-            <p className="text-gray-500">Terakhir diperbarui: 1 Maret 2025</p>
+            <p className="text-gray-500">Terakhir diperbarui: 10 Mei 2025</p>
           </div>
           
           <div className="prose prose-lg text-gray-600 space-y-8">

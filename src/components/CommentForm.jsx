@@ -85,14 +85,14 @@ function CommentForm({ projectId, onCommentSubmitted }) {
           onChange={(e) => setContent(e.target.value)}
           placeholder="Apa pendapatmu tentang proyek ini? Bersikaplah baik dan hindari perkataan buruk..."
           required
-          maxLength={1000}
+          maxLength={255}
           className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-OxfordBlue focus:border-oxring-OxfordBlue outline-none transition-all"
           rows={4}
         />
         
         <div className="flex justify-between items-center mt-4">
           <span className="text-xs text-gray-500">
-            {content.length}/1000 karakter
+            {content.length}/255 karakter
           </span>
           
           <motion.button 

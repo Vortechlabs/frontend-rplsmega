@@ -20,7 +20,8 @@ import {
   FaGithub,
   FaSearch,
   FaPlus,
-  FaCode
+  FaCode,
+  FaCheck
 } from 'react-icons/fa';
 import { FiUpload, FiX } from 'react-icons/fi';
 import Loader from '../../../../components/Loader';
@@ -104,6 +105,10 @@ const UpdateProject = () => {
   if (!user) {
     return <Navigate to="/auth/login" />;
   }
+
+  const filteredCategories = categories.filter(category =>
+    category.name.toLowerCase().includes(categorySearch.toLowerCase())
+  );
 
   const isValidYouTubeUrl = (url) => {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
@@ -270,17 +275,17 @@ const UpdateProject = () => {
   const handleNextStep = () => {
     if (activeStep === 0) {
       if (!formData.title || !formData.description || !formData.videoUrl || !formData.technology || !formData.categoryId) {
-        Swal.fire('Gagal', 'Tolong isi semua kolom input.', 'error');
+        Swal.fire('Data tidak lengkap', 'Tolong isi semua kolom input.', 'error');
         return;
       }
       if (!isValidYouTubeUrl(formData.videoUrl)) {
-        Swal.fire('Gagal', 'Tolong masukan tautan Youtube yang valid.', 'error');
+        Swal.fire('Data tidak valid', 'Tolong masukan tautan Youtube yang valid.', 'error');
         return;
       }
     } else if (activeStep === 1) {
       const totalImages = (formData.existingImages.length - formData.imagesToDelete.length) + formData.images.length;
       if (totalImages < 1) {
-        Swal.fire('Gagal', 'Proyek harus punya setidaknya 1 gambar.', 'error');
+        Swal.fire('Data tidak lengkap', 'Proyek harus punya setidaknya 1 gambar.', 'error');
         return;
       }
     }
@@ -333,9 +338,10 @@ const UpdateProject = () => {
         }
       });
 
+
       Swal.fire({
-        title: 'Updating Project',
-        text: 'Please wait...',
+        title: 'Memperbarui Proyek',
+        text: 'Mohon tunggu...',
         allowOutsideClick: false,
         didOpen: () => {
           Swal.showLoading();
@@ -399,7 +405,7 @@ const UpdateProject = () => {
             </div>
 
             {/* Category */}
-            <div>
+            <div className="col-span-2 md:col-span-1">
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Kategori <span className="text-red-500">*</span>
               </label>
@@ -465,9 +471,6 @@ const UpdateProject = () => {
               <label className="block text-sm font-medium text-gray-700">
                 Teknologi <span className="text-red-500">*</span>
               </label>
-              <span className="text-xs text-gray-500">
-                Tekan koma atau enter setelah setiap teknologi
-              </span>
             </div>
 
             <div className="relative">
@@ -523,6 +526,7 @@ const UpdateProject = () => {
               value={formData.technology}
             />
           </div>
+
           </div>
 
           {/* Description */}
@@ -748,7 +752,7 @@ const UpdateProject = () => {
                     required
                   />
                 </div>
-                <div className="col-span-3">
+                <div className="col-span-4 md:col-span-3">
                   <label className="block text-xs font-medium text-gray-500 mb-1">Kelas</label>
                   <select
                     name="class"
@@ -780,7 +784,7 @@ const UpdateProject = () => {
                   <button
                     type="button"
                     onClick={() => removeTeamMember(index)}
-                    className="w-full h-10 flex items-center justify-center bg-red-500 hover:bg-red-600 text-white rounded-md transition-all"
+                    className="w-10 h-10 flex items-center justify-center bg-red-500 hover:bg-red-600 text-white rounded-md transition-all"
                   >
                     <FiX size={16} />
                   </button>

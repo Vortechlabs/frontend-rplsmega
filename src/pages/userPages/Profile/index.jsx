@@ -55,7 +55,7 @@ function UserProfile() {
     };
 
     fetchUserProfile();
-  }, [user.id]);
+  }, [user[0].id]);
 
   const handleDeleteProject = async (projectId) => {
     try {

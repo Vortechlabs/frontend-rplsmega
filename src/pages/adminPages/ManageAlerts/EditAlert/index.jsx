@@ -83,7 +83,6 @@ const EditAlertPage = () => {
   };
 
   const onSubmit = async (data) => {
-    console.log('Data sebelum submit:', data);
     setIsSubmitting(true);
     const formData = new FormData();
     

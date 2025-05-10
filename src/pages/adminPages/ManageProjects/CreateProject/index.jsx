@@ -592,7 +592,7 @@ const TambahProject = () => {
                             placeholder="https://www.youtube.com/watch?v=..."
                             required
                         />
-                        <div className='w-xl'>
+                        <div className='max-w-screen md:w-xl'>
                         {formData.videoUrl && <YouTubePreview videoUrl={formData.videoUrl} />}
                         </div>
                     </div>
@@ -700,7 +700,7 @@ const TambahProject = () => {
                         </label>
                         
                         {teamMembers.map((member, index) => (
-                            <div key={index} className="grid grid-cols-12 gap-3 items-end mb-4 last:mb-0">
+                            <div key={index} className="grid md:grid-cols-12 grid-cols-1 gap-3 items-end mb-4 last:mb-0">
                                 <div className="col-span-5">
                                     <label className="block text-xs text-gray-500 mb-1">Nama</label>
                                     <input
@@ -712,7 +712,7 @@ const TambahProject = () => {
                                         required
                                     />
                                 </div>
-                                <div className="col-span-3">
+                                <div className="col-span-4 md:col-span-3">
                                     <label className="block text-xs text-gray-500 mb-1">Kelas</label>
                                     <select
                                         value={member.class}

@@ -159,15 +159,15 @@ function Sidebar() {
 
       {/* Sidebar */}
       <aside className={`
-        fixed h-[calc(100vh-20px)] w-full max-w-[280px] my-[10px] ml-[10px] 
+        fixed h-[calc(100vh-100px)] md:h-[calc(100vh-10px)] mt-20 md:mt-1 w-full max-w-[95vw] md:max-w-[280px]  my-[10px] ml-[10px] 
         bg-[#060A23] overflow-hidden flex flex-1 rounded-[20px] z-40
         transition-all duration-300
         ${isMobile ? 
-          `transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}` : 
-          'w-[280px]'
+          `transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-[110%]'}` : 
+          'w-[280px] '
         }
       `}>
-        <div className="scroll-container flex w-full hide-scrollbar">
+        <div className="scroll-container  flex w-full hide-scrollbar">
           <nav className="flex flex-col w-full h-fit p-[30px] gap-10 z-10">
             {/* Logo/Brand area */}
             <Link to="/admin" className="flex items-center justify-center">

@@ -63,18 +63,18 @@ const UploadProject = () => {
     // Validation for current step
     if (activeStep === 0) {
       if (!formData.title || !formData.description || !formData.videoUrl || !formData.technology || !formData.categoryId) {
-        Swal.fire('Gagal', 'Tolong isi semua kolom input.', 'error');
+        Swal.fire('Data tidak lengkap', 'Mohon isi semua kolom input.', 'error');
         return;
       }
     } else if (activeStep === 1) {
       if (images.length === 0) {
-        Swal.fire('Gagal', 'Tolong unggah minimal 1 gambar.', 'error');
+        Swal.fire('Data tidak lengkap', 'Mohon unggah minimal 1 gambar.', 'error');
         return;
       }
       
       const hasEmptyImageName = imageNames.some(name => !name || name.trim() === '');
       if (hasEmptyImageName) {
-        Swal.fire('Gagal', 'Tolong isi semua kolom input nama gambar.', 'error');
+        Swal.fire('Data tidak lengkap', 'Mohon isi semua kolom input nama gambar.', 'error');
         return;
       }
     }
@@ -95,6 +95,20 @@ const UploadProject = () => {
       Object.entries(formData).forEach(([key, value]) => {
         if (value) formDataToSend.append(key, value);
       });
+
+      if (teamMembers.length === 0 && !includeUploaderInTeam) {
+        Swal.fire('Data tidak lengkap', 'Mohon tambahkan minimal 1 anggota tim.', 'error');
+        return;
+      }
+
+        const hasEmptyTeamMember = teamMembers.some(member => 
+          !member.memberName || !member.class || !member.position
+        );
+        
+        if (hasEmptyTeamMember) {
+          Swal.fire('Data tidak lengkap', 'Mohon lengkapi semua data anggota tim.', 'error');
+          return;
+        }
 
       // Append images and their names
       images.forEach((image, index) => {
@@ -201,7 +215,7 @@ const UploadProject = () => {
               Bagikan <span className="text-OxfordBlue">Proyekmu</span>
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Showcase your work and inspire others in the community
+              Bagikan proyekmu dan tunjukan bakatmu di RPL SMEGA
             </p>
           </div>
 

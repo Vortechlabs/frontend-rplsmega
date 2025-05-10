@@ -209,7 +209,7 @@ const Home = () => {
                 <div className='w-full  space-y-6'>
                   <h1 className='text-3xl md:text-4xl font-bold text-OxfordBlue'>Unggah dan tunjukan proyek pkl kamu</h1>
                   <p className='text-lg text-gray-600'>Gabung dengan <span className='font-bold text-GoldenYellow'>500+ alumni</span> dan mulai mendapatkan masukan!</p>
-                  <div className='flex flex-wrap gap-4'>
+                  <div className='flex  gap-4'>
                     <Link to='/auth/register'>
                       <button className='bg-OxfordBlue cursor-pointer hover:bg-OxfordBlue-Dark text-white py-3 px-6 rounded-lg shadow transition-all duration-300 transform hover:scale-105'>
                         Gabung sekarang

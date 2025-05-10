@@ -210,7 +210,7 @@ function Navbar() {
                                         }}
                                     ></motion.span>
                                 </div>
-                                <span className="text-base font-medium text-OxfordBlue">
+                                <span className="text-base hidden md:block font-medium text-OxfordBlue">
                                     {user[0].role === 'moderator' ? 'Admin' : truncateText(user[0].name, 10)}
                                 </span>
                             </motion.button>

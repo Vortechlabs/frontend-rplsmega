@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { 
   FaEdit, 
   FaTrash, 
@@ -12,7 +12,8 @@ import {
   FaGithub,
   FaStar,
   FaCopy,
-  FaDownload
+  FaDownload,
+  FaUserFriends
 } from 'react-icons/fa';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -40,6 +41,7 @@ const ProjectDetailAdmin = () => {
   const [userRating, setUserRating] = useState(null);
   const [showShareModal, setShowShareModal] = useState(false);
   const [comments, setComments] = useState([]);
+  const navigate = useNavigate();
   const qrCodeRef = useRef(null);
 
   const formatDate = (dateString) => {
@@ -70,7 +72,6 @@ const ProjectDetailAdmin = () => {
     const fetchProject = async () => {
       try {
         const response = await apiClient.get(`/projects/${slug}`);
-        console.log(response.data);
         
         setProject(response.data);
       } catch (error) {
@@ -124,7 +125,12 @@ const ProjectDetailAdmin = () => {
     if (result.isConfirmed) {
       try {
         await apiClient.delete(`/admin/projects/${project.id}`);
-        toast.success('Proyek berhasil dihapus');
+         toast.success('Proyek berhasil dihapus. Mengarahkan ke halaman kelola proyek...', {
+          autoClose: 3000, // Toast akan menutup setelah 3 detik
+          onClose: () => {
+            navigate('/admin/manage-projects');
+          }
+        });
       } catch (error) {
         toast.error('Gagal menghapus Proyek');
       }
@@ -511,26 +517,30 @@ const ProjectDetailAdmin = () => {
               </div>
               </Link>
               {/* Team Members */}
-              <div className="bg-white rounded-xl shadow-md p-6">
-                <div className="flex items-center mb-4">
-                  <FaUsers className="text-OxfordBlue mr-2" />
-                  <h3 className="font-semibold">Anggota Tim</h3>
-                </div>
-                <div className="space-y-3">
-                  {project.team.map((member, index) => (
-                    <div key={index} className="flex items-center">
-                      <img
-                        src={member.profilePicture || defaultProfilePic}
-                        className="w-10 h-10 rounded-full mr-3"
-                        alt={member.memberName}
-                      />
-                      <div>
-                        <p className="font-medium">{member.memberName}</p>
-                        <p className="text-sm text-gray-600">{member.position} • {member.class}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+              <div className="bg-white rounded-xl shadow-md p-6 mt-6">
+                  <div className="flex items-center mb-4">
+                      <FaUserFriends className="text-OxfordBlue mr-2" />
+                      <h3 className="font-semibold text-gray-800">Anggota Tim</h3>
+                  </div>
+                  <ul className="space-y-3">
+                      {project.team && project.team.length > 0 ? (
+                          project.team.map((member) => (
+                              <li key={member.id} className="flex items-center">
+                                  <div className="bg-purple-100 text-OxfordBlue-Dark p-2 rounded-full mr-3">
+                                      <FaUserFriends className="text-sm" />
+                                  </div>
+                                  <div>
+                                      <p className="font-medium text-gray-900">{member.memberName}</p>
+                                      <p className="text-xs text-gray-500">
+                                          {member.position} • {member.class}
+                                      </p>
+                                  </div>
+                              </li>
+                          ))
+                      ) : (
+                          <li className="text-gray-500">Tidak ada anggota tim</li>
+                      )}
+                  </ul>
               </div>
  
               {/* Links */}

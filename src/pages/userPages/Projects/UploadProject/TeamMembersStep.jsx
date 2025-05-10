@@ -39,7 +39,7 @@ const TeamMembersStep = ({
         </div>
 
         {teamMembers.map((member, index) => (
-          <div key={index} className="grid grid-cols-12 gap-3 items-end bg-gray-50 p-4 rounded-lg">
+          <div key={index} className="grid md:grid-cols-12 grid-cols-1 gap-3 items-end bg-gray-50 p-4 rounded-lg">
             <div className="col-span-5">
               <label className="block text-xs font-medium text-gray-500 mb-1">Nama</label>
               <input
@@ -51,7 +51,7 @@ const TeamMembersStep = ({
                 required
               />
             </div>
-            <div className="col-span-3">
+            <div className="col-span-4 md:col-span-3">
               <label className="block text-xs font-medium text-gray-500 mb-1">Kelas</label>
               <select
                 value={member.class}
@@ -81,7 +81,7 @@ const TeamMembersStep = ({
               <button
                 type="button"
                 onClick={() => handleRemoveTeamMember(index)}
-                className="w-full h-10 flex hover:scale-105 transition-transform items-center justify-center bg-red-500 hover:bg-red-600 text-white rounded-md"
+                className="w-10 h-10 flex hover:scale-105 transition-transform items-center justify-center bg-red-500 hover:bg-red-600 text-white rounded-md"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

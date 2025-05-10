@@ -25,8 +25,8 @@ function Register() {
 
         if (password !== passwordConfirmation) {
             await Swal.fire({
-                title: 'Password Mismatch',
-                text: 'The passwords you entered do not match',
+                title: 'Password tidak cocok',
+                text: 'Konfirmasi password yang kamu masukan tidak cocok',
                 icon: 'error',
                 background: '#fff3cd',
                 confirmButtonColor: '#1a365d'
@@ -62,7 +62,7 @@ function Register() {
             });
             
             await Swal.fire({
-                title: 'Registration Successful!',
+                title: 'Pendaftaran berhasil!',
                 text: response.data.message,
                 icon: 'success',
                 showConfirmButton: false,
@@ -76,8 +76,8 @@ function Register() {
             if (e.response) {
                 if (e.response.status === 422) {
                     Swal.fire({
-                        title: 'Registration Error',
-                        text: 'NIS or Email already in use',
+                        title: 'Pendaftaran Gagal',
+                        text: 'NIS atau Email sudah digunakan',
                         icon: 'error',
                         background: '#fff3cd',
                         confirmButtonColor: '#1a365d'
@@ -124,8 +124,8 @@ function Register() {
     const nextStep = () => {
         if (step === 1 && (!name || !email || !className)) {
             Swal.fire({
-                title: 'Incomplete Information',
-                text: 'Please fill in all fields',
+                title: 'Data belum lengkap',
+                text: 'Mohon lengkapi kolom input',
                 icon: 'error',
                 background: '#fff3cd',
                 confirmButtonColor: '#1a365d'
@@ -133,8 +133,8 @@ function Register() {
             return;
         } else if (step === 2 && (!password || !passwordConfirmation)) {
             Swal.fire({
-                title: 'Password Required',
-                text: 'Please enter and confirm your password',
+                title: 'Kolom password harus terisi',
+                text: 'Mohon masukan dan kofirmasi password',
                 icon: 'error',
                 background: '#fff3cd',
                 confirmButtonColor: '#1a365d'
@@ -153,10 +153,10 @@ function Register() {
             <div className="sm:mx-auto sm:w-full sm:max-w-6xl flex flex-col md:flex-row items-center justify-center gap-12 px-4">
                 <div className="text-center md:w-1/2 animate-fade-in">
                     <h1 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg mb-6">
-                        Join Our <span className="text-OxfordBlue">Creative</span> Community
+                        Daftarkan Akun
                     </h1>
                     <p className="text-xl text-white/90 mb-8">
-                        Showcase your talents and connect with like-minded creators
+                    Unggah karyamu dan tunjukan bakatmu di RPL SMEGA
                     </p>
                     <div className="relative w-full max-w-lg mx-auto">
                         <img 
@@ -176,12 +176,12 @@ function Register() {
                     <div className="py-10 px-8 sm:px-10">
                         <div className="text-center mb-8">
                             <h2 className="text-3xl font-extrabold text-OxfordBlue">
-                                Create Account
+                                Daftar akun
                             </h2>
                             <p className="mt-2 text-gray-600">
-                                {step === 1 && "Let's start with the basics"}
-                                {step === 2 && "Secure your account"}
-                                {step === 3 && "Personalize your profile"}
+                                {step === 1 && "Mari mulai dengan informasi dasar"}
+                                {step === 2 && "Keamanan akun"}
+                                {step === 3 && "Kustomisasi profil"}
                             </p>
                             
                             {/* Step indicator */}
@@ -206,7 +206,7 @@ function Register() {
                                     
                                     <div>
                                         <label htmlFor="nis" className="block text-sm font-medium text-gray-700">
-                                            NIS
+                                            Nomor Induk Siswa (NIS)
                                         </label>
                                         <input
                                             id="nis"
@@ -221,7 +221,7 @@ function Register() {
 
                                     <div>
                                         <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                                            Full Name
+                                            Nama Lengkap
                                         </label>
                                         <input
                                             id="name"
@@ -236,7 +236,7 @@ function Register() {
                                     
                                     <div>
                                         <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                                            Email Address
+                                            Alamat email
                                         </label>
                                         <input
                                             id="email"
@@ -251,7 +251,7 @@ function Register() {
                                     
                                     <div>
                                         <label htmlFor="class" className="block text-sm font-medium text-gray-700">
-                                            Class
+                                            Kelas
                                         </label>
                                         <select
                                             id="class"
@@ -260,7 +260,7 @@ function Register() {
                                             className="mt-1 w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-OxfordBlue focus:border-OxfordBlue transition-all duration-200"
                                             required
                                         >
-                                            <option value="" disabled>Select your class</option>
+                                            <option value="" disabled>Pilik kelasmu</option>
                                             <option value="XI RPL 1">XI RPL 1</option>
                                             <option value="XI RPL 2">XI RPL 2</option>
                                             <option value="XII RPL 1">XII RPL 1</option>
@@ -286,12 +286,12 @@ function Register() {
                                             placeholder="••••••••"
                                             required
                                         />
-                                        <p className="mt-1 text-xs text-gray-500">At least 8 characters</p>
+                                        <p className="mt-1 text-xs text-gray-500">Minimal 8 karakter</p>
                                     </div>
                                     
                                     <div>
                                         <label htmlFor="passwordConfirmation" className="block text-sm font-medium text-gray-700">
-                                            Confirm Password
+                                            Konfirmasi Password
                                         </label>
                                         <input
                                             id="passwordConfirmation"
@@ -311,7 +311,7 @@ function Register() {
                                 <div className="space-y-4 animate-slide-in">
                                     <div>
                                         <label htmlFor="profilePicture" className="block text-sm font-medium text-gray-700">
-                                            Profile Picture (Optional)
+                                            Gambar Profil (Optional)
                                         </label>
                                         <div className="mt-1 flex flex-col items-center">
                                             {preview ? (
@@ -338,7 +338,7 @@ function Register() {
                                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mx-auto text-OxfordBlue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                                             </svg>
-                                                            <span className="text-xs text-OxfordBlue mt-1">Add Photo</span>
+                                                            <span className="text-xs text-OxfordBlue mt-1">Tambah foto</span>
                                                         </div>
                                                     </div>
                                                     <input
@@ -367,13 +367,13 @@ function Register() {
                                             </div>
                                             <div className="ml-3 text-sm">
                                                 <label htmlFor="terms" className="font-medium text-gray-700">
-                                                    I agree to the{' '}
+                                                    Saya setuju dengan{' '}
                                                     <Link to="/termsconditions" className="text-OxfordBlue hover:underline">
-                                                        Terms and Conditions
+                                                        Syarat dan ketentuan
                                                     </Link>{' '}
-                                                    and{' '}
+                                                    beserta{' '}
                                                     <Link to="/privacypolicy" className="text-OxfordBlue hover:underline">
-                                                        Privacy Policy
+                                                        Kebijakan privasi
                                                     </Link>
                                                 </label>
                                             </div>
@@ -389,7 +389,7 @@ function Register() {
                                         onClick={prevStep}
                                         className="px-6 py-2 border border-transparent text-sm font-medium rounded-full text-OxfordBlue bg-OxfordBlue/10 hover:bg-OxfordBlue/20 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-OxfordBlue transition-all duration-200"
                                     >
-                                        Back
+                                        Kembali
                                     </button>
                                 )}
                                 
@@ -399,7 +399,7 @@ function Register() {
                                         onClick={nextStep}
                                         className="ml-auto px-6 py-2 border border-transparent text-sm font-medium rounded-full shadow-sm text-white bg-OxfordBlue hover:bg-OxfordBlue-Dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-OxfordBlue transition-all duration-200 hover:scale-105"
                                     >
-                                        Continue
+                                        Lanjut
                                     </button>
                                 ) : (
                                     <button
@@ -413,9 +413,9 @@ function Register() {
                                                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                                 </svg>
-                                                Creating Account...
+                                                Mebuat Akun...
                                             </>
-                                        ) : 'Complete Registration'}
+                                        ) : 'Selesaikan Registrasi'}
                                     </button>
                                 )}
                             </div>
@@ -423,9 +423,9 @@ function Register() {
 
                         <div className="mt-6 text-center text-sm">
                             <p className="text-gray-600">
-                                Already have an account?{' '}
+                                Sudah punya akun?{' '}
                                 <Link to="/auth/login" className="font-medium text-OxfordBlue hover:text-OxfordBlue-Dark hover:underline">
-                                    Sign in
+                                    Masuk
                                 </Link>
                             </p>
                         </div>

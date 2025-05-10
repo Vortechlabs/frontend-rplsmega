@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import logo from '/logo.png';
 
 const Footer = () => {        
+  const currentYear = new Date().getFullYear();
     return (
     <section className="py-10 bg-OxfordBlue sm:pt-16 lg:pt-24">
     <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
@@ -112,7 +113,7 @@ const Footer = () => {
 
         <hr className="mt-16 mb-10 border-gray-200" />
 
-        <p className="text-sm text-center text-white">© Copyright 2025, All Rights Reserved by RPL SMEGA.</p>
+        <p className="text-sm text-center text-white">© Copyright {currentYear}, All Rights Reserved by RPL SMEGA.</p>
     </div>
 </section>
 

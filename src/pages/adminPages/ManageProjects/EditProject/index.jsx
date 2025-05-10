@@ -485,9 +485,6 @@ function AdminEditProject() {
               <label className="block text-sm font-medium text-gray-700">
                 Teknologi <span className="text-red-500">*</span>
               </label>
-              <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
-                Pisahkan dengan koma/enter
-              </span>
             </div>
 
             <div className="relative group">
@@ -571,13 +568,13 @@ function AdminEditProject() {
               name="videoUrl"
               value={formData.videoUrl}
               onChange={handleInputChange}
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 block w-[100dvw] md:w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
               placeholder="https://www.youtube.com/watch?v=..."
               required
             />
             {formData.videoUrl && !isValidYouTubeUrl(formData.videoUrl) && (
               <p className="text-red-500 text-sm mt-2 flex items-center">
-                <FiX className="mr-1" /> Tolong masukan tautan Youtube yang valid
+                <FiX className="mr-1" /> Mohon masukan tautan Youtube yang valid
               </p>
             )}
             {formData.videoUrl && isValidYouTubeUrl(formData.videoUrl) && (
@@ -588,7 +585,7 @@ function AdminEditProject() {
       )
     },
     {
-      label: 'Project Images',
+      label: 'Gambar Proyek',
       icon: <FaImage className="mr-2" />,
       content: (
         <div className="space-y-6">
@@ -687,7 +684,7 @@ function AdminEditProject() {
           {formData.images.length > 0 && (
             <div className="bg-gray-50 p-4 rounded-lg">
               <h3 className="text-sm font-medium text-gray-700 mb-3 flex items-center">
-                <FiPlus className="mr-2" /> New Images to Upload ({formData.images.length})
+                <FiPlus className="mr-2" /> Gambar baru untuk diunggah ({formData.images.length})
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {formData.images.map((image, index) => (
@@ -712,7 +709,7 @@ function AdminEditProject() {
                       type="button"
                       onClick={() => removeNewImage(index)}
                       className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600 transition-colors"
-                      title="Remove image"
+                      title="Hapus gambar"
                     >
                       <FiTrash2 size={14} />
                     </button>
@@ -728,8 +725,8 @@ function AdminEditProject() {
               <FaImage className="text-gray-400 text-4xl mb-3" />
               <p className="text-gray-500 text-center">
                 {formData.existingImages.length > 0
-                  ? 'No new images selected'
-                  : 'No images uploaded yet. Please upload at least one image.'}
+                  ? 'Tidak ada gambar yang dipilih'
+                  : 'Tidak ada gambar terunggah. Mohon unggah setidaknya 1 gambar.'}
               </p>
             </div>
           )}
@@ -747,7 +744,7 @@ function AdminEditProject() {
             </label>
             
             {formData.teamMembers.map((member, index) => (
-              <div key={index} className="grid grid-cols-12 gap-3 items-end mb-4 last:mb-0">
+              <div key={index} className="grid md:grid-cols-12 grid-cols-1 gap-3 items-end mb-4 last:mb-0">
                 <div className="col-span-5">
                   <label className="block text-xs text-gray-500 mb-1">Nama</label>
                   <input
@@ -760,7 +757,7 @@ function AdminEditProject() {
                     required
                   />
                 </div>
-                <div className="col-span-3">
+                <div className="col-span-4 md:col-span-3">
                   <label className="block text-xs text-gray-500 mb-1">Kelas</label>
                   <select
                     name="class"
@@ -792,7 +789,7 @@ function AdminEditProject() {
                   <button
                     type="button"
                     onClick={() => removeTeamMember(index)}
-                    className="w-full h-10 hover:scale-105 flex items-center justify-center bg-red-500 text-white rounded-md hover:bg-red-600 transition-transform"
+                    className="w-10 h-10 hover:scale-105 flex items-center justify-center bg-red-500 text-white rounded-md hover:bg-red-600 transition-transform"
                     title="Hapus anggota"
                   >
                     <FiTrash2 size={14} />
@@ -861,7 +858,7 @@ function AdminEditProject() {
                 </h1>
             </div>
 
-            <div className="bg-white shadow-xl rounded-lg overflow-hidden">
+            <div className="bg-white shadow-xl max-w-screen rounded-lg overflow-hidden">
               {/* Stepper */}
               <div className="px-6 py-4 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-indigo-50">
                 <div className="flex items-center justify-between">

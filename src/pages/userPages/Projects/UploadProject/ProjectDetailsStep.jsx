@@ -112,6 +112,7 @@ const ProjectDetailsStep = ({ formData, setFormData, categories }) => {
           </div>
         </div>
 
+      <div className='col-span-2 md:col-span-1'>
         {/* Category */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -242,6 +243,7 @@ const ProjectDetailsStep = ({ formData, setFormData, categories }) => {
             name="technology"
             value={formData.technology}
           />
+        </div>
         </div>
       </div>
 

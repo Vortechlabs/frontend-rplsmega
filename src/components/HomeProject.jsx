@@ -59,7 +59,6 @@ function HomeProject() {
                 } else {
                     setError('No projects found.'); 
                 }
-                console.log(response.data);
             } catch (error) {
                 setError(error.message); 
             } finally {

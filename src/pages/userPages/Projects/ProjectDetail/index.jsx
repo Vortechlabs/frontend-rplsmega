@@ -58,7 +58,6 @@ function ProjectDetail() {
             try {
                 const response = await apiClient.get(`/projects/${slug}`); 
                 setProject(response.data);
-                console.log(response.data)
             } catch (error) {
                 setError('Project not found.');
             } finally {
@@ -438,7 +437,7 @@ function ProjectDetail() {
                         <div className="bg-white rounded-xl shadow-md p-6 block md:hidden">
                             <div className="flex items-center mb-4">
                                 <FaStar className="text-yellow-500 mr-2" />
-                                <h2 className="text-xl font-semibold text-gray-800">Rating Project</h2>
+                                <h2 className="text-xl font-semibold text-gray-800">Rating Proyek</h2>
                             </div>
                             {userRating ? (
                                 <p className="text-gray-700">Anda telah memberikan rating: {userRating} ⭐</p> 
@@ -461,10 +460,10 @@ function ProjectDetail() {
                                             <FiMessageSquare className="text-OxfordBlue text-xl" />
                                         </div>
                                         <h3 className="text-xl font-semibold text-gray-800 tracking-tight">
-                                            Comment
+                                            Komentar
                                         </h3>
                                     </div>
-                                    <p className='text-sm text-OxfordBlue bg-blue-100 p-1 px-2 rounded-full'>{comments.length} comment</p>
+                                    <p className='text-sm text-OxfordBlue bg-blue-100 p-1 px-2 rounded-full'>{comments.length} komen</p>
                                 </div>
 
                                 <div className="relative">
