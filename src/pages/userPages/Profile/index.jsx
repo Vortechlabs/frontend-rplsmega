@@ -6,7 +6,20 @@ import { Navigate, Link } from 'react-router-dom';
 import { useAuth } from '../../../auth/AuthContext';
 import Swal from 'sweetalert2';
 import defaultProfilePic from '/defaultProfile.jpg';
-import { FaEdit, FaPlus, FaShare, FaDownload, FaCopy, FaTrash, FaEye } from 'react-icons/fa';
+import { 
+  FaEdit, 
+  FaPlus, 
+  FaShare, 
+  FaDownload, 
+  FaCopy, 
+  FaTrash, 
+  FaEye,
+  FaGlobe, 
+  FaMobileAlt, 
+  FaDesktop, 
+  FaPalette,
+  FaCode
+} from 'react-icons/fa';
 import { QRCodeSVG } from 'qrcode.react';
 import { motion } from 'framer-motion';
 
@@ -56,6 +69,23 @@ function UserProfile() {
 
     fetchUserProfile();
   }, [user[0].id]);
+
+  
+    const getCategoryIcon = (categoryName) => {
+    const iconStyle = "text-sm";
+      switch(categoryName.toLowerCase()) {
+          case 'website':
+          return <FaGlobe className={`${iconStyle} text-OxfordBlue`} />;
+          case 'mobile app':
+          return <FaMobileAlt className={`${iconStyle} text-OxfordBlue`} />;
+          case 'desktop app':
+          return <FaDesktop className={`${iconStyle} text-OxfordBlue`} />;
+          case 'design':
+          return <FaPalette className={`${iconStyle} text-OxfordBlue`} />;
+          default:
+          return <FaCode className={`${iconStyle} text-OxfordBlue`} />;
+      }
+    };
 
   const handleDeleteProject = async (projectId) => {
     try {
@@ -307,9 +337,11 @@ function UserProfile() {
                     <h3 className="text-lg font-semibold text-gray-800">
                       {truncateString(project.title, 30)}
                     </h3>
-                    <span className="text-xs bg-blue-100 text-center text-OxfordBlue px-2 py-1 rounded-full">
-                      {project.category?.name || 'General'}
-                    </span>
+                                            {project.category && (
+                                            <span className=" text-center bg-blue-100  text-OxfordBlue text-xs  p-1 rounded-full flex items-center">
+                                                {getCategoryIcon(project.category.name)}
+                                            </span>
+                                            )}
                   </div>
                   <p className="text-sm text-gray-600 mb-4 line-clamp-2">
                     {project.description || 'No description provided'}

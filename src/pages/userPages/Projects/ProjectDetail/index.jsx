@@ -10,7 +10,21 @@ import RatingForm from '../../../../components/RatingForm';
 import CommentForm from '../../../../components/CommentForm'; 
 import { useAuth } from '../../../../auth/AuthContext';
 import Footer from '../../../../components/Footer';
-import { FaShare, FaDownload, FaCopy, FaGithub, FaUserFriends, FaCalendarAlt, FaComment, FaStar } from 'react-icons/fa';
+import { 
+    FaShare, 
+    FaDownload, 
+    FaCopy, 
+    FaGithub, 
+    FaUserFriends, 
+    FaCalendarAlt, 
+    FaComment, 
+    FaStar,
+    FaGlobe, 
+    FaMobileAlt, 
+    FaDesktop, 
+    FaPalette,
+    FaCode 
+} from 'react-icons/fa';
 import { QRCodeSVG } from 'qrcode.react';
 import Swal from 'sweetalert2';
 import defaultProfilePic from '/defaultProfile.jpg';
@@ -77,6 +91,23 @@ function ProjectDetail() {
         fetchProjectDetail();
         fetchComments(); 
     }, [slug]);
+
+      
+        const getCategoryIcon = (categoryName) => {
+        const iconStyle = "text-sm";
+          switch(categoryName.toLowerCase()) {
+              case 'website':
+              return <FaGlobe className={`${iconStyle} text-OxfordBlue`} />;
+              case 'mobile app':
+              return <FaMobileAlt className={`${iconStyle} text-OxfordBlue`} />;
+              case 'desktop app':
+              return <FaDesktop className={`${iconStyle} text-OxfordBlue`} />;
+              case 'design':
+              return <FaPalette className={`${iconStyle} text-OxfordBlue`} />;
+              default:
+              return <FaCode className={`${iconStyle} text-OxfordBlue`} />;
+          }
+        };
 
     const handleCommentSubmitted = () => {
         const fetchComments = async () => {
@@ -415,7 +446,14 @@ function ProjectDetail() {
                             <div className="space-y-3">
                                 <div>
                                     <p className="text-sm font-medium text-gray-500">Kategori</p>
-                                    <p className="text-gray-900">{project.category.name || 'Tidak tersedia'}</p>
+                                    <div className='flex gap-2 items-center mt-2'>
+                                        {project.category && (
+                                        <span className=" text-center bg-blue-100  text-OxfordBlue text-xs  p-1 rounded-full flex items-center">
+                                            {getCategoryIcon(project.category.name)}
+                                        </span>
+                                        )}
+                                        <p className="text-gray-900">{project.category.name || 'Tidak tersedia'}</p>
+                                    </div>
                                 </div>
                                 <div>
                                     <p className="text-sm font-medium text-gray-500">Teknologi</p>

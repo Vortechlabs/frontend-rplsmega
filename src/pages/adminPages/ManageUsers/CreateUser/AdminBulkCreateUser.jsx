@@ -498,7 +498,7 @@ function AdminBulkCreateUser() {
                     <h3 className="text-lg font-medium text-gray-900">Import Data Massal</h3>
                     <p className="text-sm text-gray-500">
                       Upload file Excel atau CSV untuk menambahkan banyak pengguna sekaligus.
-                      Format file harus mengandung kolom: NIS, Nama, Email, Password (opsional), Role, Kelas (opsional).
+                      Format file harus mengandung kolom: NIS, Nama, Email, Password (opsional), Role, Kelas. Perlu diperhatikan jangan hapus satu line kosong dibagian atas, dan perhatikan penulisan serta spasi kelas hanya bisa <strong>XI RPL 1, XI RPL 2, XII RPL 1, dan XII RPL 2</strong>.
                     </p>
                     
                     <div className='flex justify-between'>

@@ -20,11 +20,15 @@ const FAQSection = () => {
     // Account Related
     {
         question: "Bagaimana cara membuat akun?",
-        answer: "Anda bisa mendaftar menggunakan email belajar (@amk.belajar.id) atau email pribadi anda, dan pastikan NIS sesuai"
+        answer: "Anda bisa mendaftar menggunakan email belajar (@smk.belajar.id) atau email pribadi anda, dan pastikan NIS sesuai"
+    },
+    {
+        question: "Kenapa web ini membutuhkan email?",
+        answer: "Web kami membutuhkan email anda untuk mengirimkan email kode verifikasi token jika anda lupa password demi keamanan."
     },
     {
         question: "Apa yang harus dilakukan jika lupa password?",
-        answer: "Gunakan fitur 'Lupa Password' di halaman login. Link reset password akan dikirim ke email terdaftar."
+        answer: "Gunakan fitur 'Lupa Password' di halaman login. Kode token reset password akan dikirim ke email terdaftar."
     },
 
     // Project Submission

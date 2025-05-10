@@ -2,7 +2,18 @@ import React, { useEffect, useState } from 'react';
 import apiClient from '../services/GlobalApi';
 import Loader from './Loader';
 import { Link } from 'react-router-dom';
-import { FaSearch, FaFilter, FaChevronDown, FaStar, FaTags } from 'react-icons/fa';
+import { 
+    FaSearch, 
+    FaFilter, 
+    FaChevronDown, 
+    FaStar, 
+    FaTags,
+    FaGlobe, 
+    FaMobileAlt, 
+    FaDesktop, 
+    FaPalette,
+    FaCode
+} from 'react-icons/fa';
 
 const truncateString = (str, maxLength) => {
     if (!str) return '';
@@ -50,6 +61,8 @@ function ShowcaseCard() {
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [currentPage, setCurrentPage] = useState(1);
     const projectsPerPage = 12;
+    const [isCategoryOpen, setIsCategoryOpen] = useState(false);
+    const [isRatingOpen, setIsRatingOpen] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -79,6 +92,24 @@ function ShowcaseCard() {
 
         fetchData();
     }, []);
+
+    const getCategoryIcon = (categoryName) => {
+    const iconStyle = "text-sm";
+    
+    switch(categoryName.toLowerCase()) {
+        case 'website':
+        return <FaGlobe className={`${iconStyle} text-OxfordBlue`} />;
+        case 'mobile app':
+        return <FaMobileAlt className={`${iconStyle} text-OxfordBlue`} />;
+        case 'desktop app':
+        return <FaDesktop className={`${iconStyle} text-OxfordBlue`} />;
+        case 'design':
+        return <FaPalette className={`${iconStyle} text-OxfordBlue`} />;
+        default:
+        return <FaCode className={`${iconStyle} text-OxfordBlue`} />;
+    }
+    };
+    
 
     const filteredProjects = projects.filter((project) => {
         // Search filter
@@ -174,69 +205,117 @@ function ShowcaseCard() {
 
                 {/* Filter Dropdowns with custom options */}
                 <div className="flex flex-col sm:flex-row gap-4 flex-1">
-                {/* Rating Filter - Custom Styled */}
+                {/* Rating Filter - Custom Component */}
                 <div className="relative group flex-1">
-                    <div className="absolute z-20 inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-OxfordBlue">
+                <div className="absolute z-20 inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-OxfordBlue">
                     <FaStar className="transition-transform duration-300 group-focus-within:scale-110" />
-                    </div>
-                    <select
-                    value={filterCriteria}
-                    onChange={(e) => {
-                        setFilterCriteria(e.target.value);
-                        setCurrentPage(1);
-                    }}
-                    className="appearance-none pl-11 pr-10 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-OxfordBlue w-full bg-white/80 backdrop-blur-sm transition-all duration-300 hover:bg-white hover:shadow-sm cursor-pointer"
-                    >
-                    <option value="all" className="text-gray-700 bg-white py-2 hover:bg-indigo-100">
-                        Semua Bintang
-                    </option>
-                    <option value="high-rating" className=" bg-white py-2 group hover:bg-indigo-100">
-                        <span className="flex items-center">
+                </div>
+                
+                {/* Custom Select Trigger */}
+                <div 
+                    className="flex items-center pl-11 pr-10 py-3 border-2 border-gray-200 rounded-xl cursor-pointer bg-white/80 hover:bg-white"
+                    onClick={() => setIsRatingOpen(!isRatingOpen)}
+                >
+                    {filterCriteria === 'all' && 'Semua Bintang'}
+                    {filterCriteria === 'high-rating' && (
+                    <span className="flex items-center">
                         <span className="text-amber-400 mr-1">★★★★</span> 4+ bintang
-                        </span>
-                    </option>
-                    <option value="low-rating" className="text-gray-700 bg-white py-2 hover:bg-indigo-100">
-                        <span className="flex items-center">
+                    </span>
+                    )}
+                    {filterCriteria === 'low-rating' && (
+                    <span className="flex items-center">
                         <span className="text-amber-400 mr-1">★★★☆</span> dibawah 4
-                        </span>
-                    </option>
-                    </select>
-                    <FaChevronDown className="absolute  right-3 top-1/2 -translate-y-1/2 text-OxfordBlue text-xs pointer-events-none transition-transform duration-200 group-focus-within:rotate-180" />
+                    </span>
+                    )}
+                    <FaChevronDown className={`absolute right-3 transition-transform ${isRatingOpen ? 'rotate-180' : ''}`} />
                 </div>
 
-                {/* Category Filter - Custom Styled */}
-                <div className="relative group flex-1">
-                    <div className="absolute z-20 inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-OxfordBlue">
-                    <FaTags className="transition-transform duration-300 group-focus-within:scale-110" />
-                    </div>
-                    <select
-                    value={selectedCategory}
-                    onChange={(e) => {
-                        setSelectedCategory(e.target.value);
-                        setCurrentPage(1);
-                    }}
-                    className="appearance-none pl-11 pr-10 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-OxfordBlue w-full bg-white/80 backdrop-blur-sm transition-all duration-300 hover:bg-white hover:shadow-sm cursor-pointer"
-                    >
-                    <option value="all" className="text-gray-700 bg-white py-2 hover:bg-indigo-100">
-                        Semua Kategori
-                    </option>
-                    {categories.map((category) => (
-                        <option 
-                        key={category.id} 
-                        value={category.id}
-                        className="text-gray-700 bg-white py-2 hover:bg-indigo-100"
+                {/* Custom Dropdown */}
+                {isRatingOpen && (
+                    <div className="absolute z-10 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-lg">
+                    <ul>
+                        <li 
+                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                        onClick={() => {
+                            setFilterCriteria('all');
+                            setIsRatingOpen(false);
+                            setCurrentPage(1);
+                        }}
                         >
-                        <span className="flex items-center">
-                            {category.icon && (
-                            <span className="mr-2 text-indigo-500">{category.icon}</span>
-                            )}
-                            {category.name}
-                        </span>
-                        </option>
-                    ))}
-                    </select>
-                    <FaChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-OxfordBlue text-xs pointer-events-none transition-transform duration-200 group-focus-within:rotate-180" />
+                        Semua Bintang
+                        </li>
+                        <li 
+                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center"
+                        onClick={() => {
+                            setFilterCriteria('high-rating');
+                            setIsRatingOpen(false);
+                            setCurrentPage(1);
+                        }}
+                        >
+                        <span className="text-amber-400 mr-2">★★★★</span> 4+ bintang
+                        </li>
+                        <li 
+                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center"
+                        onClick={() => {
+                            setFilterCriteria('low-rating');
+                            setIsRatingOpen(false);
+                            setCurrentPage(1);
+                        }}
+                        >
+                        <span className="text-amber-400 mr-2">★★★☆</span> dibawah 4
+                        </li>
+                    </ul>
+                    </div>
+                )}
                 </div>
+
+                {/* Custom Select Category */}
+                <div className="relative group flex-1">
+                <div 
+                    className="flex items-center pl-11 pr-10 py-3 border-2 border-gray-200 rounded-xl cursor-pointer bg-white/80 hover:bg-white"
+                    onClick={() => setIsCategoryOpen(!isCategoryOpen)}
+                >
+                    <FaTags className="absolute left-3.5 text-OxfordBlue" />
+                    <span>
+                    {selectedCategory === 'all' 
+                        ? "Semua Kategori" 
+                        : categories.find(cat => cat.id == selectedCategory)?.name
+                    }
+                    </span>
+                    <FaChevronDown className={`absolute right-3 transition-transform ${isCategoryOpen ? 'rotate-180' : ''}`} />
+                </div>
+
+                {/* Dropdown Menu */}
+                {isCategoryOpen && (
+                    <div className="absolute z-10 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-lg">
+                    <ul>
+                        <li 
+                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                        onClick={() => {
+                            setSelectedCategory('all');
+                            setIsCategoryOpen(false);
+                        }}
+                        >
+                        Semua Kategori
+                        </li>
+                        {categories.map((category) => (
+                        <li 
+                            key={category.id}
+                            className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center"
+                            onClick={() => {
+                            setSelectedCategory(category.id);
+                            setIsCategoryOpen(false);
+                            }}
+                        >
+                            {getCategoryIcon(category.name)}
+                            <span className="ml-2">{category.name}</span>
+                        </li>
+                        ))}
+                    </ul>
+                    </div>
+                )}
+                </div>
+
                 </div>
             </div>
             </div>
@@ -287,9 +366,9 @@ function ShowcaseCard() {
                                                 {truncateString(project.title, 30)}
                                             </h3>
                                             {project.category && (
-                                                <span className="bg-blue-100 text-center text-OxfordBlue text-xs px-2 py-1 rounded-full">
-                                                    {project.category.name}
-                                                </span>
+                                            <span className=" text-center bg-blue-100  text-OxfordBlue text-xs  p-1 rounded-full flex items-center">
+                                                {getCategoryIcon(project.category.name)}
+                                            </span>
                                             )}
                                         </div>
 

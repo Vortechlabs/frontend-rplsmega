@@ -2,6 +2,13 @@ import React, { useEffect, useState } from 'react';
 import apiClient from '../services/GlobalApi';
 import Loader from './Loader';
 import { Link } from 'react-router-dom';
+import { 
+  FaGlobe, 
+  FaMobileAlt, 
+  FaDesktop, 
+  FaPalette,
+  FaCode
+} from 'react-icons/fa';
 
 const truncateString = (str, maxLength) => {
     if (str.length <= maxLength) return str;
@@ -69,6 +76,23 @@ function HomeProject() {
         fetchProjectData();
     }, []);
 
+    const getCategoryIcon = (categoryName) => {
+    const iconStyle = "text-sm";
+    
+    switch(categoryName.toLowerCase()) {
+        case 'website':
+        return <FaGlobe className={`${iconStyle} text-OxfordBlue`} />;
+        case 'mobile app':
+        return <FaMobileAlt className={`${iconStyle} text-OxfordBlue`} />;
+        case 'desktop app':
+        return <FaDesktop className={`${iconStyle} text-OxfordBlue`} />;
+        case 'design':
+        return <FaPalette className={`${iconStyle} text-OxfordBlue`} />;
+        default:
+        return <FaCode className={`${iconStyle} text-OxfordBlue`} />;
+    }
+    };
+
     if (loading) {
         return (
             <div className='py-40'>
@@ -123,9 +147,9 @@ function HomeProject() {
                                         {truncateString(project.title, 30)}
                                     </h3>
                                     {project.category && (
-                                        <span className="bg-blue-100 text-center text-OxfordBlue text-xs px-2 py-1 rounded-full">
-                                            {project.category.name}
-                                        </span>
+                                    <span className=" text-center bg-blue-100  text-OxfordBlue text-xs  p-1 rounded-full flex items-center">
+                                        {getCategoryIcon(project.category.name)}
+                                    </span>
                                     )}
                                 </div>
 
