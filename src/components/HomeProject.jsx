@@ -25,31 +25,28 @@ const calculateAverageRating = (ratings) => {
 };
 
 const formatTimeAgo = (dateString) => {
+    if (!dateString) return 'Baru saja';
+    
     const date = new Date(dateString);
     const now = new Date();
     const seconds = Math.floor((now - date) / 1000);
 
-    let interval = Math.floor(seconds / 31536000);
-    if (interval >= 1) {
-        return interval + " years ago";
+    const intervals = {
+        tahun: 31536000,
+        bulan: 2592000,
+        hari: 86400,
+        jam: 3600,
+        menit: 60
+    };
+
+    for (const [unit, secondsInUnit] of Object.entries(intervals)) {
+        const interval = Math.floor(seconds / secondsInUnit);
+        if (interval >= 1) {
+            return `${interval} ${unit}${interval === 1 ? '' : ''} yang lalu`;
+        }
     }
-    interval = Math.floor(seconds / 2592000);
-    if (interval >= 1) {
-        return interval + " month ago";
-    }
-    interval = Math.floor(seconds / 86400);
-    if (interval >= 1) {
-        return interval + " days ago";
-    }
-    interval = Math.floor(seconds / 3600);
-    if (interval >= 1) {
-        return interval + " hours ago";
-    }
-    interval = Math.floor(seconds / 60);
-    if (interval >= 1) {
-        return interval + " minutes ago";
-    }
-    return Math.floor(seconds) + " second ago";
+    
+    return 'Baru saja';
 };
 
 function HomeProject() {
@@ -64,8 +61,10 @@ function HomeProject() {
                 if (response.data && response.data.length > 0) {
                     setProjects(response.data); 
                 } else {
-                    setError('No projects found.'); 
+                    setError('Tidak ada proyek yang valid.'); 
+
                 }
+
             } catch (error) {
                 setError(error.message); 
             } finally {
@@ -101,12 +100,26 @@ function HomeProject() {
         ); 
     }
 
-    if (error) {
-        return <p>Error: {error}</p>; 
-    }
+if (error) {
+    return (
+        <div className="px-4 md:px-20 py-8">
+            <div className="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative" role="alert">
+                <strong className="font-bold">Info: </strong>
+                <span className="block sm:inline">{error}</span>
+            </div>
+        </div>
+    );
+}
 
     if (projects.length === 0) {
-        return <p>No project data available.</p>; 
+        return (
+            <div className="px-4 md:px-20 py-8">
+                <div className="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative" role="alert">
+                    <strong className="font-bold">Info: </strong>
+                    <span className="block sm:inline">Tidak ada proyek yang valid.</span>
+                </div>
+            </div>
+        );
     }
 
     const recentProjects = projects.slice(0, 6);

@@ -25,8 +25,9 @@ const UserCard = ({
       </div>
       
       <div className="w-full">
-        <h3 className="font-bold text-xl leading-[30px] line-clamp-1">{user.name}</h3>
-        
+        <Link to={`http://localhost:5173/profile/creator/${user.username}`} className='hover:text-OxfordBlue '>
+          <h3 className="font-bold hover:scale-105 transition-transform delay-200 text-xl leading-[30px] line-clamp-1">{user.name}</h3>
+        </Link>
         <div className="flex items-center gap-5 mt-2">
           <div className="flex items-center gap-2">
             {user.role === 'moderator' ? (

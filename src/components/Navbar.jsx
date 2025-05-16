@@ -154,7 +154,7 @@ function Navbar() {
                                     )
                                 }
                             >
-                                Proyek
+                                Karya Siswa
                             </NavLink>
                         </motion.div>
                         
@@ -216,122 +216,122 @@ function Navbar() {
                             </motion.button>
                             
                             <AnimatePresence>
-                                {showUserInfo && (
-                                    <motion.div 
-                                        ref={userInfoRef} 
-                                        className="absolute right-0 top-full mt-2 z-40 w-[200px] space-y-1 rounded-lg bg-white p-2 shadow-xl border border-gray-100"
-                                        initial={{ opacity: 0, y: -10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: -10 }}
-                                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                                    >
-                                        {user[0].role === 'moderator' ? (
-                                            <>
-                                                <motion.div whileHover={{ x: 5 }}>
-                                                    <NavLink 
-                                                        to="/admin" 
-                                                        className="flex items-center gap-2 w-full rounded-lg px-3 py-2 text-left text-sm text-body-color hover:bg-gray-100 transition-colors duration-200"
-                                                        onClick={() => setShowUserInfo(false)}
-                                                    >
-                                                        <FaTachometerAlt className='text-OxfordBlue'/> Dashboard
-                                                    </NavLink>
-                                                </motion.div>
-                                                
-                                                <motion.div 
-                                                    whileHover={{ x: 5 }}
-                                                    className="relative"
+                            {showUserInfo && (
+                                <motion.div 
+                                    ref={userInfoRef} 
+                                    className="absolute right-0 top-full mt-2 z-40 w-[200px] space-y-1 rounded-lg bg-white p-2 shadow-xl border border-gray-100"
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -10 }}
+                                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                >
+                                    {user[0].role === 'moderator' ? (
+                                        <>
+                                            <motion.div whileHover={{ x: 5 }}>
+                                                <NavLink 
+                                                    to="/admin" 
+                                                    className="flex items-center gap-2 w-full rounded-lg px-3 py-2 text-left text-sm text-body-color hover:bg-gray-100 transition-colors duration-200"
+                                                    onClick={() => setShowUserInfo(false)}
                                                 >
-                                                    <button 
-                                                        onClick={handleLogOut} 
-                                                        className="block w-full rounded-lg px-3 py-2 text-left text-sm text-body-color hover:bg-gray-100 transition-colors duration-200"
-                                                        disabled={isLoggingOut}
-                                                    >
-                                                        {isLoggingOut ? (
-                                                            <span className="flex items-center">
-                                                                <motion.span 
-                                                                    className="inline-block mr-2"
-                                                                    animate={{ rotate: 360 }}
-                                                                    transition={{ 
-                                                                        repeat: Infinity, 
-                                                                        duration: 1, 
-                                                                        ease: "linear" 
-                                                                    }}
-                                                                >
-                                                                    <FaSpinner />
-                                                                </motion.span>
-                                                                Sedang keluar...
-                                                            </span>
-                                                        ) : (
-                                                            <span className='flex gap-2 items-center'>
-                                                                <FaSignOutAlt className='text-OxfordBlue'/> Keluar
-                                                            </span>
-                                                        )}
-                                                    </button>
-                                                    {isLoggingOut && (
-                                                        <motion.div 
-                                                            className="absolute bottom-0 left-0 h-1 bg-GoldenYellow rounded-full"
-                                                            initial={{ width: 0 }}
-                                                            animate={{ width: "100%" }}
-                                                            transition={{ duration: 1.5 }}
-                                                        />
-                                                    )}
-                                                </motion.div>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <motion.div whileHover={{ x: 5 }}>
-                                                    <NavLink 
-                                                        to="/profile" 
-                                                        className="flex items-center gap-2 w-full rounded-lg px-3 py-2 text-left text-sm text-body-color hover:bg-gray-100 transition-colors duration-200"
-                                                        onClick={() => setShowUserInfo(false)}
-                                                    >
-                                                        <FaUser className='text-OxfordBlue'/> Profil
-                                                    </NavLink>
-                                                </motion.div>
-                                                
-                                                <motion.div 
-                                                    whileHover={{ x: 5 }}
-                                                    className="relative"
+                                                    <FaTachometerAlt className='text-OxfordBlue'/> Dashboard
+                                                </NavLink>
+                                            </motion.div>
+                                            
+                                            <motion.div 
+                                                whileHover={{ x: 5 }}
+                                                className="relative"
+                                            >
+                                                <button 
+                                                    onClick={handleLogOut} 
+                                                    className="block w-full rounded-lg px-3 py-2 text-left text-sm text-body-color hover:bg-gray-100 transition-colors duration-200"
+                                                    disabled={isLoggingOut}
                                                 >
-                                                    <button 
-                                                        onClick={handleLogOut} 
-                                                        className="block w-full rounded-lg px-3 py-2 text-left text-sm text-body-color hover:bg-gray-100 transition-colors duration-200"
-                                                        disabled={isLoggingOut}
-                                                    >
-                                                        {isLoggingOut ? (
-                                                            <span className="flex items-center">
-                                                                <motion.span 
-                                                                    className="inline-block mr-2"
-                                                                    animate={{ rotate: 360 }}
-                                                                    transition={{ 
-                                                                        repeat: Infinity, 
-                                                                        duration: 1, 
-                                                                        ease: "linear" 
-                                                                    }}
-                                                                >
-                                                                    <FaSpinner />
-                                                                </motion.span>
-                                                                Sedang keluar...
-                                                            </span>
-                                                        ) : (
-                                                            <span className='flex gap-2 items-center'>
-                                                                <FaSignOutAlt className='text-OxfordBlue'/> Keluar
-                                                            </span>
-                                                        )}
-                                                    </button>
-                                                    {isLoggingOut && (
-                                                        <motion.div 
-                                                            className="absolute bottom-0 left-0 h-1 bg-GoldenYellow rounded-full"
-                                                            initial={{ width: 0 }}
-                                                            animate={{ width: "100%" }}
-                                                            transition={{ duration: 1.5 }}
-                                                        />
+                                                    {isLoggingOut ? (
+                                                        <span className="flex items-center">
+                                                            <motion.span 
+                                                                className="inline-block mr-2"
+                                                                animate={{ rotate: 360 }}
+                                                                transition={{ 
+                                                                    repeat: Infinity, 
+                                                                    duration: 1, 
+                                                                    ease: "linear" 
+                                                                }}
+                                                            >
+                                                                <FaSpinner />
+                                                            </motion.span>
+                                                            Sedang keluar...
+                                                        </span>
+                                                    ) : (
+                                                        <span className='flex gap-2 items-center'>
+                                                            <FaSignOutAlt className='text-OxfordBlue'/> Keluar
+                                                        </span>
                                                     )}
-                                                </motion.div>
-                                            </>
-                                        )}
-                                    </motion.div>
-                                )}
+                                                </button>
+                                                {isLoggingOut && (
+                                                    <motion.div 
+                                                        className="absolute bottom-0 left-0 h-1 bg-GoldenYellow rounded-full"
+                                                        initial={{ width: 0 }}
+                                                        animate={{ width: "100%" }}
+                                                        transition={{ duration: 1.5 }}
+                                                    />
+                                                )}
+                                            </motion.div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <motion.div whileHover={{ x: 5 }}>
+                                                <NavLink 
+                                                    to="/profile" 
+                                                    className="flex items-center gap-2 w-full rounded-lg px-3 py-2 text-left text-sm text-body-color hover:bg-gray-100 transition-colors duration-200"
+                                                    onClick={() => setShowUserInfo(false)}
+                                                >
+                                                    <FaUser className='text-OxfordBlue'/> Profil
+                                                </NavLink>
+                                            </motion.div>
+                                            
+                                            <motion.div 
+                                                whileHover={{ x: 5 }}
+                                                className="relative"
+                                            >
+                                                <button 
+                                                    onClick={handleLogOut} 
+                                                    className="block w-full rounded-lg px-3 py-2 text-left text-sm text-body-color hover:bg-gray-100 transition-colors duration-200"
+                                                    disabled={isLoggingOut}
+                                                >
+                                                    {isLoggingOut ? (
+                                                        <span className="flex items-center">
+                                                            <motion.span 
+                                                                className="inline-block mr-2"
+                                                                animate={{ rotate: 360 }}
+                                                                transition={{ 
+                                                                    repeat: Infinity, 
+                                                                    duration: 1, 
+                                                                    ease: "linear" 
+                                                                }}
+                                                            >
+                                                                <FaSpinner />
+                                                            </motion.span>
+                                                            Sedang keluar...
+                                                        </span>
+                                                    ) : (
+                                                        <span className='flex gap-2 items-center'>
+                                                            <FaSignOutAlt className='text-OxfordBlue'/> Keluar
+                                                        </span>
+                                                    )}
+                                                </button>
+                                                {isLoggingOut && (
+                                                    <motion.div 
+                                                        className="absolute bottom-0 left-0 h-1 bg-GoldenYellow rounded-full"
+                                                        initial={{ width: 0 }}
+                                                        animate={{ width: "100%" }}
+                                                        transition={{ duration: 1.5 }}
+                                                    />
+                                                )}
+                                            </motion.div>
+                                        </>
+                                    )}
+                                </motion.div>
+                            )}
                             </AnimatePresence>
                         </div>
                     </div>
@@ -342,7 +342,7 @@ function Navbar() {
                                  whileTap={{ scale: 0.95 }}>
                                 <NavLink to='/auth/login'>
                                     <button className='
-                                        border-OxfordBlue border-1 p-2 px-4 rounded-lg 
+                                        border-OxfordBlue border-1 p-2 px-4 rounded-full 
                                         transition-all duration-300 
                                         hover:bg-OxfordBlue hover:text-white 
                                         hover:shadow-md
@@ -353,28 +353,6 @@ function Navbar() {
                                         <motion.span 
                                             className="absolute inset-0 bg-OxfordBlue opacity-0"
                                             whileHover={{ opacity: 0.1 }}
-                                        />
-                                    </button>
-                                </NavLink>
-                            </motion.div>
-                            
-                            
-                            <motion.div whileHover={{ scale: 1.05 }}
-                                className='rounded-lg'
-                                 whileTap={{ scale: 0.95 }}>
-                                <NavLink to='/auth/register'>
-                                    <button className='
-                                        bg-GoldenYellow text-white p-2 px-4 rounded-lg 
-                                        transition-all duration-300 
-                                        hover:bg-GoldenYellow-Dark 
-                                        hover:shadow-md
-                                        active:scale-95
-                                        relative overflow-hidden
-                                    '>
-                                        <span className="relative z-10">Daftar</span>
-                                        <motion.span 
-                                            className="absolute inset-0 bg-white opacity-0"
-                                            whileHover={{ opacity: 0.2 }}
                                         />
                                     </button>
                                 </NavLink>
@@ -429,7 +407,7 @@ function Navbar() {
                                             }
                                             onClick={toggleMenu}
                                         >
-                                            Proyek
+                                            Karya Siswa
                                         </NavLink>
                                     </motion.div>
                                     

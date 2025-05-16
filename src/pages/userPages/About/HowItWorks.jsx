@@ -7,19 +7,19 @@ const HowItWorks = () => {
       icon: <FaUserPlus className="text-2xl" />,
       number: '1',
       title: 'Buat Akun Gratis',
-      description: 'Daftar mudah menggunakan email dan nis. Kelola proyek, berinteraksi dengan pengguna, dan dapatkan umpan balik.'
+      description: 'Daftar mudah menggunakan email dan nis. Kelola karya, berinteraksi dengan pengguna, dan dapatkan umpan balik.'
     },
     {
       icon: <FaUpload className="text-2xl" />,
       number: '2',
-      title: 'Unggah Proyek Anda',
-      description: 'Tambahkan detail proyek termasuk judul, deskripsi, media, dan anggota tim. Pamerkan karya Anda secara profesional.'
+      title: 'Bagikan Karya Anda',
+      description: 'Tambahkan detail karya termasuk judul, deskripsi, media, dan anggota tim. Pamerkan karya Anda secara profesional.'
     },
     {
       icon: <FaRocket className="text-2xl" />,
       number: '3',
       title: 'Publikasikan',
-      description: 'Bagikan proyek dengan komunitas. Dapatkan penilaian, komentar, dan masukan berharga untuk meningkatkan keterampilan Anda.'
+      description: 'Bagikan karya dengan komunitas. Dapatkan penilaian, komentar, dan masukan berharga untuk meningkatkan keterampilan Anda.'
     }
   ];
 
@@ -40,7 +40,7 @@ const HowItWorks = () => {
               Bagikan Karya Anda dalam <span className="text-OxfordBlue">3 Langkah</span>
             </h2>
             <p className="max-w-lg mx-auto mt-4 text-lg leading-relaxed text-gray-600">
-              Ikuti langkah ini untuk memamerkan proyek pkl dan menginspirasi sesama siswa.
+              Ikuti langkah ini untuk memamerkan karya anda dan menginspirasi sesama siswa.
             </p>
           </motion.div>
         </div>

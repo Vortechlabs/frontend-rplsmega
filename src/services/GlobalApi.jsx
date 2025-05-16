@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-    baseURL: 'https://apirpl.smkn1purbalingga.sch.id/api/v1',
-    //baseURL: 'http://127.0.0.1:8000/api/v1',
+    //baseURL: 'https://apirpl.smkn1purbalingga.sch.id/api/v1',
+    baseURL: 'http://127.0.0.1:8000/api/v1',
     headers: {
         'Accept': 'application/json',
     },
@@ -29,7 +29,7 @@ apiClient.interceptors.response.use(
     },
     (error) => {
         if (error.response && error.response.status === 401) {
-            // Handle unauthorized access
+            // untuk menyimpan data user ke lokal
             localStorage.removeItem('token');
             localStorage.removeItem('user');
         }

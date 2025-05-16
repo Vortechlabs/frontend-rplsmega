@@ -10,7 +10,7 @@ const FAQSection = () => {
     // General Platform
     {
         question: "Platform ini untuk apa?",
-        answer: "Platform ini dirancang untuk siswa SMKN 1 Purbalingga khususnya jurusan RPL untuk membagikan hasil proyek PKL mereka, mendapatkan umpan balik, dan terhubung dengan komunitas profesional."
+        answer: "Platform ini dirancang untuk siswa SMKN 1 Purbalingga khususnya jurusan RPL untuk membagikan hasil Karya mereka, mendapatkan umpan balik, dan terhubung dengan guru."
     },
     {
         question: "Siapa yang bisa menggunakan platform ini?",
@@ -33,11 +33,11 @@ const FAQSection = () => {
 
     // Project Submission
     {
-        question: "Apa syarat mengunggah proyek?",
-        answer: "Proyek harus merupakan karya asli, tidak melanggar hak cipta, dan sesuai dengan kurikulum PKL RPL SMKN 1 Purbalingga."
+        question: "Apa syarat mengunggah karya?",
+        answer: "Karya harus merupakan karya asli, tidak melanggar hak cipta, dan sesuai dengan kurikulum PKL RPL SMKN 1 Purbalingga."
     },
     {
-        question: "Format file apa saja yang didukung untuk upload proyek?",
+        question: "Format file apa saja yang didukung untuk upload pratinjau Karya?",
         answer: "Kami mendukung gambar (JPG, PNG) dengan ukuran maksimal 2MB per file."
     },
 
@@ -54,10 +54,10 @@ const FAQSection = () => {
     // Terms & Conditions
     {
         question: "Apa konsekuensi jika melanggar ketentuan platform?",
-        answer: "Pelanggaran seperti plagiarisme atau konten tidak pantas dapat berakibat penghapusan proyek, suspensi akun, atau tindakan disipliner sesuai peraturan sekolah."
+        answer: "Pelanggaran seperti plagiarisme atau konten tidak pantas dapat berakibat penghapusan karya, suspensi akun, atau tindakan disipliner sesuai peraturan sekolah."
     },
     {
-        question: "Bolehkah saya menggunakan proyek orang lain sebagai referensi?",
+        question: "Bolehkah saya menggunakan karya orang lain sebagai referensi?",
         answer: "Boleh sebagai referensi belajar, namun harus mencantumkan sumber asli dan tidak boleh disajikan sebagai karya sendiri."
     },
 
@@ -73,22 +73,22 @@ const FAQSection = () => {
 
     // Community
     {
-        question: "Bagaimana aturan memberikan komentar pada proyek orang lain?",
-        answer: "Komentar harus bersifat konstruktif, tidak mengandung SARA, dan fokus pada aspek teknis proyek. Komentar negatif tanpa solusi akan dihapus."
+        question: "Bagaimana aturan memberikan komentar pada karya orang lain?",
+        answer: "Komentar harus bersifat konstruktif, tidak mengandung SARA, dan fokus pada aspek teknis karya. Komentar negatif tanpa solusi akan dihapus."
     },
     {
-        question: "Apakah ada fitur kolaborasi proyek?",
-        answer: "Ya, Anda bisa menmabahkan anggota tim untuk kolaborasi pada satu proyek melalui fitur 'Tambah Anggota Tim'."
+        question: "Apakah ada fitur kolaborasi karya?",
+        answer: "Ya, Anda bisa menmabahkan anggota tim untuk kolaborasi pada satu karya melalui fitur 'Tambah Anggota Tim'."
     },
 
     // School Policy
     {
-        question: "Apakah unggahan proyek mempengaruhi nilai PKL?",
-        answer: "Ya, kualitas proyek yang diunggah menjadi salah satu komponen penilaian PKL, termasuk aktivitas diskusi dan kontribusi di platform."
+        question: "Apakah unggahan karya mempengaruhi nilai PKL?",
+        answer: "Ya, kualitas karya yang diunggah menjadi salah satu komponen penilaian PKL, termasuk aktivitas diskusi dan kontribusi di platform."
     },
     {
-        question: "Bagaimana jika proyek saya mengandung informasi rahasia sekolah?",
-        answer: "Dilarang mengunggah dokumen rahasia sekolah. Jika proyek membutuhkan data sensitif, gunakan data dummy dan konsultasikan dengan guru pembimbing."
+        question: "Bagaimana jika karya saya mengandung informasi rahasia sekolah?",
+        answer: "Dilarang mengunggah dokumen rahasia sekolah. Jika karya membutuhkan data sensitif, gunakan data dummy dan konsultasikan dengan guru pembimbing."
     }
     ];
 

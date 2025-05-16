@@ -58,9 +58,7 @@ const UploadProject = () => {
     return <Navigate to="/auth/login" />;
   }
 
-  // Step handlers
   const handleNextStep = () => {
-    // Validation for current step
     if (activeStep === 0) {
       if (!formData.title || !formData.description || !formData.videoUrl || !formData.technology || !formData.categoryId) {
         Swal.fire('Data tidak lengkap', 'Mohon isi semua kolom input.', 'error');
@@ -74,7 +72,7 @@ const UploadProject = () => {
       
       const hasEmptyImageName = imageNames.some(name => !name || name.trim() === '');
       if (hasEmptyImageName) {
-        Swal.fire('Data tidak lengkap', 'Mohon isi semua kolom input nama gambar.', 'error');
+        Swal.fire('Data tidak lengkap', 'Mohon isi semua kolom input nama pratinjau.', 'error');
         return;
       }
     }
@@ -147,7 +145,7 @@ const UploadProject = () => {
       await Swal.fire({
         icon: 'success',
         title: 'Berhasil!',
-        text: 'Proyek berhasil diunggah!',
+        text: 'Karya berhasil diunggah!',
         timer: 2000,
         showConfirmButton: false
       });
@@ -158,7 +156,7 @@ const UploadProject = () => {
       Swal.fire({
         icon: 'error',
         title: 'Gagal',
-        text: error.response?.data?.message || 'Gagal Mengunggah Proyek'
+        text: error.response?.data?.message || 'Gagal Mengunggah Karya'
       });
     } finally {
       setIsSubmitting(false);
@@ -168,7 +166,7 @@ const UploadProject = () => {
   // Steps configuration with React Icons
   const steps = [
     {
-      label: 'Detail Proyek',
+      label: 'Detail Karya',
       icon: <FaClipboardList className="text-xl" />,
       content: (
         <ProjectDetailsStep 
@@ -179,7 +177,7 @@ const UploadProject = () => {
       )
     },
     {
-      label: 'Gambar Proyek',
+      label: 'Pratinjau Karya',
       icon: <FaImages className="text-xl" />,
       content: (
         <ProjectImagesStep 
@@ -212,10 +210,10 @@ const UploadProject = () => {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-              Bagikan <span className="text-OxfordBlue">Proyekmu</span>
+              Bagikan <span className="text-OxfordBlue">Karyamu</span>
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Bagikan proyekmu dan tunjukan bakatmu di RPL SMEGA
+              Bagikan karyamu dan tunjukan bakatmu di RPL SMEGA
             </p>
           </div>
 
@@ -290,7 +288,7 @@ const UploadProject = () => {
                   ) : (
                     <>
                       <FaCloudUploadAlt className="mr-2" />
-                      Kirim Project
+                      Bagikan Karya
                     </>
                   )}
                 </button>

@@ -49,15 +49,15 @@ const Home = () => {
           <div className="container mx-auto px-10 md:px-20 py-20 relative z-10">
             <div className='space-y-4 text-center max-w-4xl mx-auto'>
               <BlurText
-                text="Selamat Datang di Portal Proyek PKL RPL SMEGA"
+                text="Selamat Datang di Portal Karya Siswa Jurusan RPL SMKN 1 Purbalingga"
                 delay={100}
                 animateBy="words"
                 direction="top"
-                className="font-bold flex uppercase justify-center text-4xl md:text-6xl mb-8"
+                className="font-bold flex uppercase justify-center text-4xl md:text-5xl mb-8"
               />
               
               <BlurText
-                text="Website ini merupakan tempat untuk menampilkan hasil proyek PKL siswa-siswi Rekayasa Perangkat Lunak (RPL) SMKN 1 Purbalingga. Di sini, kamu dapat menemukan berbagai karya website yang telah dikembangkan selama masa PKL maupun pra-PKL, mulai dari aplikasi berbasis web, mobile, desktop, dan lainnya."
+                text="Website ini merupakan tempat untuk menampilkan karya siswa-siswi Rekayasa Perangkat Lunak (RPL) SMKN 1 Purbalingga. Di sini, kamu dapat menemukan berbagai karya yang telah dikembangkan oleh siswa-siswi rpl smega, mulai dari aplikasi berbasis web, mobile, desktop, dan lainnya."
                 delay={50}
                 animateBy="words"
                 direction="top"
@@ -75,10 +75,10 @@ const Home = () => {
                 threshold={0.2}
               >
                 <Link to='/upload/project'>
-                  <button className="relative cursor-pointer overflow-hidden bg-GoldenYellow hover:bg-GoldenYellow-Dark text-OxfordBlue font-bold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 group">
+                  <button className="relative cursor-pointer overflow-hidden bg-GoldenYellow-Dark/95 hover:bg-GoldenYellow-Dark text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 group">
                     <span className="absolute inset-0 bg-white opacity-20 group-hover:opacity-30 transition-opacity duration-500"></span>
                     <span className="relative z-10 flex items-center justify-center gap-2">
-                      Mari mulai petualangan!
+                      Tunjukan bakatmu!
                       <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                       </svg>
@@ -149,7 +149,7 @@ const Home = () => {
             >
               <Link to='/projects'>
                 <button className='bg-OxfordBlue hover:bg-OxfordBlue-Dark cursor-pointer text-white py-3 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2'>
-                  Tampilkan lebih banyak proyek
+                  Tampilkan Karya
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                   </svg>
@@ -207,7 +207,7 @@ const Home = () => {
                 threshold={0.2}
               >
                 <div className='w-full  space-y-6'>
-                  <h1 className='text-3xl md:text-4xl font-bold text-OxfordBlue'>Unggah dan tunjukan proyek pkl kamu</h1>
+                  <h1 className='text-3xl md:text-4xl font-bold text-OxfordBlue'>Unggah dan Tunjukan Karya Brilianmu</h1>
                   <p className='text-lg text-gray-600'>Gabung dengan <span className='font-bold text-GoldenYellow'>500+ alumni</span> dan mulai mendapatkan masukan!</p>
                   <div className='flex  gap-4'>
                     <Link to='/auth/register'>

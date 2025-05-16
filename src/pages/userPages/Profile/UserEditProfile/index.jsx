@@ -156,7 +156,7 @@ function EditUser() {
     if (!user.username || !user.name || !user.email) {
       Swal.fire({
         title: 'Error!',
-        text: 'Name and email are required',
+        text: 'Nama dan email wajib diisi!',
         icon: 'error',
         confirmButtonColor: '#e53e3e',
       });
@@ -189,8 +189,8 @@ function EditUser() {
       updateUser(updatedUserData);
       
       Swal.fire({
-        title: 'Success!',
-        text: 'Profile updated successfully',
+        title: 'Berhasil!',
+        text: 'Profil berhasil diperbarui',
         icon: 'success',
         confirmButtonColor: '#1a365d',
       });
@@ -220,8 +220,8 @@ function EditUser() {
         }
       } else {
         Swal.fire({
-          title: 'Error!',
-          text: 'Connection error. Please try again.',
+          title: 'Gagal!',
+          text: 'Koneksi terganggu. Mohon coba lagi.',
           icon: 'error',
           confirmButtonColor: '#e53e3e',
         });
@@ -267,7 +267,7 @@ function EditUser() {
               
               {/* Main Content */}
               <div className="md:w-3/4 p-8">
-                <h1 className="text-3xl font-bold text-gray-800 mb-8 text-center">Edit Profil</h1>
+                <h1 className="text-3xl font-bold text-gray-800 mb-8 text-center">Perbarui Profil Saya</h1>
                 
                 {/* Form for profile data (step 1 & 2) */}
                 {step !== 3 && (

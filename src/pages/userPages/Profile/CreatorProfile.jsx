@@ -23,20 +23,21 @@ const formatTimeAgo = (dateString) => {
     const seconds = Math.floor((now - date) / 1000);
 
     const intervals = {
-        year: 31536000,
-        month: 2592000,
-        day: 86400,
-        hour: 3600,
-        minute: 60
+        tahun: 31536000,
+        bulan: 2592000,
+        hari: 86400,
+        jam: 3600,
+        menit: 60
     };
 
     for (const [unit, secondsInUnit] of Object.entries(intervals)) {
         const interval = Math.floor(seconds / secondsInUnit);
         if (interval >= 1) {
-            return `${interval} ${unit}${interval === 1 ? '' : 's'} ago`;
+            return `${interval} ${unit}${interval === 1 ? '' : ''} yang lalu`;
         }
     }
-    return 'Baru Saja';
+    
+    return 'Baru saja';
 };
 
 function CreatorProfile() {
@@ -123,46 +124,85 @@ function CreatorProfile() {
       {user && (
         <div className="max-w-4xl mt-[-200px] mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
           {/* Profile Header */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="bg-OxfordBlue rounded-xl shadow-sm overflow-hidden mb-10 border border-gray-200"
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="relative bg-gradient-to-br from-OxfordBlue to-OxfordBlue-Dark rounded-2xl shadow-lg overflow-hidden mb-10 border border-gray-700/50"
           >
-            <div className="p-8">
+            {/* Decorative Elements */}
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute -top-20 -right-20 w-64 h-64 bg-blue-400/10 rounded-full filter blur-3xl"></div>
+              <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-indigo-400/10 rounded-full filter blur-3xl"></div>
+            </div>
+
+            <div className="relative p-8">
               <div className="flex flex-col md:flex-row items-center gap-8">
-                {/* Profile Picture */}
-                <div className="relative">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <img
-                    src={user.profilePicture 
-                      ? `https://apirpl.smkn1purbalingga.sch.id/storage/${user.profilePicture}`
-                      : defaultProfilePic}
-                    alt={`${user.name}'s profile`}
-                    className="relative w-32 h-32 rounded-full object-cover border-4 border-white shadow-md"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = defaultProfilePic;
-                    }}
-                  />
-                </div>
+                {/* Profile Picture with Floating Animation */}
+                <motion.div 
+                  className="relative"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <div className="absolute -inset-2 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full opacity-0 group-hover:opacity-70 transition-opacity duration-300 blur-md"></div>
+                  <div className="relative w-32 h-32 rounded-full border-4 border-white/80 shadow-xl overflow-hidden">
+                    <img
+                      src={user.profilePicture 
+                        ? `https://apirpl.smkn1purbalingga.sch.id/storage/${user.profilePicture}`
+                        : defaultProfilePic}
+                      alt={`${user.name}'s profile`}
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = defaultProfilePic;
+                      }}
+                    />
+                  </div>
+                </motion.div>
                 
                 {/* Profile Info */}
-                <div className="text-center md:text-left">
-                  <h1 className="text-2xl font-bold text-white">{user.name}</h1>
-                  <p className="text-gray-200 -mt-2">@{user.username}</p>
+                <div className="text-center md:text-left space-y-3">
+                  <motion.h1 
+                    className="text-3xl font-bold text-white tracking-tight"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    {user.name}
+                    <span className="text-blue-300/80 text-xl ml-2">@{user.username}</span>
+                  </motion.h1>
                   
-                  <div className="mt-4 space-y-2">
-                    <div className="inline-flex items-center bg-gray-100 rounded-full px-4 py-1">
-                      <span className="text-sm text-gray-800">
-                        Kelas <span className="font-semibold">{user.class}</span> • SMKN 1 Purbalingga
+                  <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+                    <motion.div 
+                      className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 border border-white/20"
+                      whileHover={{ scale: 1.03 }}
+                    >
+                      <span className="text-sm font-medium text-white">
+                        Kelas <span className="text-blue-300 font-semibold">{user.class}</span>
                       </span>
-                    </div>
+                    </motion.div>
                     
-                    <p className="text-sm text-gray-300">
-                      Bergabung sejak {formatDate(user.created_at)}
-                    </p>
+                    <motion.div 
+                      className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 border border-white/20"
+                      whileHover={{ scale: 1.03 }}
+                    >
+                      <span className="text-sm font-medium text-white">
+                        SMKN 1 Purbalingga
+                      </span>
+                    </motion.div>
                   </div>
+                  
+                  <motion.p 
+                    className="text-sm text-blue-100/90 flex items-center gap-1 justify-center md:justify-start"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    Bergabung {formatDate(user.created_at)}
+                  </motion.p>
                 </div>
               </div>
             </div>
@@ -171,9 +211,9 @@ function CreatorProfile() {
             {/* Projects Section */}
             <div className="mb-12">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-semibold text-gray-900">Karya</h2>
+                <h2 className="text-xl font-semibold text-gray-900">Karya kreator</h2>
                 <span className="text-sm text-gray-500">
-                  {user.project?.length || 0} Proyek
+                  {user.project?.length || 0} Karya
                 </span>
               </div>
 

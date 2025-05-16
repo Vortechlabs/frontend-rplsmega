@@ -1,5 +1,5 @@
-@import 'tailwindcss';
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import 'tailwindcss';
 
 @theme {
   --color-OxfordBlue : #0A3180;
@@ -8,6 +8,29 @@
   --color-GoldenYellow-Dark: #ECBB03;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Warna track */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: black; 
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: black transparent;
+}
 
 :root {
   font-family: 'Poppins', sans-serif;

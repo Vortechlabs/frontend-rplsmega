@@ -14,10 +14,10 @@ const HeroSection = () => {
           className="max-w-3xl mx-auto text-center"
         >
           <h2 className="text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
-            Tunjukan <span className="text-GoldenYellow">Proyek PKL</span> Anda di RPL SMEGA
+            Tunjukan <span className="text-GoldenYellow">Karya Brilian</span> Anda di RPL SMEGA
           </h2>
           <p className="max-w-2xl mx-auto mt-6 text-lg leading-relaxed text-gray-200">
-            Platform untuk berbagi proyek pkl khusus siswa-siswi SMKN 1 Purbalingga, mendapatkan umpan balik, dan terhubung dengan guru.
+            Platform untuk berbagi karya khusus siswa-siswi jurusan RPL SMKN 1 Purbalingga, mendapatkan umpan balik, dan terhubung dengan guru.
           </p>
         </motion.div>
       </div>

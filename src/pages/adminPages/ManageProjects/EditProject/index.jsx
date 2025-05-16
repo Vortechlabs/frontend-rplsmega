@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Sidebar from '../../../../components/Sidebar';
 import { FiEdit2, FiUpload, FiTrash2, FiPlus, FiChevronLeft, FiChevronRight, FiCheck, FiX } from 'react-icons/fi';
-import { FaYoutube, FaGithub, FaImage, FaCode } from 'react-icons/fa';
+import { FaYoutube, FaImage, FaCode, FaLink } from 'react-icons/fa';
 import { MdCategory, MdGroup } from 'react-icons/md';
 import Loader from '../../../../components/Loader';
 import { motion } from 'framer-motion';
@@ -69,7 +69,7 @@ function AdminEditProject() {
         });
       } catch (error) {
         console.error('Error fetching data:', error);
-        toast.error('Gagal untuk memuat data proyek', {
+        toast.error('Gagal untuk memuat data karya', {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -341,7 +341,7 @@ function AdminEditProject() {
       const totalImages = remainingExisting + formData.images.length;
       
       if (totalImages < 1) {
-        toast.error('Proyek harus memiliki setidaknya 1 gambar. Mohon pertahankan gambar sebelumnya atau gunakan gambar baru.', {
+        toast.error('Karya harus memiliki setidaknya 1 gambar. Mohon pertahankan gambar sebelumnya atau gunakan gambar baru.', {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -363,7 +363,7 @@ function AdminEditProject() {
         }
       });
 
-      const toastId = toast.loading("Mengupdate proyek...", {
+      const toastId = toast.loading("Mengupdate karya...", {
         position: "top-right",
         autoClose: false,
         closeOnClick: false,
@@ -377,7 +377,7 @@ function AdminEditProject() {
       });
 
       toast.update(toastId, {
-        render: "Proyek berhasil diperbarui!",
+        render: "Karya berhasil diperbarui!",
         type: "success",
         isLoading: false,
         autoClose: 3000,
@@ -425,7 +425,7 @@ function AdminEditProject() {
 
   const steps = [
     {
-      label: 'Detail Proyek',
+      label: 'Detail Karya',
       icon: <FiEdit2 className="mr-2" />,
       content: (
         <div className="space-y-6">
@@ -440,7 +440,7 @@ function AdminEditProject() {
               onChange={handleInputChange}
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
               required
-              placeholder="Project title"
+              placeholder="Judul Karya"
             />
           </div>
 
@@ -454,7 +454,7 @@ function AdminEditProject() {
               onChange={handleInputChange}
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 h-32"
               required
-              placeholder="Detailed project description"
+              placeholder="Deskripsi detail karya"
             />
           </div>
 
@@ -547,7 +547,7 @@ function AdminEditProject() {
 
           <div className="bg-gray-50 p-4 rounded-lg">
             <label className=" text-sm font-medium text-gray-700 mb-1 flex items-center">
-              <FaGithub className="mr-2" /> Tautan Repositori <span className='text-red-700'>*</span>
+              <FaLink className="mr-2" /> Tautan Karya <span className='text-red-700'>*</span>
             </label>
             <input
               type="url"
@@ -585,7 +585,7 @@ function AdminEditProject() {
       )
     },
     {
-      label: 'Gambar Proyek',
+      label: 'Pratinjau Karya',
       icon: <FaImage className="mr-2" />,
       content: (
         <div className="space-y-6">
@@ -623,7 +623,7 @@ function AdminEditProject() {
                             formData.existingImages.findIndex(img => img.id === image.id), 
                             e.target.value
                           )}
-                          placeholder="Nama gambar"
+                          placeholder="Nama pratinjau"
                           className="w-full px-2 py-1 border border-gray-300 rounded text-sm focus:ring-OxfordBlue focus:border-OxfordBlue"
                         />
                       </div>
@@ -633,7 +633,7 @@ function AdminEditProject() {
                           formData.existingImages.findIndex(img => img.id === image.id)
                         )}
                         className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600 transition-colors"
-                        title="Hapus gambar"
+                        title="Hapus pratinjau"
                       >
                         <FiTrash2 size={14} />
                       </button>
@@ -709,7 +709,7 @@ function AdminEditProject() {
                       type="button"
                       onClick={() => removeNewImage(index)}
                       className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600 transition-colors"
-                      title="Hapus gambar"
+                      title="Hapus Pratinjau"
                     >
                       <FiTrash2 size={14} />
                     </button>
@@ -725,8 +725,8 @@ function AdminEditProject() {
               <FaImage className="text-gray-400 text-4xl mb-3" />
               <p className="text-gray-500 text-center">
                 {formData.existingImages.length > 0
-                  ? 'Tidak ada gambar yang dipilih'
-                  : 'Tidak ada gambar terunggah. Mohon unggah setidaknya 1 gambar.'}
+                  ? 'Tidak ada pratinjau yang dipilih'
+                  : 'Tidak ada pratinjau terunggah. Mohon unggah setidaknya 1 gambar.'}
               </p>
             </div>
           )}
@@ -821,7 +821,7 @@ function AdminEditProject() {
     return (
       <div className="flex justify-center items-center h-screen">
         <div className="text-red-500 text-xl flex items-center">
-          <FiX className="mr-2" /> Proyek tidak ditemukan
+          <FiX className="mr-2" /> Karya tidak ditemukan
         </div>
       </div>
     );
@@ -848,12 +848,12 @@ function AdminEditProject() {
           {/* Breadcrumb */}
           <div className="flex items-center gap-1 *:after:content-['/'] *:after:ml-1 mb-6">
             <Link to="/admin" className="hover:text-OxfordBlue">Dashboard</Link>
-            <Link to="/admin/manage-projects" className="hover:text-OxfordBlue">Kelola proyek</Link>
-            <span className="font-semibold text-OxfordBlue">edit : {project.title}</span>
+            <Link to="/admin/manage-projects" className="hover:text-OxfordBlue">Kelola Karya</Link>
+            <span className="font-semibold text-OxfordBlue">Perbarui : {project.title}</span>
           </div>
 
             <div className="text-center mb-8">
-              <h1 className="text-3xl font-extrabold text-gray-900">Edit proyek <br />
+              <h1 className="text-3xl font-extrabold text-gray-900">Perbarui Karya <br />
                 <span className='text-OxfordBlue'>{project.title}</span>
                 </h1>
             </div>
@@ -922,7 +922,7 @@ function AdminEditProject() {
                       </>
                     ) : (
                       <>
-                        <FiCheck className="mr-1" /> Perbarui Proyek
+                        <FiCheck className="mr-1" /> Perbarui Karya
                       </>
                     )}
                   </button>

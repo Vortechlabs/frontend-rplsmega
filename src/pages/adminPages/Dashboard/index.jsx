@@ -30,25 +30,28 @@ import { FiAlertTriangle } from 'react-icons/fi';
 import Loader from '../../../components/Loader';
 
 const formatTimeAgo = (dateString) => {
-  const date = new Date(dateString);
-  const now = new Date();
-  const seconds = Math.floor((now - date) / 1000);
-  
-  if (seconds < 60) return 'just now';
-  
-  const minutes = Math.floor(seconds / 60);
-  if (minutes < 60) return `${minutes} minute${minutes === 1 ? '' : 's'} ago`;
-  
-  const hours = Math.floor(minutes / 60);
-  if (hours < 24) return `${hours} hour${hours === 1 ? '' : 's'} ago`;
-  
-  const days = Math.floor(hours / 24);
-  if (days < 7) return `${days} day${days === 1 ? '' : 's'} ago`;
-  
-  const weeks = Math.floor(days / 7);
-  if (weeks < 4) return `${weeks} week${weeks === 1 ? '' : 's'} ago`;
-  
-  return date.toLocaleDateString();
+    if (!dateString) return 'Baru saja';
+    
+    const date = new Date(dateString);
+    const now = new Date();
+    const seconds = Math.floor((now - date) / 1000);
+
+    const intervals = {
+        tahun: 31536000,
+        bulan: 2592000,
+        hari: 86400,
+        jam: 3600,
+        menit: 60
+    };
+
+    for (const [unit, secondsInUnit] of Object.entries(intervals)) {
+        const interval = Math.floor(seconds / secondsInUnit);
+        if (interval >= 1) {
+            return `${interval} ${unit}${interval === 1 ? '' : ''} yang lalu`;
+        }
+    }
+    
+    return 'Baru saja';
 };
 
 function Dashboard() {
@@ -155,7 +158,7 @@ function Dashboard() {
               <header className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
                 <div>
                     <h1 className="font-extrabold text-2xl md:text-[28px] leading-[42px]">Selamat datang kembali, {user[0]?.name}!</h1>
-                    <p className="text-[#838C9D]">Kelola statistik seluruh proyek, pengguna, pemberitahuan, dan lainya.</p>
+                    <p className="text-[#838C9D]">Kelola statistik seluruh karya, pengguna, pemberitahuan, dan lainya.</p>
                 </div>
               </header>
 
@@ -183,7 +186,7 @@ function Dashboard() {
                       </div>
                       <div>
                           <p className="font-extrabold text-2xl leading-[36px]">{stats.projects}</p>
-                          <p className="text-[#838C9D]">Total Proyek</p>
+                          <p className="text-[#838C9D]">Total Karya</p>
                       </div>
                       <div className="mt-2 flex items-center text-sm text-OxfordBlue">
                           <FaChartLine className="mr-1" />
@@ -249,7 +252,7 @@ function Dashboard() {
                                     dataKey="projects" 
                                     stroke="#FDC800" 
                                     strokeWidth={2}
-                                    name="Proyek" 
+                                    name="Karya" 
                                     dot={{ r: 4, fill: '#FDC800', strokeWidth: 2 }}
                                     activeDot={{ r: 6, fill: '#FDC800', stroke: '#fff', strokeWidth: 2 }}
                                   />
@@ -261,7 +264,7 @@ function Dashboard() {
                   {/* Bar Chart - Modern Styling */}
                   <div className="bg-white rounded-2xl p-5 shadow-[0_4px_4px_0_rgba(224,226,239,0.5)]">
                       <div className="flex items-center justify-between mb-4">
-                          <h2 className="text-lg font-semibold text-gray-800">Distribusi Proyek</h2>
+                          <h2 className="text-lg font-semibold text-gray-800">Distribusi Karya</h2>
                           <div className="flex items-center text-sm text-[#838C9D]">
                               <FaCalendarAlt className="mr-1" />
                               <span>{currentYear}</span>
@@ -287,7 +290,7 @@ function Dashboard() {
                                   <Bar 
                                     dataKey="projects" 
                                     fill="#0A3180" 
-                                    name="Proyek"
+                                    name="Karya"
                                     radius={[4, 4, 0, 0]}
                                   />
                               </BarChart>
@@ -300,7 +303,7 @@ function Dashboard() {
               <section className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                   {/* Recent Projects */}
                   <div className="bg-white rounded-2xl p-5 shadow-[0_4px_4px_0_rgba(224,226,239,0.5)]">
-                      <h2 className="text-lg font-semibold text-gray-800 mb-4">Proyek terbaru</h2>
+                      <h2 className="text-lg font-semibold text-gray-800 mb-4">Karya terbaru</h2>
                       <div className="space-y-4">
                           {recentProjectsLimited.map((project) => (
                               <div key={project.id} className="flex items-center p-3 hover:bg-gray-50 rounded-lg transition-colors">
@@ -325,7 +328,7 @@ function Dashboard() {
                       </div>
                       <div className="mt-4 text-right">
                           <Link to="/admin/manage-projects" className="text-OxfordBlue hover:text-[#5a29d6] text-sm font-medium">
-                              Lihat semua proyek →
+                              Lihat semua karya →
                           </Link>
                       </div>
                   </div>

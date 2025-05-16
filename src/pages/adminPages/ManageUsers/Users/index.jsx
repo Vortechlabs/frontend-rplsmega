@@ -34,7 +34,7 @@ function ManageUser() {
         if (Array.isArray(response.data)) {
           setUsers(response.data);
         } else {
-          setError('Invalid user data format');
+          setError('Format data user tidak valid');
         }
         setError(null);
       } catch (error) {

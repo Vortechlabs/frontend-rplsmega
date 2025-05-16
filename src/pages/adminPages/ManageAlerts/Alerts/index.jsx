@@ -84,7 +84,7 @@ const AlertManagement = () => {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-gray-800">Kelola Pemberitahuan</h1>
-                <p className="text-gray-600">Manage system alerts and notifications</p>
+                <p className="text-gray-600">Kelola sistem pemberitahuan</p>
               </div>
             </div>
             

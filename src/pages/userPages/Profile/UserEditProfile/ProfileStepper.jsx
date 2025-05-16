@@ -1,8 +1,8 @@
 import React from 'react';
 
 const steps = [
-  { number: 1, label: 'Basic Information' },
-  { number: 2, label: 'Class & Photo' },
+  { number: 1, label: 'Informasi Mendasar' },
+  { number: 2, label: 'kelas & Foto' },
   { number: 3, label: 'Password' }
 ];
 

@@ -120,15 +120,12 @@ function AdminBulkCreateUser() {
     }
 
     try {
-      // Simulasi proses upload
       await new Promise(resolve => setTimeout(resolve, 1000));
       setFileProcessingStage('reading');
       
-      // Membaca file
       const data = await readFile(file);
       setFileProcessingStage('validating');
       
-      // Parse data
       const users = parseData(data);
       setParsedUsers(users);
       

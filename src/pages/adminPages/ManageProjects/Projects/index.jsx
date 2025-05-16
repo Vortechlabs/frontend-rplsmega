@@ -5,7 +5,17 @@ import {
   FaSearch,
   FaSort,
   FaSortUp,
-  FaSortDown
+  FaSortDown,
+  FaGlobe,
+  FaMobileAlt,
+  FaDesktop,
+  FaPalette,
+  FaCode,
+  FaTags,
+  FaChevronDown,
+  FaFont,
+  FaCalendarAlt,
+  FaFilter
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -22,6 +32,10 @@ function ManageProject() {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
   const [currentPage, setCurrentPage] = useState(1);
+  const [isSortDropdownOpen, setIsSortDropdownOpen] = useState(false);
+  const [isCategoryFilterOpen, setIsCategoryFilterOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [categories, setCategories] = useState([]);
   const projectsPerPage = 10;
 
   useEffect(() => {
@@ -46,6 +60,18 @@ function ManageProject() {
     fetchProjects();
   }, []);
 
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await apiClient.get('/categories');
+        setCategories(response.data);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+    fetchCategories();
+  }, []);
+
   const handleSort = (key) => {
     let direction = 'asc';
     if (sortConfig.key === key && sortConfig.direction === 'asc') {
@@ -54,7 +80,7 @@ function ManageProject() {
     setSortConfig({ key, direction });
   };
 
-  const sortedProjects = React.useMemo(() => {
+    const sortedProjects = React.useMemo(() => {
     let sortableItems = [...projects];
     if (sortConfig.key) {
       sortableItems.sort((a, b) => {
@@ -73,11 +99,36 @@ function ManageProject() {
     return sortableItems;
   }, [projects, sortConfig]);
 
-  const filteredProjects = sortedProjects.filter((project) =>
-    project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    (project.category && project.category.name.toLowerCase().includes(searchQuery.toLowerCase()))
-  );
+    const filteredProjects = sortedProjects.filter((project) => {
+    const matchesSearch = 
+      project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (project.category && project.category.name.toLowerCase().includes(searchQuery.toLowerCase()));
+    
+    const matchesCategory = 
+      selectedCategory === 'all' || 
+      (project.category && project.category.id == selectedCategory);
+    
+    return matchesSearch && matchesCategory;
+  });
+
+  const getCategoryIcon = (categoryName) => {
+  const iconStyle = "text-sm";
+  
+  switch(categoryName?.toLowerCase()) {
+      case 'website':
+        return <FaGlobe className={`${iconStyle} text-OxfordBlue`} />;
+      case 'mobile app':
+        return <FaMobileAlt className={`${iconStyle} text-OxfordBlue`} />;
+      case 'desktop app':
+        return <FaDesktop className={`${iconStyle} text-OxfordBlue`} />;
+      case 'design':
+        return <FaPalette className={`${iconStyle} text-OxfordBlue`} />;
+      default:
+        return <FaCode className={`${iconStyle} text-OxfordBlue`} />;
+    }
+  };
+
 
   const indexOfLastProject = currentPage * projectsPerPage;
   const indexOfFirstProject = indexOfLastProject - projectsPerPage;
@@ -87,13 +138,13 @@ function ManageProject() {
   const deleteProject = async (projectId) => {
     try {
       const result = await Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: 'Apakah kamu yakin?',
+        text: "Kamu tidak dapat mengembalikan data ini!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3b82f6',
         cancelButtonColor: '#ef4444',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Ya, Hapus karya ini!'
       });
 
       if (result.isConfirmed) {
@@ -138,8 +189,8 @@ function ManageProject() {
                 <FaProjectDiagram className="text-2xl" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-800">Kelola Proyek</h1>
-                <p className="text-gray-600">Lihat dan kelola semua proyek pengguna</p>
+                <h1 className="text-2xl font-bold text-gray-800">Kelola Karya</h1>
+                <p className="text-gray-600">Lihat dan kelola semua Karya Siswa</p>
               </div>
             </div>
             
@@ -148,7 +199,7 @@ function ManageProject() {
               className="flex hover:scale-105 items-center justify-center bg-gradient-to-r from-GoldenYellow-Dark to-GoldenYellow/90 text-white px-4 py-3 rounded-lg hover:from-GoldenYellow/90 hover:to-GoldenYellow-Dark transition-all shadow-md"
             >
               <FaPlus className="mr-2" />
-              Tambah Proyek
+              Tambah Karya
             </Link>
           </div>
 
@@ -161,7 +212,7 @@ function ManageProject() {
                 </div>
                 <input
                   type="text"
-                  placeholder="Jelajahi proyek..."
+                  placeholder="Jelajahi Karya..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-OxfordBlue focus:border-OxfordBlue"
@@ -169,20 +220,118 @@ function ManageProject() {
               </div>
 
               <div className="flex items-center gap-3 w-full md:w-auto">
-                <button 
-                  onClick={() => handleSort('title')}
-                  className="flex items-center text-sm text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-lg"
-                >
-                  Urutkan Judul
-                  {renderSortIcon('title')}
-                </button>
-                <button 
-                  onClick={() => handleSort('category.name')}
-                  className="flex items-center text-sm text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-lg"
-                >
-                  Urutkan ketegori
-                  {renderSortIcon('category.name')}
-                </button>
+                {/* Category Filter Dropdown */}
+                <div className="relative">
+                  <button 
+                    onClick={() => setIsCategoryFilterOpen(!isCategoryFilterOpen)}
+                    className="flex items-center text-sm text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-lg border border-gray-200"
+                  >
+                    <FaFilter className="mr-2" />
+                    {selectedCategory === 'all' 
+                      ? "Semua Kategori" 
+                      : categories.find(cat => cat.id == selectedCategory)?.name || "Kategori"
+                    }
+                    <FaChevronDown className={`ml-2 transition-transform ${isCategoryFilterOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {isCategoryFilterOpen && (
+                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 border border-gray-200">
+                      <div className="py-1">
+                        <button
+                          onClick={() => {
+                            setSelectedCategory('all');
+                            setIsCategoryFilterOpen(false);
+                          }}
+                          className={`flex items-center w-full px-4 py-2 text-sm text-left ${selectedCategory === 'all' ? 'bg-blue-50 text-OxfordBlue' : 'text-gray-700 hover:bg-gray-100'}`}
+                        >
+                          Semua Kategori
+                        </button>
+                        {categories.map((category) => (
+                          <button
+                            key={category.id}
+                            onClick={() => {
+                              setSelectedCategory(category.id);
+                              setIsCategoryFilterOpen(false);
+                            }}
+                            className={`flex items-center w-full px-4 py-2 text-sm text-left ${selectedCategory == category.id ? 'bg-blue-50 text-OxfordBlue' : 'text-gray-700 hover:bg-gray-100'}`}
+                          >
+                            {getCategoryIcon(category.name)}
+                            <span className="ml-2">{category.name}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Sort Dropdown */}
+                <div className="relative">
+                  <button 
+                    onClick={() => setIsSortDropdownOpen(!isSortDropdownOpen)}
+                    className="flex items-center text-sm text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-lg border border-gray-200"
+                  >
+                    <FaSort className="mr-2" />
+                    {sortConfig.key 
+                      ? sortConfig.key === 'title' ? 'Judul' 
+                        : sortConfig.key === 'category.name' ? 'Kategori'
+                        : 'Tanggal'
+                      : 'Urutkan'
+                    }
+                    <FaChevronDown className={`ml-2 transition-transform ${isSortDropdownOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {isSortDropdownOpen && (
+                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 border border-gray-200">
+                      <div className="py-1">
+                        <button
+                          onClick={() => {
+                            handleSort('title');
+                            setIsSortDropdownOpen(false);
+                          }}
+                          className={`flex items-center w-full px-4 py-2 text-sm text-left ${sortConfig.key === 'title' ? 'bg-blue-50 text-OxfordBlue' : 'text-gray-700 hover:bg-gray-100'}`}
+                        >
+                          <FaFont className="mr-2" />
+                          Judul
+                          {sortConfig.key === 'title' && (
+                            sortConfig.direction === 'asc' 
+                              ? <FaSortUp className="ml-auto" />
+                              : <FaSortDown className="ml-auto" />
+                          )}
+                        </button>
+                        <button
+                          onClick={() => {
+                            handleSort('category.name');
+                            setIsSortDropdownOpen(false);
+                          }}
+                          className={`flex items-center w-full px-4 py-2 text-sm text-left ${sortConfig.key === 'category.name' ? 'bg-blue-50 text-OxfordBlue' : 'text-gray-700 hover:bg-gray-100'}`}
+                        >
+                          <FaTags className="mr-2" />
+                          Kategori
+                          {sortConfig.key === 'category.name' && (
+                            sortConfig.direction === 'asc' 
+                              ? <FaSortUp className="ml-auto" />
+                              : <FaSortDown className="ml-auto" />
+                          )}
+                        </button>
+                        <button
+                          onClick={() => {
+                            handleSort('created_at');
+                            setIsSortDropdownOpen(false);
+                          }}
+                          className={`flex items-center w-full px-4 py-2 text-sm text-left ${sortConfig.key === 'created_at' ? 'bg-blue-50 text-OxfordBlue' : 'text-gray-700 hover:bg-gray-100'}`}
+                        >
+                          <FaCalendarAlt className="mr-2" />
+                          Tanggal
+                          {sortConfig.key === 'created_at' && (
+                            sortConfig.direction === 'asc' 
+                              ? <FaSortUp className="ml-auto" />
+                              : <FaSortDown className="ml-auto" />
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>

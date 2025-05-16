@@ -7,7 +7,6 @@ import {
   FaTimes, 
   FaLink,
   FaVideo,
-  FaGithub,
   FaCode,
   FaInfoCircle
 } from 'react-icons/fa';
@@ -94,7 +93,7 @@ const ProjectDetailsStep = ({ formData, setFormData, categories }) => {
         {/* Project Title */}
         <div className="col-span-2">
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Judul Proyek <span className="text-red-500">*</span>
+            Judul Karya <span className="text-red-500">*</span>
           </label>
           <div className="relative">
             <input
@@ -103,7 +102,7 @@ const ProjectDetailsStep = ({ formData, setFormData, categories }) => {
               value={formData.title}
               onChange={handleInputChange}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-OxfordBlue focus:border-OxfordBlue transition-all"
-              placeholder="Proyek ajaib saya berbasis..."
+              placeholder="Karya ajaib saya berbasis..."
               required
             />
             <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
@@ -112,7 +111,7 @@ const ProjectDetailsStep = ({ formData, setFormData, categories }) => {
           </div>
         </div>
 
-      <div className='col-span-2 md:col-span-1'>
+      <div className='col-span-2 gap-4 block md:flex'>
         {/* Category */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -183,7 +182,7 @@ const ProjectDetailsStep = ({ formData, setFormData, categories }) => {
 
         {/* Technology */}
         <div>
-          <div className="flex items-center mb-1">
+          <div className="flex mt-4 md:mt-0 items-center mb-1">
             <label className="block text-sm font-medium text-gray-700">
               Teknologi <span className="text-red-500">*</span>
             </label>
@@ -257,7 +256,7 @@ const ProjectDetailsStep = ({ formData, setFormData, categories }) => {
           value={formData.description}
           onChange={handleInputChange}
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-OxfordBlue focus:border-OxfordBlue transition-all min-h-[200px]"
-          placeholder="Deskripsikan tentang proyek kamu, untuk apa, dan kenapa kamu membangun proyek ini..."
+          placeholder="Deskripsikan tentang karya kamu, untuk apa, dan kenapa kamu membangun karya ini..."
           maxLength={1000}
           required
         />
@@ -269,7 +268,7 @@ const ProjectDetailsStep = ({ formData, setFormData, categories }) => {
       {/* Repository URL */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">
-          Tautan Repository <span className="text-red-500">*</span>
+          Tautan Karya <span className="text-red-500">*</span>
         </label>
         <div className="relative">
           <input
@@ -281,7 +280,7 @@ const ProjectDetailsStep = ({ formData, setFormData, categories }) => {
             placeholder="https://github.com/username/project"
           />
           <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-            <FaGithub className="h-5 w-5 text-gray-400" />
+            <FaLink className="h-5 w-5 text-gray-400" />
           </div>
         </div>
       </div>

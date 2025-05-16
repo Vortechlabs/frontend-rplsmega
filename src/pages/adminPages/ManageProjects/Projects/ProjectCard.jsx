@@ -1,9 +1,50 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaEdit, FaTrash, FaGithub, FaYoutube, FaUsers, FaCode } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaGithub, FaYoutube, FaUsers, FaCode, FaGlobe, FaMobileAlt, FaDesktop, FaPalette, FaLink } from 'react-icons/fa';
 import defaultProjectImage from '/defaultProfile.jpg';
 
 const ProjectCard = ({ project, onDelete }) => {
+  const getCategoryIcon = (categoryName) => {
+  const iconStyle = "text-sm";
+    switch(categoryName.toLowerCase()) {
+        case 'website':
+        return <FaGlobe className={`${iconStyle} text-OxfordBlue`} />;
+        case 'mobile app':
+        return <FaMobileAlt className={`${iconStyle} text-OxfordBlue`} />;
+        case 'desktop app':
+        return <FaDesktop className={`${iconStyle} text-OxfordBlue`} />;
+        case 'design':
+        return <FaPalette className={`${iconStyle} text-OxfordBlue`} />;
+        default:
+        return <FaCode className={`${iconStyle} text-OxfordBlue`} />;
+    }
+  };
+
+  const formatTimeAgo = (dateString) => {
+    if (!dateString) return 'Baru saja';
+    
+    const date = new Date(dateString);
+    const now = new Date();
+    const seconds = Math.floor((now - date) / 1000);
+
+    const intervals = {
+        tahun: 31536000,
+        bulan: 2592000,
+        hari: 86400,
+        jam: 3600,
+        menit: 60
+    };
+
+    for (const [unit, secondsInUnit] of Object.entries(intervals)) {
+        const interval = Math.floor(seconds / secondsInUnit);
+        if (interval >= 1) {
+            return `${interval} ${unit}${interval === 1 ? '' : ''} yang lalu`;
+        }
+    }
+    
+    return 'Baru saja';
+};
+
   return (
     <div className="card flex flex-col md:flex-row items-start md:items-center gap-5 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
       {/* Project Image */}
@@ -29,9 +70,10 @@ const ProjectCard = ({ project, onDelete }) => {
       <div className="w-full">
         <div className="flex justify-between items-start">
           <h3 className="font-bold text-xl leading-[30px] line-clamp-1">{project.title}</h3>
-          <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full ml-2">
-            {project.category?.name || 'Uncategorized'}
-          </span>
+          <span className="bg-blue-100 flex gap-2 text-blue-800 text-xs px-2 py-1 rounded-full ml-2">
+                {getCategoryIcon(project.category?.name)}
+                <span className='hidden md:block'>{project.category?.name}</span>
+            </span>
         </div>
         
         <p className="text-gray-600 text-sm mt-1 line-clamp-2">{project.description}</p>
@@ -68,6 +110,16 @@ const ProjectCard = ({ project, onDelete }) => {
             </div>
           )}
           
+          {/* Time Uploads */}
+          {project.technology && (
+            <div className="flex items-center gap-1">
+              <div className='h-2 w-2 bg-GoldenYellow rounded-full'></div>
+              <span className="text-xs text-gray-500">
+                {formatTimeAgo(project.created_at)}               
+              </span>
+            </div>
+          )}
+
           {/* Project Links */}
           <div className="flex items-center gap-3 ml-auto">
             {project.repository && (
@@ -76,9 +128,9 @@ const ProjectCard = ({ project, onDelete }) => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-gray-700"
-                title="GitHub Repository"
+                title="Tautan Karya"
               >
-                <FaGithub />
+                <FaLink />
               </a>
             )}
             {project.videoUrl && (

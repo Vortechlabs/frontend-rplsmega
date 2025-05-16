@@ -9,7 +9,6 @@ import defaultProfilePic from '/defaultProfile.jpg';
 import { 
   FaEdit, 
   FaPlus, 
-  FaShare, 
   FaDownload, 
   FaCopy, 
   FaTrash, 
@@ -22,6 +21,7 @@ import {
 } from 'react-icons/fa';
 import { QRCodeSVG } from 'qrcode.react';
 import { motion } from 'framer-motion';
+import { FiAward, FiCalendar, FiEdit2, FiFolder, FiGrid, FiMail, FiShare2 } from 'react-icons/fi';
 
 const truncateString = (str, maxLength) => {
   if (!str) return '';
@@ -90,23 +90,23 @@ function UserProfile() {
   const handleDeleteProject = async (projectId) => {
     try {
       const result = await Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: 'Apakah kamu yakin?',
+        text: "Kamu tidak dapat mengembalikan data ini!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3b82f6',
         cancelButtonColor: '#ef4444',
-        confirmButtonText: 'Yes, delete it!',
+        confirmButtonText: 'Ya, Hapus!',
       });
 
       if (result.isConfirmed) {
         await apiClient.delete(`/projects/${projectId}`);
         setProjects(prevProjects => prevProjects.filter(project => project.id !== projectId));
-        Swal.fire('Deleted!', 'Your project has been deleted.', 'success');
+        Swal.fire('Terhapus!', 'Karyamu sudah berhasil dihapus.', 'success');
       }
     } catch (error) {
-      console.error('Error deleting project:', error);
-      Swal.fire('Error!', 'Failed to delete project.', 'error');
+      console.error('Gagal mengapus karya:', error);
+      Swal.fire('Gagal!', 'Gagal untuk menghapus karya.', 'error');
     }
   };
 
@@ -114,7 +114,7 @@ function UserProfile() {
   const handleCopyLink = () => {
     const link = `${window.location.origin}/profile/creator/${userData.username}`;
     navigator.clipboard.writeText(link);
-    Swal.fire('Copied!', 'Profile link copied to clipboard.', 'success');
+    Swal.fire('Tersalin!', 'Tautan profil berhasil disalin.', 'success');
   };
 
   const downloadQRCode = () => {
@@ -144,7 +144,7 @@ function UserProfile() {
 
   if (loading) return <Loader />;
   if (error) return <p className="text-center text-red-500">{error}</p>;
-  if (!userData) return <p className="text-center text-gray-500">No user data available.</p>;
+  if (!userData) return <p className="text-center text-gray-500">Tidak ada data user tersedia.</p>;
 
   const profileLink = `${window.location.origin}/profile/creator/${userData.username}`;
 
@@ -161,125 +161,173 @@ function UserProfile() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="max-w-6xl mb-10 mx-auto"
+        className="max-w-6xl mb-10 mx-auto px-4"
       >
         {/* Profile Card Container */}
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 transition-all hover:shadow-2xl">
+        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100/80 transition-all hover:shadow-2xl hover:-translate-y-1">
           <div className="flex flex-col lg:flex-row">
-            {/* Profile Sidebar */}
-            <div className="lg:w-1/3 bg-gradient-to-br from-OxfordBlue to-OxfordBlue-Dark p-8 flex flex-col items-center relative">
-              {/* Profile Avatar */}
-              <div className="relative group mb-6">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md"></div>
-                <img
-                  src={userData.profilePicture ? `https://apirpl.smkn1purbalingga.sch.id/storage/${userData.profilePicture}` : defaultProfilePic}
-                  alt={`${userData.name}'s profile`}
-                  className="relative w-40 h-40 object-cover rounded-full border-4 border-white shadow-xl z-10 transition-transform duration-300 group-hover:scale-105"
-                />
-              </div>
+            {/* Profile Sidebar - Enhanced with Glass Effect */}
+            <div className="lg:w-1/3 bg-gradient-to-br from-OxfordBlue/90 to-OxfordBlue-Dark/90 p-8 flex flex-col items-center relative overflow-hidden">
+              {/* Decorative Elements */}
+              <div className="absolute -top-20 -right-20 w-64 h-64 bg-blue-400/10 rounded-full filter blur-3xl"></div>
+              <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-indigo-400/10 rounded-full filter blur-3xl"></div>
+              
+              {/* Profile Avatar with Floating Animation */}
+              <motion.div 
+                className="relative group mb-6 z-10"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              >
+                <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-70 transition-opacity duration-300 blur-md"></div>
+                <div className="relative w-40 h-40 rounded-full border-4 border-white/80 shadow-2xl overflow-hidden">
+                  <img
+                    src={userData.profilePicture ? `https://apirpl.smkn1purbalingga.sch.id/storage/${userData.profilePicture}` : defaultProfilePic}
+                    alt={`${userData.name}'s profile`}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  />
+                </div>
+              </motion.div>
               
               {/* User Info */}
-              <div className="text-center space-y-3">
-                <h2 className="text-2xl font-bold text-white tracking-tight">{userData.name}</h2>
-                <p className="text-blue-100 font-medium">{userData.email}</p>
+              <div className="text-center space-y-3 z-10">
+                <motion.h2 
+                  className="text-2xl font-bold text-white tracking-tight"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  {userData.name}
+                </motion.h2>
+                <motion.p 
+                  className="text-blue-100/90 font-medium flex items-center justify-center gap-1"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <FiMail className="w-4 h-4" />
+                  {userData.email}
+                </motion.p>
                 
-                {/* Class Badge */}
-                <div className="inline-flex bg-white/90 backdrop-blur-sm rounded-full px-4 py-1.5 border border-gray-200/50 shadow-sm mt-4">
-                  <span className="text-sm font-medium text-gray-700">
-                    Kelas <span className="font-bold text-OxfordBlue">{userData.class}</span> • SMKN 1 Purbalingga
+                {/* Class Badge with Hover Effect */}
+                <motion.div 
+                  className="inline-flex bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 border border-white/20 shadow-sm mt-4"
+                  whileHover={{ scale: 1.03 }}
+                >
+                  <span className="text-sm font-medium text-white">
+                    Kelas <span className="font-bold text-blue-300">{userData.class}</span> • SMKN 1 Purbalingga
                   </span>
-                </div>
+                </motion.div>
               </div>
               
               {/* Action Buttons */}
-              <div className="mt-auto pt-6 w-full flex justify-center gap-3">
+              <div className="mt-auto pt-6 w-full flex justify-center gap-3 z-10">
                 <Link 
                   to="/edit/profile"
                   className="flex items-center gap-2 hover:scale-105 transition-transform bg-white/90 hover:bg-white text-OxfordBlue px-4 py-2.5 rounded-lg border border-blue-200/50 shadow-sm hover:shadow-md font-medium text-sm"
                 >
-                  <FaEdit className="w-4 h-4" /> Edit Profile
+                  <FiEdit2 className="w-4 h-4" /> Perbarui Profil
                 </Link>
               </div>
             </div>
             
-            {/* Profile Content */}
-            <div className="lg:w-2/3 p-8">
-              {/* Header */}
-              <div className="flex flex-col sm:flex-row justify-between  items-start sm:items-center gap-4 mb-8">
-                <div>
-                  <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Profil saya</h1>
-                  <p className="text-gray-500 mt-1">Tunjukan kreatifitas dan bakatmu di RPL SMEGA.</p>
-                </div>
-                <button 
-                  onClick={handleShareProfile}
-                  className="flex items-center gap-2 bg-OxfordBlue hover:bg-OxfordBlue-Dark text-white px-4 py-2.5 rounded-lg hover:scale-105 transition-transform shadow-md hover:shadow-lg font-medium text-sm whitespace-nowrap"
+            {/* Profile Content - Enhanced Layout */}
+            <div className="lg:w-2/3 p-8 bg-gradient-to-br from-white to-gray-50">
+              {/* Header with Animated Elements */}
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 }}
                 >
-                  <FaShare className="w-4 h-4" /> Bagikan Profil
-                </button>
+                  <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Profil Saya</h1>
+                  <p className="text-gray-500 mt-1 flex items-center gap-1">
+                    <FiAward className="w-4 h-4" />
+                    Tunjukan kreatifitas dan bakatmu di RPL SMEGA
+                  </p>
+                </motion.div>
+                
+                <motion.button 
+                  onClick={handleShareProfile}
+                  className="flex items-center gap-2 bg-gradient-to-r from-OxfordBlue to-blue-600 hover:from-OxfordBlue-Dark hover:to-blue-700 text-white px-4 py-2.5 rounded-lg hover:scale-[1.02] transition-transform shadow-md hover:shadow-lg font-medium text-sm whitespace-nowrap"
+                  whileHover={{ y: -2 }}
+                >
+                  <FiShare2 className="w-4 h-4" /> Bagikan Profil
+                </motion.button>
               </div>
               
-              {/* Stats Grid */}
+              {/* Stats Grid - Enhanced Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
                 {/* Total Projects Card */}
                 <motion.div 
-                  whileHover={{ y: -2 }}
-                  className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md transition-all"
+                  whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
+                  className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-lg transition-all"
                 >
                   <div className="flex items-center">
                     <div className="bg-blue-50 p-3 rounded-xl mr-4">
-                      <svg className="w-6 h-6 text-OxfordBlue" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                        <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
-                      </svg>
+                      <div className="w-6 h-6 relative">
+                        <FiFolder className="absolute w-6 h-6 text-OxfordBlue" />
+                        <FiFolder className="absolute w-6 h-6 text-OxfordBlue opacity-30 animate-pulse delay-100" />
+                      </div>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500 font-medium">Total proyek</p>
+                      <p className="text-sm text-gray-500 font-medium">Total Karya</p>
                       <p className="text-2xl font-bold text-gray-800 mt-1">{projects.length}</p>
                     </div>
                   </div>
                 </motion.div>
                 
-                {/* Published Projects Card */}
+                {/* Join Date Card */}
                 <motion.div 
-                  whileHover={{ y: -2 }}
-                  className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md transition-all"
+                  whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
+                  className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-lg transition-all"
                 >
                   <div className="flex items-center">
                     <div className="bg-green-50 p-3 rounded-xl mr-4">
-                      <svg className="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
+                      <div className="w-6 h-6 relative">
+                        <FiCalendar className="absolute w-6 h-6 text-green-600" />
+                        <FiCalendar className="absolute w-6 h-6 text-green-600/30 animate-pulse delay-200" />
+                      </div>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500 font-medium">Gabung pada</p>
+                      <p className="text-sm text-gray-500 font-medium">Bergabung Pada</p>
                       <p className="text-2xl font-bold text-gray-800 mt-1">
-                      {formatDate(userData?.created_at)}
+                        {formatDate(userData?.created_at)}
                       </p>
                     </div>
                   </div>
                 </motion.div>
               </div>
               
-              {/* Project Categories Section */}
+              {/* Project Categories Section - Enhanced */}
               <div className="mb-8">
-                <div className="flex justify-between items-center mb-3">
-                  <h3 className="text-lg font-semibold text-gray-800">Kategori Proyek</h3>
-                  <span className="text-sm text-gray-500">
-                    {Array.from(new Set(projects.map(project => project.category?.name || 'Uncategorized'))).length} unique categories
+                <div className="flex justify-between items-center mb-4">
+                  <motion.h3 
+                    className="text-lg font-semibold text-gray-800 flex items-center gap-2"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                  >
+                    <FiGrid className="text-OxfordBlue" /> Kategori Karya
+                  </motion.h3>
+                  <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
+                    {Array.from(new Set(projects.map(project => project.category?.name || 'Uncategorized'))).length} kategori
                   </span>
                 </div>
                 
                 <div className="flex flex-wrap gap-3">
                   {Array.from(new Set(projects.map(project => project.category?.name || 'Uncategorized')))
-                    .filter(category => typeof category === 'string') // Ensure we only have strings
+                    .filter(category => typeof category === 'string')
                     .slice(0, 6)
-                    .map(category => (
+                    .map((category, index) => (
                       <motion.div
                         key={category}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 + index * 0.1 }}
                         whileHover={{ scale: 1.05 }}
                         className="px-4 py-2 bg-gradient-to-r from-blue-50 to-blue-100 text-OxfordBlue rounded-xl border border-blue-200 shadow-xs flex items-center gap-2"
                       >
-                        <span className="w-2 h-2 bg-OxfordBlue rounded-full"></span>
+                        <span className="w-2 h-2 bg-OxfordBlue rounded-full animate-pulse" style={{ animationDelay: `${index * 100}ms` }}></span>
                         <span className="font-medium text-sm capitalize">{category}</span>
                         <span className="text-xs text-blue-600 bg-blue-100 px-2 py-0.5 rounded-full ml-auto">
                           {projects.filter(p => p.category?.name === category || (!p.category && category === 'Uncategorized')).length}
@@ -288,30 +336,33 @@ function UserProfile() {
                     ))}
                   
                   {Array.from(new Set(projects.map(project => project.category?.name || 'Uncategorized'))).length > 6 && (
-                    <div className="px-4 py-2 bg-gray-50 text-gray-600 rounded-xl border border-gray-200 text-sm">
-                      +{Array.from(new Set(projects.map(project => project.category?.name || 'Uncategorized'))).length - 6} more
-                    </div>
+                    <motion.div 
+                      whileHover={{ scale: 1.05 }}
+                      className="px-4 py-2 bg-gray-50 text-gray-600 rounded-xl border border-gray-200 text-sm flex items-center gap-1"
+                    >
+                      <FiPlusCircle className="w-4 h-4" />
+                      +{Array.from(new Set(projects.map(project => project.category?.name || 'Uncategorized'))).length - 6} lainnya
+                    </motion.div>
                   )}
                 </div>
               </div>
-
             </div>
           </div>
         </div>
       </motion.section>
-        
+              
         {/* Projects Section */}
         <div className="mb-10">
           <div className="flex justify-between items-center mb-8">
             <div>
-              <h2 className="text-2xl font-bold text-gray-800">Proyek saya</h2>
-              <p className="text-gray-500">Koleksi karya kreatif kamu</p>
+              <h2 className="text-2xl font-bold text-gray-800">Karya saya</h2>
+              <p className="text-gray-500">Koleksi karya kreatif dan brilian kamu</p>
             </div>
             <Link 
               to="/upload/project"
               className="flex items-center gap-2 hover:scale-105 transition-transform bg-GoldenYellow-Dark text-white px-4 py-2 rounded-lg hover:bg-GoldenYellow shadow-md"
             >
-              <FaPlus size={14} /> Proyek baru
+              <FaPlus size={14} /> Bagikan karya baru
             </Link>
           </div>
           
@@ -337,11 +388,11 @@ function UserProfile() {
                     <h3 className="text-lg font-semibold text-gray-800">
                       {truncateString(project.title, 30)}
                     </h3>
-                                            {project.category && (
-                                            <span className=" text-center bg-blue-100  text-OxfordBlue text-xs  p-1 rounded-full flex items-center">
-                                                {getCategoryIcon(project.category.name)}
-                                            </span>
-                                            )}
+                      {project.category && (
+                      <span className=" text-center bg-blue-100  text-OxfordBlue text-xs  p-1 rounded-full flex items-center">
+                          {getCategoryIcon(project.category.name)}
+                      </span>
+                      )}
                   </div>
                   <p className="text-sm text-gray-600 mb-4 line-clamp-2">
                     {project.description || 'No description provided'}
@@ -381,7 +432,7 @@ function UserProfile() {
                 <div className="bg-blue-100 rounded-full p-4 mb-4 text-OxfordBlue">
                   <FaPlus size={24} />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">Tambah proyek baru</h3>
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">Bagikan karya baru</h3>
                 <p className="text-sm text-gray-600">
                   Tunjukan karya terbaik kamu di RPL SMEGA
                 </p>
@@ -394,9 +445,9 @@ function UserProfile() {
                 <div className="bg-yellow-100 rounded-full p-4 w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <FaPlus className="text-GoldenYellow-Dark" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">Belum ada proyek yang kamu unggah</h3>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">Belum ada karya yang kamu bagikan</h3>
                 <p className="text-gray-600 mb-6">
-                  Mulai dengan mengunggah proyek kamu, dan tunjukan skill kamu
+                  Mulai dengan membagikan karya kamu, dan tunjukan skill terpendammu
                 </p>
                 <Link 
                   to="/upload/project"

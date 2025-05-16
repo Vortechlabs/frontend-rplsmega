@@ -6,7 +6,7 @@ import Sidebar from '../../../../components/Sidebar';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FiUpload, FiTrash2, FiPlus, FiChevronLeft, FiChevronRight, FiCheck, FiX, FiImage, FiUsers, FiInfo } from 'react-icons/fi';
-import { FaYoutube, FaGithub, FaCode, FaTimes } from 'react-icons/fa';
+import { FaYoutube, FaGithub, FaCode, FaTimes, FaLink } from 'react-icons/fa';
 import { MdCategory } from 'react-icons/md';
 
 const TambahProject = () => {
@@ -198,7 +198,7 @@ const TambahProject = () => {
         });
 
         if (images.length + validFiles.length > 2) {
-            toast.error('YKamu hanya bisa mengunggah 2 gambar.', {
+            toast.error('Kamu hanya bisa mengunggah 2 pratinjau.', {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -265,7 +265,7 @@ const TambahProject = () => {
             }
         } else if (activeStep === 1) {
             if (images.length === 0) {
-                toast.error('Mohon unggah setidaknya 1 gambar.', {
+                toast.error('Mohon unggah setidaknya 1 pratinjau.', {
                     position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -292,7 +292,7 @@ const TambahProject = () => {
     );
     
     if (hasEmptyTeamMemberFields) {
-        toast.error('Harap isi semua field untuk anggota tim', {
+        toast.error('Harap isi semua colom input untuk anggota tim', {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -319,7 +319,7 @@ const TambahProject = () => {
 
         setIsSubmitting(true);
 
-        const toastId = toast.loading("Mengunggah proyek...", {
+        const toastId = toast.loading("Mengunggah karya...", {
             position: "top-right",
             autoClose: false,
             closeOnClick: false,
@@ -353,7 +353,7 @@ const TambahProject = () => {
             });
 
             toast.update(toastId, {
-                render: "Proyek berhasil diunggah!",
+                render: "Karya berhasil diunggah!",
                 type: "success",
                 isLoading: false,
                 autoClose: 3000,
@@ -409,13 +409,12 @@ const TambahProject = () => {
 
     const steps = [
         {
-            label: 'Project Details',
-            icon: <FiInfo className="mr-2" />,
+            label: 'Deatil Karya',
             content: (
                 <div className="space-y-6">
                     <div className="bg-gray-50 p-4 rounded-lg">
                         <label className="\ text-sm font-medium text-gray-700 mb-1 flex items-center">
-                            <FiInfo className="mr-2" /> Judul  <span className='text-red-700'>*</span>
+                            <FiInfo className="mr-2" /> Judul Karya <span className='text-red-700'>*</span>
                         </label>
                         <input
                             type="text"
@@ -439,7 +438,7 @@ const TambahProject = () => {
                             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 h-32"
                             maxLength={1000}
                             required
-                            placeholder="Detailed project description"
+                            placeholder="Deskripsi detail karya"
                         />
                         <div className="text-right text-xs text-gray-500 mt-1">
                             {formData.description.length}/1000 karakter
@@ -567,7 +566,7 @@ const TambahProject = () => {
 
                     <div className="bg-gray-50 p-4 rounded-lg">
                         <label className=" text-sm font-medium text-gray-700 mb-1 flex items-center">
-                            <FaGithub className="mr-2" /> Tautan repositori  <span className='text-red-700'>*</span>
+                            <FaLink className="mr-2" /> Tautan Karya  <span className='text-red-700'>*</span>
                         </label>
                         <input
                             type="url"
@@ -600,8 +599,7 @@ const TambahProject = () => {
             )
         },
         {
-            label: 'Gambar proyek',
-            icon: <FiImage className="mr-2" />,
+            label: 'Pratinjau Karya',
             content: (
                 <div className="space-y-6">
                     <div className="bg-gray-50 p-4 rounded-lg">
@@ -632,7 +630,7 @@ const TambahProject = () => {
                                 <p className="text-xs text-gray-500">
                                     {images.length > 0 
                                         ? `Kamu bisa mengunggah ${2 - images.length} gambar lagi.`
-                                        : 'At least one image is required.'}
+                                        : 'Mohon unggah setidaknya 1 pratinjau.'}
                                 </p>
                             </div>
                         </div>
@@ -662,7 +660,7 @@ const TambahProject = () => {
                                                     newNames[index] = e.target.value;
                                                     setImageNames(newNames);
                                                 }}
-                                                placeholder={image.name.split('.')[0]}
+                                                placeholder="Ex: Frontend Project"
                                                 className="w-full px-2 py-1 border border-gray-300 rounded text-sm focus:ring-blue-500 focus:border-blue-500"
                                             />
                                         </div>
@@ -670,7 +668,7 @@ const TambahProject = () => {
                                             type="button"
                                             onClick={() => handleRemoveImage(index)}
                                             className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600 transition-colors"
-                                            title="Hapus gambar"
+                                            title="Hapus pratinjau"
                                         >
                                             <FiTrash2 size={14} />
                                         </button>
@@ -682,7 +680,7 @@ const TambahProject = () => {
                         <div className="flex flex-col items-center justify-center h-64 border-2 border-dashed rounded-lg bg-gray-50">
                             <FiImage className="text-gray-400 text-4xl mb-3" />
                             <p className="text-gray-500 text-center">
-                                Tidak ada gambar di upload. Mohon unggah setidaknya 1 gambar.
+                                Tidak ada pratinjau di upload. Mohon unggah setidaknya 1 gambar.
                             </p>
                         </div>
                     )}
@@ -691,7 +689,6 @@ const TambahProject = () => {
         },
         {
             label: 'Anggota Grup',
-            icon: <FiUsers className="mr-2" />,
             content: (
                 <div className="space-y-6">
                     <div className="bg-gray-50 p-4 rounded-lg">
@@ -824,12 +821,6 @@ const TambahProject = () => {
 
                             {/* Form content */}
                             <div className="p-6 max-w-screen">
-                                <div className="mb-4 flex items-center">
-                                    {steps[activeStep].icon}
-                                    <h2 className="text-lg font-semibold text-gray-800">
-                                        {steps[activeStep].label}
-                                    </h2>
-                                </div>
                                 {steps[activeStep].content}
                             </div>
 

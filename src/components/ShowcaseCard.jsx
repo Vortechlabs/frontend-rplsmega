@@ -35,20 +35,21 @@ const formatTimeAgo = (dateString) => {
     const seconds = Math.floor((now - date) / 1000);
 
     const intervals = {
-        year: 31536000,
-        month: 2592000,
-        day: 86400,
-        hour: 3600,
-        minute: 60
+        tahun: 31536000,
+        bulan: 2592000,
+        hari: 86400,
+        jam: 3600,
+        menit: 60
     };
 
     for (const [unit, secondsInUnit] of Object.entries(intervals)) {
         const interval = Math.floor(seconds / secondsInUnit);
         if (interval >= 1) {
-            return `${interval} ${unit}${interval === 1 ? '' : 's'} ago`;
+            return `${interval} ${unit}${interval === 1 ? '' : ''} yang lalu`;
         }
     }
-    return 'Baru Saja';
+    
+    return 'Baru saja';
 };
 
 function ShowcaseCard() {
@@ -172,7 +173,7 @@ function ShowcaseCard() {
             <div className="px-4 md:px-20 py-8">
                 <div className="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative" role="alert">
                     <strong className="font-bold">Info: </strong>
-                    <span className="block sm:inline">Tidak ada proyek yang valid.</span>
+                    <span className="block sm:inline">Tidak ada karya yang valid.</span>
                 </div>
             </div>
         );

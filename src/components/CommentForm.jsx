@@ -83,7 +83,7 @@ function CommentForm({ projectId, onCommentSubmitted }) {
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          placeholder="Apa pendapatmu tentang proyek ini? Bersikaplah baik dan hindari perkataan buruk..."
+          placeholder="Apa pendapatmu tentang karya ini? Bersikaplah baik dan hindari perkataan buruk..."
           required
           maxLength={255}
           className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-OxfordBlue focus:border-oxring-OxfordBlue outline-none transition-all"

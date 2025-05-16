@@ -56,8 +56,8 @@ function Sidebar() {
         logout();
         navigate('/auth/admin/login');
         Swal.fire({
-          title: 'Logged Out',
-          text: 'You have been successfully logged out',
+          title: 'Berhasil!',
+          text: 'Kamu telah berhasil keluar',
           icon: 'success',
           showConfirmButton: false,
           timer: 1500,
@@ -100,17 +100,17 @@ function Sidebar() {
     { 
       to: '/admin/manage-users', 
       icon: <FaUsers className="text-lg" />, 
-      text: 'Users'
+      text: 'Pengguna'
     },
     { 
       to: '/admin/manage-projects', 
       icon: <FaProjectDiagram className="text-lg" />, 
-      text: 'Projects'
+      text: 'Karya Siswa'
     },
     { 
       to: '/admin/manage-alerts', 
       icon: <FiAlertTriangle className="text-lg" />, 
-      text: 'Alerts'
+      text: 'Pemberitahuan'
     }
   ];
 
@@ -232,7 +232,7 @@ function Sidebar() {
                 >
                   <FaSignOutAlt className="text-white text-lg" />
                   {isSidebarOpen && (
-                    <span className="font-semibold text-white">Logout</span>
+                    <span className="font-semibold text-white">Keluar akun</span>
                   )}
                 </motion.button>
               </motion.li>
@@ -255,8 +255,8 @@ function Sidebar() {
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.9, y: 20 }}
               >
-                <h3 className="text-xl font-bold text-white mb-4">Confirm Logout</h3>
-                <p className="text-gray-300 mb-6">Are you sure you want to log out?</p>
+                <h3 className="text-xl font-bold text-white mb-4">Konfirmasi sebelum Keluar</h3>
+                <p className="text-gray-300 mb-6">Apakah kamu yakin ingin keluar dari akun ini?</p>
                 
                 <div className="flex justify-end gap-3">
                   <motion.button
@@ -265,7 +265,7 @@ function Sidebar() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    Cancel
+                    Batal
                   </motion.button>
                   
                   <motion.button
@@ -284,7 +284,7 @@ function Sidebar() {
                         >
                           <FaSpinner />
                         </motion.span>
-                        Logging Out...
+                        Sedang keluar...
                       </>
                     ) : (
                       'Log Out'

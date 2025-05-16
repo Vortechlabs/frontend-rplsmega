@@ -64,7 +64,7 @@ const RatingForm = ({ projectSlug }) => {
         </div>
       ) : (
         <div className="rating-input">
-          <p>Berikan rating proyek:</p>
+          <p>Berikan rating karya:</p>
           <div className="stars-input">
             {[1, 2, 3, 4, 5].map((star) => (
               <FaStar

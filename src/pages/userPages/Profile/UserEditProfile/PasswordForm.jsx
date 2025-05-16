@@ -72,15 +72,15 @@ const handleSaveWithoutChanges = async (e) => {
     <div className="space-y-6">
       {!showTokenForm ? (
         <div className="text-center p-6 bg-blue-50 rounded-lg">
-          <h3 className="text-lg font-medium text-OxfordBlue-Dark mb-2">Password Change Security</h3>
+          <h3 className="text-lg font-medium text-OxfordBlue-Dark mb-2">Keamanan Perubahan Kata Sandi</h3>
           <p className="text-OxfordBlue mb-4">
-            We need to verify your identity before password change.
+            Kami perlu memverifikasi identitas Anda sebelum mengubah kata sandi.
           </p>
           <button
             type="button"
             onClick={handleTokenRequest}
             disabled={loadingStates.tokenRequest}
-            className="px-6 py-2.5 bg-OxfordBlue text-white rounded-lg hover:bg-OxfordBlue-Dark transition duration-300 shadow-md flex items-center justify-center gap-2"
+            className="px-6 py-2.5 w-full bg-OxfordBlue text-white rounded-lg hover:bg-OxfordBlue-Dark transition duration-300 shadow-md flex items-center justify-center gap-2"
           >
             {loadingStates.tokenRequest ? (
               <>
@@ -88,9 +88,9 @@ const handleSaveWithoutChanges = async (e) => {
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                Sending...
+                Mengirim...
               </>
-            ) : 'Request Verification Token'}
+            ) : 'Kirimkan Token Verifikasi'}
           </button>
           
           <div className="flex justify-between mt-8">
@@ -121,10 +121,10 @@ const handleSaveWithoutChanges = async (e) => {
         </div>
       ) : !tokenVerified ? (
         <div className="p-6 bg-blue-50 rounded-lg">
-          <h3 className="text-lg font-medium text-OxfordBlue mb-2">Verify Your Identity</h3>
+          <h3 className="text-lg font-medium text-center text-OxfordBlue mb-2">Verifikasi identitasmu</h3>
           <div className="max-w-md mx-auto">
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Verification Token
+              Kode Token Verifikasi
             </label>
             <div className="flex gap-2">
               <input
@@ -132,7 +132,7 @@ const handleSaveWithoutChanges = async (e) => {
                 value={token}
                 onChange={handleTokenChange}
                 className="flex-1 p-3 border border-gray-300 rounded-lg focus:ring-OxfordBlue focus:border-OxfordBlue"
-                placeholder="Enter 6-digit token"
+                placeholder="Masukan 6-digit token"
                 maxLength="6"
               />
               <button
@@ -147,9 +147,9 @@ const handleSaveWithoutChanges = async (e) => {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    Verifying...
+                    Memverifikasi...
                   </>
-                ) : 'Verify'}
+                ) : 'Verifikasi'}
               </button>
             </div>
           </div>
@@ -200,11 +200,11 @@ const handleSaveWithoutChanges = async (e) => {
             </div>
             
             <div className="text-sm text-gray-500">
-              <p>Password requirements:</p>
+              <p>Kriteria Kata Sandi:</p>
               <ul className="list-disc pl-5 space-y-1 mt-1">
-                <li>Minimum 8 characters</li>
-                <li>At least one uppercase letter</li>
-                <li>At least one number</li>
+                <li>Minimal 8 karakter</li>
+                <li>Paling tidak 1 huruf kapital</li>
+                <li>Paling tidak 1 Angka dan Karakter khusus</li>
               </ul>
             </div>
           </div>
