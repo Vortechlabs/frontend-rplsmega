@@ -200,7 +200,7 @@ function ShowcaseCard() {
                     className="peer pl-11 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-OxfordBlue w-full bg-white/80 backdrop-blur-sm transition-all duration-300 hover:bg-white hover:shadow-sm"
                 />
                 <label className="absolute left-11 top-3 px-1 text-gray-500 pointer-events-none transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-OxfordBlue peer-focus:bg-white peer-focus:px-1.5 rounded">
-                    Jelajahi proyek...
+                    Jelajahi karya...
                 </label>
                 </div>
 
