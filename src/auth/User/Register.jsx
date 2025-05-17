@@ -260,7 +260,7 @@ function Register() {
                                             className="mt-1 w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-OxfordBlue focus:border-OxfordBlue transition-all duration-200"
                                             required
                                         >
-                                            <option value="" disabled>Pilik kelasmu</option>
+                                            <option value="" disabled>Pilih kelasmu</option>
                                             <option value="XI RPL 1">XI RPL 1</option>
                                             <option value="XI RPL 2">XI RPL 2</option>
                                             <option value="XII RPL 1">XII RPL 1</option>

@@ -57,7 +57,11 @@ const Home = () => {
               />
               
               <BlurText
-                text="Website ini merupakan tempat untuk menampilkan karya siswa-siswi Rekayasa Perangkat Lunak (RPL) SMKN 1 Purbalingga. Di sini, kamu dapat menemukan berbagai karya yang telah dikembangkan oleh siswa-siswi rpl smega, mulai dari aplikasi berbasis web, mobile, desktop, dan lainnya."
+                text="Rekayasa Perangkat Lunak (RPL) adalah kompetensi keahlian di bidang teknologi informasi yang berfokus pada pemrograman, pengembangan software, serta pembuatan aplikasi dan game.
+
+Di jurusan ini, siswa dibekali kemampuan untuk merancang, membangun, dan menguji berbagai jenis perangkat lunak mulai dari aplikasi berbasis web, mobile, desktop, hingga game interaktif.
+
+Dengan kurikulum yang up-to-date dan proyek nyata, RPL menjadi pilihan tepat bagi kamu yang ingin menjadi developer, programmer, game creator, atau startup founder masa depan. Di website ini, kamu bisa melihat beragam hasil karya siswa, seperti aplikasi web, mobile, desktop, game dan lainnya."
                 delay={50}
                 animateBy="words"
                 direction="top"
