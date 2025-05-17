@@ -41,7 +41,7 @@ const EditAlertPage = () => {
 
         // Set image preview
         if (alert.image_path) {
-          setImagePreview(`https://apirpl.smkn1purbalingga.sch.id/storage/${alert.image_path}`);
+          setImagePreview(`https://api-rplsmega-master-auajf8.laravel.cloud/storage/${alert.image_path}`);
         }
       } catch (error) {
         console.error('Error fetching alert:', error);

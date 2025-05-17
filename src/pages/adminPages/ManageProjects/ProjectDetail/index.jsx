@@ -643,7 +643,7 @@ const ProjectDetailAdmin = () => {
                     {project.project_image?.map((image, index) => (
                       <div key={`image-${index}`} className="relative">
                         <img
-                          src={`https://apirpl.smkn1purbalingga.sch.id/storage/${image.projectImage}`}
+                          src={`https://api-rplsmega-master-auajf8.laravel.cloud/${image.projectImage}`}
                           alt={`Project Image ${index}`}
                           className="w-full min-h-96 object-cover"
                           onError={(e) => {
@@ -711,7 +711,7 @@ const ProjectDetailAdmin = () => {
                   <div className="flex items-center">
                     {project.user.profilePicture ? (
                       <img
-                        src={`https://apirpl.smkn1purbalingga.sch.id/storage/${project.user.profilePicture}`}
+                        src={`https://api-rplsmega-master-auajf8.laravel.cloud/storage/${project.user.profilePicture}`}
                         alt="profile"
                         className="h-14 w-14 rounded-full object-cover mr-4"
                         onError={(e) => {
@@ -885,7 +885,7 @@ const ProjectDetailAdmin = () => {
                               <img
                                 src={
                                   comment.user?.profilePicture
-                                    ? `https://apirpl.smkn1purbalingga.sch.id/storage/${comment.user.profilePicture}`
+                                    ? `https://api-rplsmega-master-auajf8.laravel.cloud/storage/${comment.user.profilePicture}`
                                     : defaultProfilePic
                                 }
                                 alt="profile"

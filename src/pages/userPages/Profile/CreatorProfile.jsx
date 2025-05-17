@@ -148,7 +148,7 @@ function CreatorProfile() {
                   <div className="relative w-32 h-32 rounded-full border-4 border-white/80 shadow-xl overflow-hidden">
                     <img
                       src={user.profilePicture 
-                        ? `https://apirpl.smkn1purbalingga.sch.id/storage/${user.profilePicture}`
+                        ? `https://api-rplsmega-master-auajf8.laravel.cloud/storage/${user.profilePicture}`
                         : defaultProfilePic}
                       alt={`${user.name}'s profile`}
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
@@ -230,7 +230,7 @@ function CreatorProfile() {
                         <div className="h-48 overflow-hidden bg-gray-100">
                           <img
                             className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                            src={`https://apirpl.smkn1purbalingga.sch.id/storage/${project.project_image[0].projectImage}`}
+                            src={`https://api-rplsmega-master-auajf8.laravel.cloud/storage/${project.project_image[0].projectImage}`}
                             alt={project.project_image[0].name_image}
                           />
                         </div>

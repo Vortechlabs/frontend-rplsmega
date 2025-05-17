@@ -377,7 +377,7 @@ function UserProfile() {
                 {project.project_image && project.project_image.length > 0 && (
                   <div className="h-48 overflow-hidden bg-gray-100">
                     <img
-                      src={`https://apirpl.smkn1purbalingga.sch.id/storage/${project.project_image[0].projectImage}`}
+                      src={`https://api-rplsmega-master-auajf8.laravel.cloud/storage/${project.project_image[0].projectImage}`}
                       alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                     />
@@ -479,7 +479,7 @@ function UserProfile() {
                 includeMargin={true}
                 fgColor="#ECBB03"
                 imageSettings={{
-                  src: userData.profilePicture ? `https://apirpl.smkn1purbalingga.sch.id/storage/${userData.profilePicture}` : defaultProfilePic,
+                  src: userData.profilePicture ? `https://api-rplsmega-master-auajf8.laravel.cloud/storage/${userData.profilePicture}` : defaultProfilePic,
                   excavate: true,
                   width: 40,
                   height: 40

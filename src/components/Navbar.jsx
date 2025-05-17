@@ -189,7 +189,7 @@ function Navbar() {
                                     <motion.img
                                         src={
                                             user[0].profilePicture
-                                            ? `https://apirpl.smkn1purbalingga.sch.id/storage/${user[0].profilePicture}`
+                                            ? `https://api-rplsmega-master-auajf8.laravel.cloud/storage/${user[0].profilePicture}`
                                             : DefaultProfile
                                         }
                                         alt="Profile"

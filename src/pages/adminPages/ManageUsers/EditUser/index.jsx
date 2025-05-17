@@ -41,7 +41,7 @@ function EditUser() {
         const response = await apiClient.get(`/users/${id}`);
         setUser(response.data);
         setOriginalUser(response.data);
-        setPreview(response.data.profilePicture ? `https://apirpl.smkn1purbalingga.sch.id/storage/${response.data.profilePicture}` : null);
+        setPreview(response.data.profilePicture ? `https://api-rplsmega-master-auajf8.laravel.cloud/storage/${response.data.profilePicture}` : null);
       } catch (error) {
         console.error("Error fetching user:", error);
         setError("Gagal memuat data pengguna. Silakan coba lagi.");
@@ -70,7 +70,7 @@ function EditUser() {
       reader.readAsDataURL(file);
     } else {
       setPreview(originalUser?.profilePicture ? 
-        `https://apirpl.smkn1purbalingga.sch.id/storage/${originalUser.profilePicture}` : null);
+        `https://api-rplsmega-master-auajf8.laravel.cloud/storage/${originalUser.profilePicture}` : null);
       setUser({ ...user, profilePicture: null });
     }
   };

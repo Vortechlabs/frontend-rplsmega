@@ -141,7 +141,7 @@ if (error) {
                                 {project.project_image && project.project_image.length > 0 ? (
                                     <img 
                                         className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                                        src={`https://apirpl.smkn1purbalingga.sch.id/storage/${project.project_image[0].projectImage}`} 
+                                        src={`https://api-rplsmega-master-auajf8.laravel.cloud/storage/${project.project_image[0].projectImage}`} 
                                         alt={project.title} 
                                         loading="lazy"
                                     />
