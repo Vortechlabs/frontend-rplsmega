@@ -23,18 +23,46 @@ const AlertCard = ({ alert, onDelete }) => {
       default: return <FaInfoCircle className={`${iconClass} text-gray-800 `} />;
     }
   };
+  
 
-  const formatDate = (dateString) => {
-    if (!dateString) return 'N/A';
+const formatDate = (dateString) => {
+  if (!dateString) return 'Belum diatur';
+  
+  try {
+    // Buat objek Date dan tambahkan 8 jam (dalam milidetik)
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
+    date.setHours(date.getHours() + 8);
+    
+    // Format untuk tampilan dalam bahasa Indonesia
+    return date.toLocaleDateString('id-ID', {
+      weekday: 'short', // 'Sat' untuk Sabtu
       day: 'numeric',
+      month: 'short', // 'May' untuk Mei
+      year: 'numeric'
+    }).replace(/\s+/g, ' '); // Hapus spasi berlebih
+  } catch (e) {
+    console.error('Error formatting date:', e);
+    return 'Format salah';
+  }
+};
+
+const formatTimeOnly = (dateString) => {
+  if (!dateString) return '';
+  
+  try {
+    const date = new Date(dateString);
+    date.setHours(date.getHours() + 25);
+    
+    return date.toLocaleTimeString('id-ID', {
       hour: '2-digit',
-      minute: '2-digit'
+      minute: '2-digit',
+      hour12: false
     });
-  };
+  } catch (e) {
+    console.error('Error formatting time:', e);
+    return '';
+  }
+};
 
   return (
     <div key={alert.id} className="p-6 hover:bg-gray-50 transition-colors">
@@ -71,8 +99,28 @@ const AlertCard = ({ alert, onDelete }) => {
               </div>
             </div>
             <div className="text-sm text-gray-500">
-              Start : {formatDate(alert.start_at)} <br />
-              End : {formatDate(alert.end_at) || 'No end date'}
+              <div className="flex items-center gap-1">
+                <span>Mulai:</span> 
+                {alert.start_at ? (
+                  <>
+                    <span>{formatDate(alert.start_at)}</span>
+                    <span>({formatTimeOnly(alert.start_at)})</span>
+                  </>
+                ) : (
+                  <span>Belum diatur</span>
+                )}
+              </div>
+              <div className="flex items-center gap-1">
+                <span>Selesai:</span>
+                {alert.end_at ? (
+                  <>
+                    <span>{formatDate(alert.end_at)}</span>
+                    <span>({formatTimeOnly(alert.end_at)})</span>
+                  </>
+                ) : (
+                  <span>Tidak ada akhir</span>
+                )}
+              </div>
             </div>
           </div>
           

@@ -35,21 +35,6 @@ const AlertsContainer = () => {
     setShownAlerts(prev => [...prev, alertId]);
   };
 
-  if (loading) {
-    return (
-      <div className="fixed inset-0 flex items-center justify-center pointer-events-none">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur rounded-full shadow-sm border border-gray-100"
-        >
-          <div className="h-2 w-2 bg-blue-500 rounded-full animate-pulse" />
-          <span className="text-sm text-gray-600">Loading notifications</span>
-        </motion.div>
-      </div>
-    );
-  }
-
   return (
     <div className="fixed inset-0 flex items-start justify-end pointer-events-none z-[100] p-4 pt-20">
       <div className="flex flex-col items-end space-y-3 w-full max-w-lg">

@@ -29,15 +29,23 @@ const EditAlertPage = () => {
           alert.is_active === false ? 0 : 
           alert.is_active;
         
-        // Set form values
-        reset({
-          title: alert.title,
-          content: alert.content,
-          type: alert.type,
-          is_active: isActive, 
-          start_at: alert.start_at ? alert.start_at.substring(0, 16) : '',
-          end_at: alert.end_at ? alert.end_at.substring(0, 16) : '',
-        });
+      // Format tanggal dengan menambah 8 jam untuk ditampilkan
+      const formatDateForDisplay = (dateString) => {
+        if (!dateString) return '';
+        const date = new Date(dateString);
+        date.setHours(date.getHours() + 8); // Tambah 8 jam
+        return date.toISOString().slice(0, 16);
+      };
+
+      // Set form values dengan waktu yang sudah ditambah 8 jam
+      reset({
+        title: alert.title,
+        content: alert.content,
+        type: alert.type,
+        is_active: isActive, 
+        start_at: formatDateForDisplay(alert.start_at),
+        end_at: formatDateForDisplay(alert.end_at),
+      });
 
         // Set image preview
         if (alert.image_path) {
@@ -92,9 +100,26 @@ const EditAlertPage = () => {
     formData.append('title', data.title);
     formData.append('content', data.content);
     formData.append('type', data.type);
-    formData.append('is_active', data.is_active ? 'true' : 'false'); 
-    if (data.start_at) formData.append('start_at', data.start_at);
-    if (data.end_at) formData.append('end_at', data.end_at);
+    formData.append('is_active', data.is_active ? 'true' : 'false');   
+
+    const adjustTimeForBackend = (dateString) => {
+    if (!dateString) return null;
+    const date = new Date(dateString);
+    date.setHours(date.getHours() - 1); // Kurangi 8 jam
+    return date.toISOString().slice(0, 19).replace('T', ' ');
+  };
+
+  if (data.start_at) {
+    const originalStartAt = adjustTimeForBackend(data.start_at);
+    formData.append('start_at', originalStartAt);
+    console.log('Start At - Display:', data.start_at, '| Backend:', originalStartAt);
+  }
+  if (data.end_at) {
+    const originalEndAt = adjustTimeForBackend(data.end_at);
+    formData.append('end_at', originalEndAt);
+    console.log('End At - Display:', data.end_at, '| Backend:', originalEndAt);
+  }
+  
     if (data.image && data.image[0]) {
       formData.append('image', data.image[0]);
     }
