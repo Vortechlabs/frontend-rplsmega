@@ -13,11 +13,11 @@ function Project() {
       <div className="relative min-h-screen mt-20">
         <div className="container mx-auto py-12">
           <div className="text-center mb-10 px-6">
-            <h1 class="mb-1 text-4xl uppercase font-extrabold leading-none tracking-tight text-OxfordBlue md:text-xl lg:text-2xl ">
+            <h1 className="mb-1 text-4xl uppercase font-extrabold leading-none tracking-tight text-OxfordBlue md:text-xl lg:text-2xl ">
               Lihat hasil karya siswa-siswi{" "}
-              <span class="text-GoldenYellow">RPL SMEGA</span>
+              <span className="text-GoldenYellow">RPL SMEGA</span>
             </h1>
-            <p class="text-sm font-normal text-gray-500 lg:text-lg dark:text-gray-400">
+            <p className="text-sm font-normal text-gray-500 lg:text-lg dark:text-gray-400">
               Jelajahi karya para pengembang paling berbakat dan berpengalaman
               dari SMKN 1 Purbalingga.
             </p>

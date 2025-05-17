@@ -396,11 +396,9 @@ function ShowcaseCard() {
 
                                         {/* View Details Button */}
                                         <div className="mt-4">
-                                            <Link to={`/project/${project.slug}`}>
-                                                <button className="w-full bg-white border border-OxfordBlue text-OxfordBlue hover:bg-OxfordBlue hover:text-white transition-colors duration-300 py-2 px-4 rounded-lg text-sm font-semibold">
-                                                    Lihat Detail
-                                                </button>
-                                            </Link>
+                                            <button className="w-full bg-white border border-OxfordBlue text-OxfordBlue hover:bg-OxfordBlue hover:text-white transition-colors duration-300 py-2 px-4 rounded-lg text-sm font-semibold">
+                                                Lihat Detail
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
