@@ -67,7 +67,7 @@ const ProjectImagesStep = ({ images, imageNames, setImages, setImageNames }) => 
                 <button
                   type="button"
                   onClick={() => handleRemoveImage(index)}
-                  className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-7 h-7 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-md"
+                  className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-7 h-7 flex items-center justify-center opacity-40 group-hover:opacity-100 transition-opacity shadow-md"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

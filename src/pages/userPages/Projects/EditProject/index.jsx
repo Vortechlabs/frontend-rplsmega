@@ -615,13 +615,17 @@ const UpdateProject = () => {
               Deskripsi <span className="text-red-500">*</span>
             </label>
             <textarea
-              name="deskripsi"
+              name="description"
               value={formData.description}
               onChange={handleInputChange}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-OxfordBlue focus:border-OxfordBlue transition-all min-h-[200px]"
-              placeholder="Deskripsikan sesuatu tentang proyekmu..."
+              placeholder="Deskripsikan sesuatu tentang karyamu..."
+              maxLength={1000}
               required
             />
+            <div className={`text-right text-xs mt-1 ${formData.description.length >= 950 ? 'text-red-500' : 'text-gray-500'}`}>
+              {formData.description.length}/1000 karakter
+            </div>
           </div>
 
           {/* Repository URL */}
@@ -738,7 +742,7 @@ const UpdateProject = () => {
                             )
                           )
                         }
-                        className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                        className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center opacity-40 group-hover:opacity-100 transition-opacity"
                       >
                         <FiX size={14} />
                       </button>
@@ -792,7 +796,7 @@ const UpdateProject = () => {
                       formData.imagesToDelete.length +
                       formData.images.length)
                   } gambar lagi.`
-                : "At least one image is required."}
+                : "Unggah setidaknya 1 pratinjau."}
             </p>
           </div>
 
