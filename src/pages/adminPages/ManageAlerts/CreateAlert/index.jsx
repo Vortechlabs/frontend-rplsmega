@@ -40,14 +40,8 @@ const CreateAlertPage = () => {
     formData.append('content', data.content);
     formData.append('type', data.type);
     formData.append('is_active', data.is_active ? '1' : '0');
-    if (data.start_at) {
-      data.start_at = new Date(data.start_at).toISOString();
-    }
-    if (data.end_at) {
-      data.end_at = new Date(data.end_at).toISOString();
-    }
-    //if (data.start_at) formData.append('start_at', data.start_at);
-    //if (data.end_at) formData.append('end_at', data.end_at);
+    if (data.start_at) formData.append('start_at', data.start_at);
+    if (data.end_at) formData.append('end_at', data.end_at);
     if (data.image && data.image[0]) {
       formData.append('image', data.image[0]);
     }
