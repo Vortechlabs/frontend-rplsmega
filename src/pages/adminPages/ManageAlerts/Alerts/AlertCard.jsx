@@ -25,21 +25,28 @@ const AlertCard = ({ alert, onDelete }) => {
   };
   
 
-const formatDate = (dateString) => {
+const formatDate = (dateString, adjustDays = 0) => {
   if (!dateString) return 'Belum diatur';
   
   try {
-    // Buat objek Date dan tambahkan 8 jam (dalam milidetik)
+    // Buat objek Date dari string
     const date = new Date(dateString);
+    
+    // Tambahkan 8 jam untuk penyesuaian waktu
     date.setHours(date.getHours() + 8);
+    
+    // Kurangi hari jika diperlukan
+    if (adjustDays !== 0) {
+      date.setDate(date.getDate() + adjustDays);
+    }
     
     // Format untuk tampilan dalam bahasa Indonesia
     return date.toLocaleDateString('id-ID', {
-      weekday: 'short', // 'Sat' untuk Sabtu
+      weekday: 'short',
       day: 'numeric',
-      month: 'short', // 'May' untuk Mei
+      month: 'short',
       year: 'numeric'
-    }).replace(/\s+/g, ' '); // Hapus spasi berlebih
+    }).replace(/\s+/g, ' ');
   } catch (e) {
     console.error('Error formatting date:', e);
     return 'Format salah';
@@ -51,7 +58,7 @@ const formatTimeOnly = (dateString) => {
   
   try {
     const date = new Date(dateString);
-    date.setHours(date.getHours() + 25);
+    date.setHours(date.getHours() + 1);
     
     return date.toLocaleTimeString('id-ID', {
       hour: '2-digit',
@@ -103,7 +110,7 @@ const formatTimeOnly = (dateString) => {
                 <span>Mulai:</span> 
                 {alert.start_at ? (
                   <>
-                    <span>{formatDate(alert.start_at)}</span>
+                    <span>{formatDate(alert.start_at, -1)}</span>
                     <span>({formatTimeOnly(alert.start_at)})</span>
                   </>
                 ) : (
@@ -114,7 +121,7 @@ const formatTimeOnly = (dateString) => {
                 <span>Selesai:</span>
                 {alert.end_at ? (
                   <>
-                    <span>{formatDate(alert.end_at)}</span>
+                    <span>{formatDate(alert.end_at, -1)}</span>
                     <span>({formatTimeOnly(alert.end_at)})</span>
                   </>
                 ) : (
