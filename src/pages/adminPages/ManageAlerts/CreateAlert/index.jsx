@@ -33,6 +33,8 @@ const CreateAlertPage = () => {
     }
   };
 
+  
+
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     const formData = new FormData();
@@ -40,11 +42,32 @@ const CreateAlertPage = () => {
     formData.append('content', data.content);
     formData.append('type', data.type);
     formData.append('is_active', data.is_active ? '1' : '0');
-    if (data.start_at) formData.append('start_at', data.start_at);
-    if (data.end_at) formData.append('end_at', data.end_at);
+      // Log the raw datetime values
+  console.log('Raw start_at:', data.start_at);
+  console.log('Raw end_at:', data.end_at);
+  
+  if (data.start_at) {
+    const startDate = new Date(data.start_at);
+    console.log('Processed start_at (Date object):', startDate);
+    console.log('Processed start_at (ISO string):', startDate.toISOString());
+    formData.append('start_at', startDate.toISOString());
+  }
+  
+  if (data.end_at) {
+    const endDate = new Date(data.end_at);
+    console.log('Processed end_at (Date object):', endDate);
+    console.log('Processed end_at (ISO string):', endDate.toISOString());
+    formData.append('end_at', endDate.toISOString());
+  }
+    //if (data.start_at) formData.append('start_at', data.start_at);
+    //if (data.end_at) formData.append('end_at', data.end_at);
     if (data.image && data.image[0]) {
       formData.append('image', data.image[0]);
     }
+
+      for (let [key, value] of formData.entries()) {
+    console.log(`FormData - ${key}:`, value);
+  }
 
     try {
       await apiClient.post('/admin/alerts', formData, {
