@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import apiClient from '../../../services/GlobalApi';
+import defaultProfilePicture from '/defaultProfile.jpg';
+
 import { 
   FaUsers, 
   FaProjectDiagram, 
@@ -159,6 +161,17 @@ function Dashboard() {
                 <div>
                     <h1 className="font-extrabold text-2xl md:text-[28px] leading-[42px]">Selamat datang kembali, {user[0]?.name}!</h1>
                     <p className="text-[#838C9D]">Kelola statistik seluruh karya, pengguna, pemberitahuan, dan lainya.</p>
+                </div>
+                <div className='flex gap-4 items-center'>
+                  <img 
+                    src={user.profilePicture ? `https://api-rplsmega-master-auajf8.laravel.cloud/storage/${user.profilePicture}` : defaultProfilePicture}
+                    className="w-16 h-16 rounded-full object-cover" 
+                    alt="profile" 
+                  />
+                  <div className='leading-2'>
+                    <h2 className='text-xl font-bold'>{user[0].name}</h2>
+                    <p className='text-gray-500'>{user[0].username}</p>
+                  </div>
                 </div>
               </header>
 

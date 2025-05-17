@@ -251,6 +251,7 @@ function ProjectDetail() {
 
     fetchProjectDetail();
     fetchComments();
+
   }, [slug]);
 
   const getCategoryIcon = (categoryName) => {
@@ -383,6 +384,7 @@ function ProjectDetail() {
     swipeToSlide: true,
     draggable: true,
   };
+  
 
   const handleDeleteComment = async (commentId) => {
     const confirm = await Swal.fire({
@@ -734,7 +736,7 @@ function ProjectDetail() {
                                   : defaultProfilePic
                               }
                               alt="profile"
-                              className="h-12 w-12 rounded-full object-cover ring-2 ring-offset-2 ring-OxfordBlue group-hover:ring-OxfordBlue-Dark transition duration-300"
+                              className="h-12 w-12 rounded-full pointer-events-none object-cover ring-2 ring-offset-2 ring-OxfordBlue group-hover:ring-OxfordBlue-Dark transition duration-300"
                             />
                             <span className="absolute -top-1 -right-1 bg-GoldenYellow-Dark text-white text-[10px] px-1.5 py-0.5 rounded-full">
                               #{comments.length - index}
