@@ -48,15 +48,17 @@ const CreateAlertPage = () => {
   
   if (data.start_at) {
     const startDate = new Date(data.start_at);
-    console.log('Processed start_at (Date object):', startDate);
-    console.log('Processed start_at (ISO string):', startDate.toISOString());
+    // Kurangi 8 jam (dalam milidetik: 8 jam * 60 menit * 60 detik * 1000 ms)
+    startDate.setTime(startDate.getTime() - (8 * 60 * 60 * 1000));
+    console.log('Adjusted start_at (-8 jam):', startDate.toISOString());
     formData.append('start_at', startDate.toISOString());
   }
   
   if (data.end_at) {
     const endDate = new Date(data.end_at);
-    console.log('Processed end_at (Date object):', endDate);
-    console.log('Processed end_at (ISO string):', endDate.toISOString());
+    // Kurangi 8 jam
+    endDate.setTime(endDate.getTime() - (8 * 60 * 60 * 1000));
+    console.log('Adjusted end_at (-8 jam):', endDate.toISOString());
     formData.append('end_at', endDate.toISOString());
   }
     //if (data.start_at) formData.append('start_at', data.start_at);
