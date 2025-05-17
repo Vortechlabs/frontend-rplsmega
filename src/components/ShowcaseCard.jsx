@@ -324,7 +324,7 @@ function ShowcaseCard() {
             {/* Projects Grid */}
             {currentProjects.length === 0 ? (
                 <div className="text-center py-12">
-                    <h3 className="text-lg font-medium text-gray-900">Tidak ada proyek yang ditemukan</h3>
+                    <h3 className="text-lg font-medium text-gray-900">Tidak ada karya yang ditemukan</h3>
                     <p className="mt-2 text-sm text-gray-500">
                         Coba sesuaikan kriteria penelusuran atau filter Anda
                     </p>

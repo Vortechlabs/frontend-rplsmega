@@ -423,7 +423,7 @@ const TambahProject = () => {
                             onChange={handleInputChange}
                             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                             required
-                            placeholder="Judul proyek"
+                            placeholder="Judul karya"
                         />
                     </div>
 
@@ -785,12 +785,12 @@ const TambahProject = () => {
                     {/* Breadcrumb */}
                     <div className="flex items-center gap-1 *:after:content-['/'] *:after:ml-1 mb-6">
                         <Link to="/admin" className="hover:text-OxfordBlue">Dashboard</Link>
-                        <Link to="/admin/manage-projects" className="hover:text-OxfordBlue">Kelola Proyek</Link>
-                        <span className="font-semibold text-OxfordBlue">Unggah proyek</span>
+                        <Link to="/admin/manage-projects" className="hover:text-OxfordBlue line-clamp-1" >Kelola Karya</Link>
+                        <span className="font-semibold text-OxfordBlue line-clamp-1">Unggah Karya</span>
                     </div>
 
                         <div className="text-center mb-8">
-                            <h1 className="text-3xl font-extrabold text-gray-900">Unggah proyek kamu</h1>
+                            <h1 className="text-3xl font-extrabold text-gray-900">Unggah karya kamu</h1>
                             <p className="mt-2 text-sm text-gray-600">
                                 Bagikan karya cemerlangmu di RPL SMEGA
                             </p>
@@ -860,7 +860,7 @@ const TambahProject = () => {
                                             </>
                                         ) : (
                                             <>
-                                                <FiCheck className="mr-1" /> Kirim Proyek
+                                                <FiCheck className="mr-1" /> Kirim Karya
                                             </>
                                         )}
                                     </button>

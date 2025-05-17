@@ -221,7 +221,7 @@ Dengan kurikulum yang up-to-date dan proyek nyata, RPL menjadi pilihan tepat bag
                     </Link>
                     <Link to='/upload/project'>
                       <button className='border-2 border-OxfordBlue cursor-pointer text-OxfordBlue hover:bg-OxfordBlue hover:text-white py-3 px-6 rounded-lg shadow transition-all duration-300 transform hover:scale-105 flex items-center gap-2'>
-                        <FaUpload/> Unggah Proyek
+                        <FaUpload/> Unggah Karya
                       </button>
                     </Link>
                   </div>

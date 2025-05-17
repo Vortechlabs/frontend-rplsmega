@@ -241,7 +241,7 @@ const ProjectDetailAdmin = () => {
 
         setProject(response.data);
       } catch (error) {
-        Swal.fire("Error!", "Gagal memuat detail proyek", "error");
+        Swal.fire("Error!", "Gagal memuat detail Karya", "error");
       } finally {
         setLoading(false);
       }
@@ -469,10 +469,10 @@ const ProjectDetailAdmin = () => {
             <Link to="/admin" className="hover:text-OxfordBlue">
               Dashboard
             </Link>
-            <Link to="/admin/manage-projects" className="hover:text-OxfordBlue">
+            <Link to="/admin/manage-projects" className="hover:text-OxfordBlue line-clamp-1">
               Kelola karya
             </Link>
-            <span className="font-semibold text-OxfordBlue">
+            <span className="font-semibold text-OxfordBlue line-clamp-1">
               {truncateText(project.title, 10)}
             </span>
           </div>

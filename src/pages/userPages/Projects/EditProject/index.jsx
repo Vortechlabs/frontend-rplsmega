@@ -336,7 +336,7 @@ const UpdateProject = () => {
       if (totalImages < 1) {
         Swal.fire(
           "Data tidak lengkap",
-          "Proyek harus punya setidaknya 1 pratinjau.",
+          "Karya harus punya setidaknya 1 pratinjau.",
           "error"
         );
         return;
@@ -756,8 +756,8 @@ const UpdateProject = () => {
           <div className="mb-6">
             <label className="block text-sm font-medium text-gray-700 mb-2">
               {formData.existingImages.length > 0
-                ? "Unggah Gambar Tambahan"
-                : "Unggah Gambar Proyek"}
+                ? "Unggah Pratinjau Tambahan"
+                : "Unggah Pratinjau Karya"}
               <span className="text-xs text-gray-500 ml-1">
                 (Max 2 total, 2MB each)
               </span>

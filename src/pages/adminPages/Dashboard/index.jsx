@@ -335,7 +335,7 @@ function Dashboard() {
                           ))}
                           {recentProjectsLimited.length === 0 && (
                               <div className="text-center py-8 text-gray-500">
-                                Tidak ada data proyek
+                                Tidak ada data karya
                               </div>
                           )}
                       </div>

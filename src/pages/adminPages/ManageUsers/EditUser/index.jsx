@@ -179,8 +179,8 @@ function EditUser() {
           {/* Breadcrumb */}
           <div className="flex items-center gap-1 *:after:content-['/'] *:after:ml-1 mb-6">
             <Link to="/admin" className="hover:text-OxfordBlue">Dashboard</Link>
-            <Link to="/admin/manage-users" className="hover:text-OxfordBlue">Kelola User</Link>
-            <span className="font-semibold text-OxfordBlue">edit : {user.name}</span>
+            <Link to="/admin/manage-users" className="hover:text-OxfordBlue line-clamp-1">Kelola User</Link>
+            <span className="font-semibold text-OxfordBlue line-clamp-1">edit : {user.name}</span>
           </div>
 
             <div className="flex items-center justify-center mb-8">

@@ -61,7 +61,7 @@ function HomeProject() {
                 if (response.data && response.data.length > 0) {
                     setProjects(response.data); 
                 } else {
-                    setError('Tidak ada proyek yang valid.'); 
+                    setError('Tidak ada karya yang valid.'); 
 
                 }
 
@@ -116,7 +116,7 @@ if (error) {
             <div className="px-4 md:px-20 py-8">
                 <div className="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative" role="alert">
                     <strong className="font-bold">Info: </strong>
-                    <span className="block sm:inline">Tidak ada proyek yang valid.</span>
+                    <span className="block sm:inline">Tidak ada karya yang valid.</span>
                 </div>
             </div>
         );
@@ -134,7 +134,7 @@ if (error) {
                     <Link to={`/project/${project.slug}`}>
                         <div 
                             key={project.id} 
-                            className="hover:scale-[1.02] transition-transform duration-300 max-w-sm rounded-lg overflow-hidden shadow-lg bg-white"
+                            className="hover:scale-[1.02] transition-transform duration-300 max-w-sm rounded-lg overflow-hidden shadow-lg bg-white flex flex-col h-full"
                         >
                             {/* Project Image */}
                             <div className="relative h-48 w-full overflow-hidden">
@@ -153,7 +153,7 @@ if (error) {
                             </div>
 
                             {/* Project Content */}
-                            <div className="p-6">
+                            <div className="p-6 flex flex-col flex-grow">
                                 {/* Title and Category */}
                                 <div className="flex justify-between items-start mb-2">
                                     <h3 className="font-bold text-lg leading-tight">
@@ -167,7 +167,7 @@ if (error) {
                                 </div>
 
                                 {/* Description */}
-                                <p className="text-gray-600 text-sm mb-4">
+                                <p className="text-gray-600 text-sm mb-4  flex-grow">
                                     {truncateString(project.description, 100)}
                                 </p>
 

@@ -284,7 +284,7 @@ function AdminEditProject() {
     } else if (activeStep === 1) {
       const totalImages = (formData.existingImages.length - formData.imagesToDelete.length) + formData.images.length;
       if (totalImages < 1) {
-        toast.error('Proyek harus memiliki setidaknya 1 gambar. Mohon pertahankan gambar sebelumnya atau gunakan gambar baru.', {
+        toast.error('Karya harus memiliki setidaknya 1 pratinjau. Mohon pertahankan gambar sebelumnya atau gunakan gambar baru.', {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -848,8 +848,8 @@ function AdminEditProject() {
           {/* Breadcrumb */}
           <div className="flex items-center gap-1 *:after:content-['/'] *:after:ml-1 mb-6">
             <Link to="/admin" className="hover:text-OxfordBlue">Dashboard</Link>
-            <Link to="/admin/manage-projects" className="hover:text-OxfordBlue">Kelola Karya</Link>
-            <span className="font-semibold text-OxfordBlue">Perbarui : {project.title}</span>
+            <Link to="/admin/manage-projects" className="hover:text-OxfordBlue line-clamp-1">Kelola Karya</Link>
+            <span className="font-semibold text-OxfordBlue line-clamp-1">Perbarui : {project.title}</span>
           </div>
 
             <div className="text-center mb-8">

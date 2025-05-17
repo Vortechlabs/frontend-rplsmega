@@ -46,9 +46,9 @@ function PrivacyPolicy() {
                 <div>
                   <h3 className="text-lg font-medium text-gray-700">Informasi yang Anda Berikan</h3>
                   <ul className="list-disc pl-5 space-y-1">
-                    <li>Detail akun (nis, nama, email, kelas, proyek)</li>
+                    <li>Detail akun (nis, nama, email, kelas, karya)</li>
                     <li>Informasi pendaftaran akun</li>
-                    <li>Detail proyek yang anda buat beserta komentar</li>
+                    <li>Detail Karya yang anda buat beserta komentar</li>
                   </ul>
                 </div>
                 <div>

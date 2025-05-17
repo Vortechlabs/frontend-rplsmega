@@ -453,7 +453,7 @@ function UserProfile() {
                   to="/upload/project"
                   className="inline-flex items-center gap-2 bg-GoldenYellow-Dark text-white px-6 py-3 rounded-lg hover:bg-GoldenYellow transition-all shadow-md"
                 >
-                  <FaPlus /> Unggah proyek pertama
+                  <FaPlus /> Unggah karya pertama
                 </Link>
               </div>
             </div>
