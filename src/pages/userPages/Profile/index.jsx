@@ -353,16 +353,16 @@ function UserProfile() {
               
         {/* Projects Section */}
         <div className="mb-10">
-          <div className="flex justify-between items-center mb-8">
+          <div className="flex justify-between items-center mb-8 gap-4">
             <div>
               <h2 className="text-2xl font-bold text-gray-800">Karya saya</h2>
               <p className="text-gray-500">Koleksi karya kreatif dan brilian kamu</p>
             </div>
             <Link 
               to="/upload/project"
-              className="flex items-center gap-2 hover:scale-105 transition-transform bg-GoldenYellow-Dark text-white px-4 py-2 rounded-lg hover:bg-GoldenYellow shadow-md"
+              className="flex items-center  gap-2 hover:scale-105 transition-transform bg-GoldenYellow-Dark text-white px-4 py-2 rounded-lg hover:bg-GoldenYellow shadow-md"
             >
-              <FaPlus size={14} /> Bagikan karya baru
+              <FaPlus size={14} /> <span>Bagikan karya baru</span>
             </Link>
           </div>
           
