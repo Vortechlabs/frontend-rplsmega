@@ -24,27 +24,18 @@ const AlertCard = ({ alert, onDelete }) => {
     }
   };
 
-const formatDate = (dateString) => {
-  if (!dateString || dateString === '0000-00-00 00:00:00') return 'Not set';
-  
-  try {
+  const formatDate = (dateString) => {
+    if (!dateString) return 'N/A';
     const date = new Date(dateString);
-    
-    // Handle invalid dates
-    if (isNaN(date.getTime())) return 'Invalid date';
-    
-    return date.toLocaleDateString('id-ID', {
+    return date.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
       hour: '2-digit',
       minute: '2-digit'
     });
-  } catch (e) {
-    console.error('Error formatting date:', e);
-    return 'Invalid date';
-  }
-};
+  };
+
   return (
     <div key={alert.id} className="p-6 hover:bg-gray-50 transition-colors">
       <div className="flex flex-col md:flex-row gap-6">
