@@ -53,7 +53,7 @@ const Home = () => {
                 delay={100}
                 animateBy="words"
                 direction="top"
-                className="font-bold flex uppercase justify-center text-4xl md:text-5xl mb-8"
+                className="font-bold flex justify-center text-4xl md:text-5xl mb-8"
               />
               
               <BlurText
@@ -129,7 +129,7 @@ const Home = () => {
             threshold={0.2}
           >
             <div className='text-center mb-12'>
-              <h1 className='font-bold text-3xl md:text-4xl text-OxfordBlue mb-4'>Jelajahi proyek pkl kami</h1>
+              <h1 className='font-bold text-3xl md:text-4xl text-OxfordBlue mb-4'>Jelajahi Karya Siswa</h1>
               <div className='w-24 h-1 bg-GoldenYellow mx-auto'></div>
             </div>
           </AnimatedContent>

@@ -341,7 +341,7 @@ function ShowcaseCard() {
                                 <Link to={`/project/${project.slug}`}>
                                 <div 
                                     key={project.id} 
-                                    className="hover:scale-[1.02] transition-transform duration-300 max-w-sm rounded-lg overflow-hidden shadow-lg bg-white"
+                                    className="hover:scale-[1.02] transition-transform duration-300 max-w-sm rounded-lg overflow-hidden shadow-lg bg-white flex flex-col h-full"
                                 >
                                     {/* Project Image */}
                                     <div className="relative h-48 w-full overflow-hidden">
@@ -360,7 +360,7 @@ function ShowcaseCard() {
                                     </div>
 
                                     {/* Project Content */}
-                                    <div className="p-6">
+                                    <div className="p-6 flex flex-col flex-grow">
                                         {/* Title and Category */}
                                         <div className="flex justify-between items-start mb-2">
                                             <h3 className="font-bold text-lg leading-tight">
@@ -374,7 +374,7 @@ function ShowcaseCard() {
                                         </div>
 
                                         {/* Description */}
-                                        <p className="text-gray-600 text-sm mb-4">
+                                        <p className="text-gray-600 text-sm mb-4 flex-grow">
                                             {truncateString(project.description, 100)}
                                         </p>
 
