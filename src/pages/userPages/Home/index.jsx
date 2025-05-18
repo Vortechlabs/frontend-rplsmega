@@ -62,7 +62,7 @@ const Home = () => {
 Di jurusan ini, siswa dibekali kemampuan untuk merancang, membangun, dan menguji berbagai jenis perangkat lunak mulai dari aplikasi berbasis web, mobile, desktop, hingga game interaktif.
 
 Dengan kurikulum yang up-to-date dan proyek nyata, RPL menjadi pilihan tepat bagi kamu yang ingin menjadi developer, programmer, game creator, atau startup founder masa depan. Di website ini, kamu bisa melihat beragam hasil karya siswa, seperti aplikasi web, mobile, desktop, game dan lainnya."
-                delay={50}
+                delay={10}
                 animateBy="words"
                 direction="top"
                 className="text-sm flex justify-center md:text-base mb-8 mx-auto max-w-5xl"
