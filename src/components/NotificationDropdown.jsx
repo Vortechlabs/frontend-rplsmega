@@ -23,9 +23,7 @@ const NotificationDropdown = () => {
       }
     };
 
-    if (isOpen) {
-      fetchNotifications();
-    }
+    fetchNotifications();
   }, [isOpen]);
 
   return (
