@@ -6,19 +6,6 @@ import router from "./router";
 import { useEffect } from "react";
 
 function App() {
-    // Di dalam komponen ProjectDetail (bagian useEffect)
-  useEffect(() => {
-    // Mencegah klik kanan di seluruh halaman
-    const handleContextMenu = (e) => {
-      e.preventDefault();
-    };
-    document.addEventListener('contextmenu', handleContextMenu);
-
-    // Bersihkan event listener saat komponen unmount
-    return () => {
-      document.removeEventListener('contextmenu', handleContextMenu);
-    };
-  }, []);
   
   return (
     <AuthProvider>

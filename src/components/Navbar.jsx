@@ -7,6 +7,7 @@ import apiClient from '../services/GlobalApi';
 import logo from '/logo.png';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaSignOutAlt, FaSpinner, FaTachometerAlt, FaUser } from 'react-icons/fa';
+import NotificationDropdown from './NotificationDropdown';
 
 function Navbar() {
     const { user, logout, token } = useAuth();
@@ -177,7 +178,9 @@ function Navbar() {
                 <div className='flex items-center gap-4'>
 
                     {user ? (
-                    <div className='flex items-center relative'>
+                    <div className='flex items-center gap-4 relative'>
+
+                        <NotificationDropdown/>
                         <div className='relative inline-block'>
                             <motion.button 
                                 onClick={toggleUserInfo} 
