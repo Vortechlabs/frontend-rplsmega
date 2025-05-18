@@ -69,11 +69,12 @@ const ForgotPassword = () => {
     try {
       const response = await apiClient.post('/auth/password/send-verification', { email });
       
-      if (response.data.message === 'Verification code sent') {
+      // Periksa response sesuai struktur backend
+      if (response.data.success) {
         setStep(2);
-        Swal.fire({
+        await Swal.fire({
           title: 'Token Terkirim',
-          text: 'Token reset password telah dikirim ke email Anda',
+          text: response.data.message || 'Token reset password telah dikirim ke email Anda',
           icon: 'success',
           confirmButtonColor: '#3b82f6',
           background: '#1f2937',
@@ -84,7 +85,7 @@ const ForgotPassword = () => {
       }
     } catch (error) {
       console.error('Error sending token:', error.response?.data || error.message);
-      Swal.fire({
+      await Swal.fire({
         title: 'Gagal',
         text: error.response?.data?.message || error.message || 'Gagal mengirim token',
         icon: 'error',
@@ -95,27 +96,32 @@ const ForgotPassword = () => {
     } finally {
       setLoading(false);
     }
-};
+  };
 
   const handleVerifyToken = async (e) => {
     e.preventDefault();
     setLoading(true);
     
     try {
-      await apiClient.post('/auth/password/verify-token', { email, token });
-      setStep(3);
-      Swal.fire({
-        title: 'Token Valid',
-        text: 'Silahkan buat password baru',
-        icon: 'success',
-        confirmButtonColor: '#3b82f6',
-        background: '#1f2937',
-        color: 'white'
-      });
+      const response = await apiClient.post('/auth/password/verify-token', { email, token });
+      
+      if (response.data.success) {
+        setStep(3);
+        await Swal.fire({
+          title: 'Token Valid',
+          text: response.data.message || 'Silahkan buat password baru',
+          icon: 'success',
+          confirmButtonColor: '#3b82f6',
+          background: '#1f2937',
+          color: 'white'
+        });
+      } else {
+        throw new Error(response.data.message || 'Token tidak valid');
+      }
     } catch (error) {
-      Swal.fire({
+      await Swal.fire({
         title: 'Token Tidak Valid',
-        text: 'Token yang Anda masukkan salah atau sudah kadaluarsa',
+        text: error.response?.data?.message || error.message || 'Token yang Anda masukkan salah atau sudah kadaluarsa',
         icon: 'error',
         confirmButtonColor: '#ef4444',
         background: '#1f2937',
@@ -130,13 +136,10 @@ const ForgotPassword = () => {
     e.preventDefault();
     
     if (newPassword !== confirmPassword) {
-      Swal.fire({
+      await Swal.fire({
         title: 'Error',
         text: 'Password dan konfirmasi password tidak sama',
-        icon: 'error',
-        confirmButtonColor: '#ef4444',
-        background: '#1f2937',
-        color: 'white'
+        icon: 'error'
       });
       return;
     }
@@ -144,30 +147,28 @@ const ForgotPassword = () => {
     setLoading(true);
     
     try {
-      await apiClient.post('/auth/password/change', {
+      const response = await apiClient.post('/auth/password/change', {
         email,
         token,
         password: newPassword,
         password_confirmation: confirmPassword
       });
       
-      Swal.fire({
-        title: 'Password Direset',
-        text: 'Password Anda berhasil direset, silahkan login',
-        icon: 'success',
-        confirmButtonColor: '#3b82f6',
-        background: '#1f2937',
-        color: 'white'
-      });
-      navigate('/auth/login');
+      if (response.data.success) {
+        await Swal.fire({
+          title: 'Success',
+          text: response.data.message,
+          icon: 'success'
+        });
+        navigate('/auth/login');
+      } else {
+        throw new Error(response.data.message || 'Gagal mereset password');
+      }
     } catch (error) {
-      Swal.fire({
-        title: 'Gagal',
-        text: error.response?.data?.message || 'Gagal mereset password',
-        icon: 'error',
-        confirmButtonColor: '#ef4444',
-        background: '#1f2937',
-        color: 'white'
+      await Swal.fire({
+        title: 'Error',
+        text: error.response?.data?.message || error.message,
+        icon: 'error'
       });
     } finally {
       setLoading(false);
