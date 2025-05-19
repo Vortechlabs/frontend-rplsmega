@@ -37,27 +37,28 @@ const CreatorProfile = () => {
   const [isRatingOpen, setIsRatingOpen] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const [userResponse, projectsResponse, categoriesResponse] = await Promise.all([
-          apiClient.get(`/users/creator/${username}`),
-          apiClient.get('/projects'),
-          apiClient.get('/categories')
-        ]);
+      const fetchData = async () => {
+        try {
+          setLoading(true);
+          const [userResponse, categoriesResponse] = await Promise.all([
+            apiClient.get(`/users/public/${username}`), // Ganti endpoint
+            apiClient.get('/categories')
+          ]);
 
-        setUser(userResponse.data);
-        setProjects(projectsResponse.data);
-        setCategories(categoriesResponse.data);
-      } catch (err) {
-        setError(err.message || 'Failed to fetch data');
-      } finally {
-        setLoading(false);
-      }
-    };
+          setUser(userResponse.data.data);
+          setProjects(userResponse.data.data.project || []); // Ambil projects dari user
+          setCategories(categoriesResponse.data);
+        } catch (err) {
+          setError(err.message || 'Failed to fetch data');
+        } finally {
+          setLoading(false);
+        }
+      };
 
-    fetchData();
+      fetchData();
   }, [username]);
+
+  console.log(username);
 
   // Helper functions
   const truncateString = (str, maxLength) => {
