@@ -41,7 +41,7 @@ const CreatorProfile = () => {
         try {
           setLoading(true);
           const [userResponse, categoriesResponse] = await Promise.all([
-            apiClient.get(`/users/public/${username}`), // Ganti endpoint
+            apiClient.get(`/users/creator/${username}`), // Ganti endpoint
             apiClient.get('/categories')
           ]);
 
@@ -115,32 +115,29 @@ const CreatorProfile = () => {
   };
 
   // Filter projects
-  const filteredProjects = projects.filter((project) => {
-    // Filter by creator
-    const isCreatorProject = project.user?.username === username;
-    
-    // Search filter
-    const matchesSearch = 
-      project.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      project.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      project.technology?.toLowerCase().includes(searchTerm.toLowerCase());
-    
-    // Category filter
-    const matchesCategory = 
-      selectedCategory === 'all' || 
-      project.category?.id == selectedCategory;
-    
-    // Rating filter
-    const avgRating = calculateAverageRating(project.ratings || []);
-    let matchesRating = true;
-    
-    if (filterCriteria === 'high-rating') {
-      matchesRating = avgRating >= 4;
-    } else if (filterCriteria === 'low-rating') {
-      matchesRating = avgRating < 4;
-    }
-    
-    return isCreatorProject && matchesSearch && matchesCategory && matchesRating;
+  const filteredProjects = (projects || []).filter((project) => {
+      // Search filter
+      const matchesSearch = 
+        project.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        project.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        project.technology?.toLowerCase().includes(searchTerm.toLowerCase());
+      
+      // Category filter
+      const matchesCategory = 
+        selectedCategory === 'all' || 
+        project.category?.id == selectedCategory;
+      
+      // Rating filter
+      const avgRating = calculateAverageRating(project.rating || []);
+      let matchesRating = true;
+      
+      if (filterCriteria === 'high-rating') {
+        matchesRating = avgRating >= 4;
+      } else if (filterCriteria === 'low-rating') {
+        matchesRating = avgRating < 4;
+      }
+      
+      return matchesSearch && matchesCategory && matchesRating;
   });
 
   // Pagination
