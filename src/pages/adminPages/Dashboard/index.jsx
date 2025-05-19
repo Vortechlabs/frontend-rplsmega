@@ -164,7 +164,7 @@ function Dashboard() {
                 </div>
                 <div className='flex gap-4 items-center'>
                   <img 
-                    src={user.profilePicture ? `https://api-rplsmega-master-auajf8.laravel.cloud/storage/${user.profilePicture}` : defaultProfilePicture}
+                    src={user.profilePicture ? `https://apirpl.smkn1purbalingga.sch.id/storage/${user.profilePicture}` : defaultProfilePicture}
                     className="w-16 h-16 rounded-full object-cover" 
                     alt="profile" 
                   />

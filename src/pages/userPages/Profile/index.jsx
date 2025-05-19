@@ -181,7 +181,7 @@ function UserProfile() {
                 <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-70 transition-opacity duration-300 blur-md"></div>
                 <div className="relative w-40 h-40 rounded-full border-4 border-white/80 shadow-2xl overflow-hidden">
                   <img
-                    src={userData.profilePicture ? `https://api-rplsmega-master-auajf8.laravel.cloud/storage/${userData.profilePicture}` : defaultProfilePic}
+                    src={userData.profilePicture ? `https://apirpl.smkn1purbalingga.sch.id/storage/${userData.profilePicture}` : defaultProfilePic}
                     alt={`${userData.name}'s profile`}
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                   />
@@ -377,7 +377,7 @@ function UserProfile() {
                 {project.project_image && project.project_image.length > 0 && (
                   <div className="h-48 overflow-hidden bg-gray-100">
                     <img
-                      src={`https://api-rplsmega-master-auajf8.laravel.cloud/storage/${project.project_image[0].projectImage}`}
+                      src={`https://apirpl.smkn1purbalingga.sch.id/storage/${project.project_image[0].projectImage}`}
                       alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                     />
@@ -479,7 +479,7 @@ function UserProfile() {
                 includeMargin={true}
                 fgColor="#ECBB03"
                 imageSettings={{
-                  src: userData.profilePicture ? `https://api-rplsmega-master-auajf8.laravel.cloud/storage/${userData.profilePicture}` : defaultProfilePic,
+                  src: userData.profilePicture ? `https://apirpl.smkn1purbalingga.sch.id/storage/${userData.profilePicture}` : defaultProfilePic,
                   excavate: true,
                   width: 40,
                   height: 40

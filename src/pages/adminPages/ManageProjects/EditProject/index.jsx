@@ -606,7 +606,7 @@ function AdminEditProject() {
                     <div key={image.id} className="border rounded-lg p-3 relative bg-white shadow-sm hover:shadow-md transition-shadow">
                       <div className="relative pb-3/4 h-40">
                         <img
-                          src={`https://api-rplsmega-master-auajf8.laravel.cloud/storage/${image.projectImage}`}
+                          src={`https://apirpl.smkn1purbalingga.sch.id/storage/${image.projectImage}`}
                           alt={`Existing ${index}`}
                           className="absolute w-full h-full object-cover rounded-md"
                           onError={(e) => {

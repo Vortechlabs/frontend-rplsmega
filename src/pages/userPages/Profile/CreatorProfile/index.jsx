@@ -233,7 +233,7 @@ const CreatorProfile = () => {
                     <div className="relative w-32 h-32 rounded-full border-4 border-white/80 shadow-xl overflow-hidden">
                       <img
                         src={user.profilePicture 
-                          ? `https://api-rplsmega-master-auajf8.laravel.cloud/storage/${user.profilePicture}`
+                          ? `https://apirpl.smkn1purbalingga.sch.id/storage/${user.profilePicture}`
                           : defaultProfilePic}
                         alt={`${user.name}'s profile`}
                         className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
@@ -456,7 +456,7 @@ const CreatorProfile = () => {
                             {mainImage ? (
                               <img 
                                 className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                                src={`https://api-rplsmega-master-auajf8.laravel.cloud/storage/${mainImage}`} 
+                                src={`https://apirpl.smkn1purbalingga.sch.id/storage/${mainImage}`} 
                                 alt={project.title}
                                 loading="lazy"
                               />

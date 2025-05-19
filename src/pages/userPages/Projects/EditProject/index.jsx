@@ -708,7 +708,7 @@ const UpdateProject = () => {
                     >
                       <div className="relative pb-[75%] overflow-hidden rounded-md">
                         <img
-                          src={`https://api-rplsmega-master-auajf8.laravel.cloud/storage/${image.projectImage}`}
+                          src={`https://apirpl.smkn1purbalingga.sch.id/storage/${image.projectImage}`}
                           alt={`Existing ${index}`}
                           className="absolute h-full w-full object-cover"
                         />
