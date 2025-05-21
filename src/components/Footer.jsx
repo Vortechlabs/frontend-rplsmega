@@ -38,7 +38,7 @@ const Footer = () => {
                     </li>
 
                     <li>
-                        <a href="#" title="" className="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-7 h-7 hover:bg-GoldenYellow focus:bg-GoldenYellow">
+                        <a href="https://www.youtube.com/@RPL_SMKN1_Purbalingga" title="" className="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-7 h-7 hover:bg-GoldenYellow focus:bg-GoldenYellow">
                             <FaYoutube />
                         </a>
                     </li>

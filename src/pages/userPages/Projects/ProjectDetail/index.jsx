@@ -294,7 +294,7 @@ function ProjectDetail() {
   };
 
   const handleCopyLink = () => {
-    const link = `https://rplsmega.netlify.app/project/${slug}`;
+    const link = `${window.location.origin}/project/${slug}`;
     navigator.clipboard.writeText(link);
     Swal.fire(
       "Link disalin!",
@@ -413,7 +413,7 @@ function ProjectDetail() {
     }
   };
 
-  const projectLink = `https://rplsmega.netlify.app/project/${slug}`;
+  const projectLink = `${window.location.origin}/project/${slug}`;
 
   return (
     <>

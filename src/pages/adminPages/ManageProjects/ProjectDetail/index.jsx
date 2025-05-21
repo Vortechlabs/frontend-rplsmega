@@ -324,7 +324,7 @@ const ProjectDetailAdmin = () => {
   };
 
   const handleCopyLink = () => {
-    const link = `https://rplsmega.netlify.app/project/${slug}`;
+    const link = `${window.location.origin}/project/${slug}`;
     navigator.clipboard.writeText(link);
     Swal.fire(
       "Tautan disalin!",
@@ -442,7 +442,7 @@ const ProjectDetailAdmin = () => {
 
   const videoId = project ? getYouTubeId(project.videoUrl) : null;
 
-  const projectLink = `https://rplsmega.netlify.app/project/${slug}`;
+  const projectLink = `${window.location.origin}/project/${slug}`;
 
   if (loading) return <Loader />;
 
