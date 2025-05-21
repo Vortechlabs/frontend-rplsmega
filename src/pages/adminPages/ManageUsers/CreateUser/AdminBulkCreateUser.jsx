@@ -240,7 +240,7 @@ function AdminBulkCreateUser() {
       }
       
       return {
-        nis: row['NIS'] || row['nis'] || row['__EMPTY'] || '',
+        nis: String(Math.floor(row['NIS'] || row['nis'] || row['__EMPTY'] || '')),
         name: row['Nama'] || row['nama'] || row['__EMPTY_1'] || '',
         email: row['Email'] || row['email'] || row['__EMPTY_2'] || '',
         password: row['Password'] || row['password'] || row['__EMPTY_3'] || generateRandomPassword(),
